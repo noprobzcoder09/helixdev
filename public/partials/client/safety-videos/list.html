@@ -1,0 +1,63 @@
+<div cg-busy="{promise:safety.promise, templateUrl:'/partials/loader.html', minDuration: 500}"></div>
+<div class="col-md-12">
+    <div class="row">
+        <div class="content-container">
+            <span class="back" ui-sref="main.home"><img class="img-responsive" src="../../img/client/arrow-back.png"> <label>Back</label></span>
+
+            <div class="type">
+                <div class="col-md-12">
+                    <p><span class="list-view current">LIST</span> | <span class="grid-view">GRID</span></p>
+                </div>
+            </div>
+
+            <div class="videos-container col-md-12">
+
+                <div class="col-md-12 col-sm-12 videos-con list-item" ng-repeat="video in safety.videos" ui-sref="main.safety-videos.view({id:video.id})">
+                    <div class="row">
+                        <div class="videos">
+                            <div class="video-con col-md-5 col-sm-5 col-xs-6">
+                                <div class="row">
+                                    <img class="img-responsive" src="../../img/client/video.png">
+                                    <span class="label label-success" ng-if="video.isCompleted">Completed</span>
+                                </div>
+                            </div>
+                            <div class="content col-md-7 col-sm-7 col-xs-6 no-padding-l">
+                                <p class="title limit-768">{{video.title | limitTo:20 }}</p>
+                                <p class="title limit-414">{{ video.title | limitTo:15 }}</p>
+                                <p class="description limit-768">{{ video.description | limitTo:125 }}</p>
+                                <p class="description limit-414">{{ video.description | limitTo:40 }}</p>
+                            </div>
+
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+
+<script type="text/javascript">
+    (function( $ ) {
+        $(document).ready(function() {
+            $('.list-view').on('click', function(){
+                $('.grid-view').removeClass('current');
+                $(this).addClass('current');
+                $('.videos-con').removeClass('grid-item');
+                $('.videos-con').addClass('list-item');
+            });
+
+            $('.grid-view').on('click', function(){
+                $('.list-view').removeClass('current');
+                $(this).addClass('current');
+                $('.videos-con').removeClass('list-item');
+                $('.videos-con').addClass('grid-item');
+            });
+
+        });
+
+    })( jQuery );
+</script>

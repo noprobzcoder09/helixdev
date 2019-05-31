@@ -1,0 +1,49 @@
+<div cg-busy="{promise:safety.promise, templateUrl:'/partials/loader.html', minDuration: 500}"></div>
+<div class="col-md-12">
+    <div class="row">
+        <div class="content-container">
+            <span class="back" ui-sref="main.safety-videos.list"><img class="img-responsive" src="../../img/client/arrow-back.png"> <label>Back</label></span>
+            <span class="continue" ui-sref="main.safety-videos.questions({id:safety.view.id})">Continue</span>
+            <div class="videos-container col-md-12">
+                <div class="video-title">
+                    <h4>{{safety.view.title}}</h4>
+                </div>
+                <div class="video-player">
+                    <div id="link-holder" ng-if="safety.view.isVimeo" ng-bind-html="safety.view.htmlVideo | html">
+                    </div>
+                    <div id="video-link" ng-if="!safety.view.isVimeo"><a href="{{safety.view.link}}"></a></div>
+                </div>
+                <div class="video-description">{{safety.view.description}}</div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+
+<style>
+    div#link-holder {
+        height: 223px;
+    }
+    div#video-link {
+        overflow: hidden;
+    }
+    .embed {
+        border: 1px solid gray;
+        height: 222px;
+        background: black;
+    }
+    .video-player {
+        overflow: hidden;
+    }
+</style>
+<div class="clearfix"></div>
+<script>
+    $(document).ready(function() {
+        setTimeout(function() {
+            console.log('display video');
+            $('#video-link').embedly({query: {maxwidth: 350}, key: 'internal'});
+        }, 1000);
+    });
+</script>

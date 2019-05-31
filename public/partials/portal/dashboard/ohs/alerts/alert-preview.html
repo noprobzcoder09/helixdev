@@ -1,0 +1,98 @@
+<div class="col-md-12 no-padding ohs">
+	<div class="left-container">
+		<div class="top-content">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<div class="row">
+					<h4 class="breadcrumbs">OHS &gt; OHS/SAFETY &gt; ALERTS</h4>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		<div class="col-md-12 body-content alert alert-preview">
+			<div class="row">
+				<h5 class="fc-white">ALERT PREVIEW</h5>
+				<div class="message-body preview">
+					<div class="recipient-con clearfix">
+						<div class="col-md-4">
+							<div class="row">
+								<h4 class="br-top-left">GROUP RECIPIENTS</h4>
+								<div class="recipient">
+									<div class="cell">
+										<p ng-repeat="empRole in alert.data.employeeRoles">{{ empRole.name }}</p>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-4">
+							<div class="row">
+								<h4 class="no-border-radius">OTHER RECIPIENTS</h4>
+								<div class="recipient">
+									<div class="cell">
+										<p ng-repeat="individual in alert.data.individualRecipient">{{ individual.name }}</p>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-4">
+							<div class="row">
+								<h4 class="br-top-right">DELIVERY METHOD</h4>
+								<div class="recipient">
+									<div class="cell">
+										<p>
+											<span ng-repeat="method in alert.data.deliveryMethods">
+												{{ method.name }},
+											</span>
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<h4 class="no-border-radius">MESSAGE</h4>
+				<div class="message-body">
+					<div class="row m-bottom-10">
+						<div class="col-md-1">SUBJECT</div>
+						<div class="col-md-11">{{alert.data.subject}}</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="row m-bottom-10">
+						<div class="col-md-1">SHORT TEXT</div>
+						<div class="col-md-11">{{alert.data.shortText}}</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="row m-bottom-10">
+						<div class="col-md-1">BODY</div>
+						<div class="col-md-11">{{alert.data.body}}</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="row m-bottom-10">
+						<div class="col-md-1">CONTENT</div>
+						<div class="col-md-11">
+							<img id="output" style="width:355px;height:auto;" ng-if="alert.data.isImage">
+							<span ng-if="!alert.data.isImage">{{alert.data.file.name}}</span>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+
+				<div class="col-md-12">
+					<div class="row">
+						<div class="message-body btn-action">
+							<button class="btn btn-primary pull-right" ng-click="alert.send()">SEND MESSAGE</button>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="clearix"></div>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>
+<div class="clearfix"></div>

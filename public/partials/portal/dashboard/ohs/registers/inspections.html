@@ -1,0 +1,152 @@
+<div class="col-md-12 no-padding ohs">
+    <div class="left-container">
+        <div class="top-content">
+            <div class="col-md-7 col-sm-6 col-xs-6">
+                <div class="row">
+                    <h4 class="breadcrumbs">OHS &gt; INSPECTIONS REGISTER</h4>
+                </div>
+            </div>
+            <div class="col-md-3 pull-right">
+                <div class="row btn-action">
+                    <button type="button" role="btn" class="btn btn-primary pull-right top-page-btn" data-toggle="modal" data-target=".export"><span class="add-sign"><img src="../../img/export-icon.png" style="width: 15px;margin-top: -6px;"></span> EXPORT</button>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="col-md-12 body-content registers inspections">
+            <div class="row">
+                <h5 class="fc-white">INSPECTIONS REGISTER</h5>
+
+                <div class="chart">
+                    <div class="col-md-8">
+                        <div class="row">
+                            <h4>INSPECTIONS COMPLETED</h4>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="row"> 
+                            <h4>RESULTS</h4>
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <hr>
+
+                    <div class="chart-content">
+                        <div class="col-md-8 padding-half-r">
+                            <canvas id="bar" class="chart chart-bar"
+                                    chart-data="inspection.charts.bar_graph.data"
+                                    chart-labels="inspection.charts.bar_graph.labels"
+                                    chart-series="series"
+                                    chart-colors="inspection.charts.bar_graph.colors"
+                                    chart-options="inspection.charts.bar_graph.options"
+                            ></canvas>
+                        </div>
+                        <div class="col-md-4 padding-half-l results">
+                            <canvas id="pie" class="chart chart-pie"
+                                    chart-data="inspection.charts.circle1.data"
+                                    chart-labels="inspection.charts.circle1.labels"
+                                    chart-options="inspection.charts.circle1.options"
+                                    chart-colors="inspection.charts.circle1.colors"
+                                    chart-dataset-override="inspection.charts.circle1.dataset"></canvas>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+
+                </div>
+
+                <table class="table table-striped content-white">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>DATE</th>
+                        <th>INSPECTOR</th>
+                        <th>TYPE</th>
+                        <th>INSPECTION</th>
+                        <th>COMPLIANT/NON-COMPLIANT</th>
+                        <th>ACTIONS</th>
+                        <th>OPEN</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="border-bottom" ng-repeat="ins in inspection.list">
+                        <td>#{{ ins.id }}</td>
+                        <td>{{ ins.created_at | moment:'DD-MM-YYYY' }}</td>
+                        <td>{{ ins.inspector_name }}</td>
+                        <td>{{ ins.category_name }}</td>
+                        <td>{{ ins.title }}</td>
+                        <td><span class="fc-green">{{ ins.compliant_count.compliant }}</span>/<span class="fc-red">{{ ins.compliant_count.non_compliant }}</span></td>
+                        <td><span class="fc-blue">{{ ins.action }}</span></td>
+                        <td><button class="btn btn-primary" ui-sref="main.register.inspection-summary({id: ins.id})">OPEN</button></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <div class="pagination">
+                    <ul>
+                        <li><a href="javascript:void(0);">&#60;</a></li>
+                        <li><a href="javascript:void(0);" class="active">1</a></li>
+                        <li><a href="javascript:void(0);">&#62;</a></li>
+                    </ul>
+                </div>
+
+                <div class="clearix"></div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<div class="clearfix"></div>
+<!-- Modal -->
+<div class="modal fade export" id="idExport" tabindex="-1" role="dialog" aria-labelledby="">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span style="text-transform:uppercase;color:#fff">EXPORT TO CSV</span>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-danger alert-dismissable" ng-repeat="error in inspection.modalErrors">
+                    <a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    {{ error }}
+                </div>
+                <div class="form-group m-bottom-10">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <p class="m-top-10 no-margin-bottom">From</p>
+                        </div>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control from_date" ng-model="inspection.filter_from_date">
+                            <span class="calendar-icon"><img src="http://localhost/img/client/calendar-icon.png"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group m-bottom-10">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <p class="m-top-10 no-margin-bottom">To</p>
+                        </div>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control to_date" ng-model="inspection.filter_to_date">
+                            <span class="calendar-icon"><img src="http://localhost/img/client/calendar-icon.png"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer text-center no-padding-b">
+                    <a type="button" class="btn btn-primary" ng-click="inspection.exportCsv()">
+                        DOWNLOAD
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    (function( $ ) {
+        $( ".from_date" ).datepicker();
+        $( ".to_date" ).datepicker();
+    })( jQuery );
+</script>

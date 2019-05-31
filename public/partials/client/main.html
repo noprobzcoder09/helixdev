@@ -1,0 +1,77 @@
+<div class="main-container">
+    <div class="header">
+        <div class="container">
+            <div class="col-md-12 company-logo">
+                <div class="row">
+                    <img class="img-responsive {{app.pageClass}}" src="../../img/client/company-logo.png" ui-sref="main.home"/>
+                </div>
+            </div>
+            <div class="nav" ng-if="showNav">
+                <a href="#menu"><span></span></a>
+            </div>
+            <nav id="menu">
+              <ul>
+                <li><a class="induction" ui-sref="main.inductions.list">Inductions</a></li>
+                <li><a href="javascript:void(0)" class="chemical">Chemical Management</a></li>
+                <li><a class="inspection" ui-sref="main.inspections.home">Inspections</a></li>
+                <li><a class="safety" ui-sref="main.safety-videos.list">Safety Videos</a></li>
+                <li><a class="observation" ui-sref="main.observations.home">Observation</a></li>
+                <li><a class="emergency" ui-sref="main.emergency.home">Emergency Info</a></li>
+                <li><a class="alerts" ui-sref="main.alerts.home">Alerts</a></li>
+                <li><a class="resources" ui-sref="main.resources.home">Resources</a></li>
+
+                <li class="bottom-menu">
+                  <li><a class="profile" ui-sref="main.workforce.user">User Profile</a></li>
+                  <!-- <li><a href="javascript:void(0)" class="admin">Admin Panel</a></li> -->
+                  <li><a href="javascript:void(0)" class="logout" ui-sref="login">Logout</a></li>
+                  <!-- <li><a href="javascript:void(0)">&nbsp;</a></li>
+                  <li><a href="javascript:void(0)">&nbsp;</a></li>
+                  <li><a href="javascript:void(0)">&nbsp;</a></li> -->
+                </li>
+
+              </ul>
+            </nav>
+
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="main-content">
+                        <ui-view></ui-view>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    (function( $ ) {
+        $(document).ready(function() {
+            $('nav#menu').mmenu({
+                navbars : [
+                    {
+                        position : "top",
+                        height 	 : 4,
+                        content     : [
+                            '<img src="../../img/client/company-logo.png" />'
+                        ]
+                    }
+                ],
+                extensions: [
+                    "pagedim-black"
+                ]
+            });
+
+            var API = $("nav#menu").data( "mmenu" );
+
+            $(document).on('click', '.logout', function(){
+                API.close();
+            });
+
+        });
+    })( jQuery );
+</script>

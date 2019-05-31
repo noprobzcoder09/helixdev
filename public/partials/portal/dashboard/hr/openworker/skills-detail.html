@@ -1,0 +1,46 @@
+<div class="col-md-12 no-padding">
+    <div class="left-container">
+        <div class="top-content">
+          <div class="col-md-8 col-sm-6 col-xs-6">
+            <div class="row">
+              <h4 class="breadcrumbs">HR &gt; OPEN WORKER &gt; SKILLS OPEN</h4>
+            </div>
+          </div>
+          <div class="col-md-4 pull-right">
+            <div class="row btn-action">
+              <button type="button" role="btn" class="btn btn-primary pull-right top-page-btn" ng-click="skillsDetail.addUserSkills()"><i class="fa fa-floppy-o" aria-hidden="true"></i> SAVE</button>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <div class="col-md-12">
+          <div class="row">
+            <div class="bottom-content">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>{{ skillsDetail.role.name }}</th>
+                    <th width="10%">SELECT</th>
+                  </tr>
+                </thead>
+                <tbody class="content-white">
+                  <tr ng-repeat="skill in skillsDetail.skillList">
+                    <td style="text-transform:capitalize;">{{skill.name}}</td>
+                    <td class="color-blue">
+                      <div class="checkbox-slider--b-flat">
+                        <label>
+                          <input type="checkbox" class="modules-cb" ng-model="skill.checked">
+                          <span></span>
+                        </label>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<div class="clearfix"></div>

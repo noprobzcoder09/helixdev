@@ -1,0 +1,209 @@
+<div class="onboarding">
+  <div class="col-md-12 no-padding">
+    <div class="left-container">
+      <div class="top-content">
+        <div class="col-md-9 col-sm-6 col-xs-6">
+          <div class="row">
+            <h4 class="breadcrumbs">HR > Greenhat Program</h4>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="row">
+            <button class="btn btn-primary btn-save pull-right top-page-btn" type='button' role='btn'>
+                <i class="fa fa-floppy-o" aria-hidden="true"></i> Export
+            </button>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+
+      <div class="col-md-12 body-content">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="chart-wrapper">
+              <div class="register">
+                  <div class="stats-con">
+                      <div class="stats">
+                          <h3>OPEN GREENHAT WORKER</h3>
+                          <canvas id="bar" style="backgroundColor: #fff" class="chart chart-bar" chart-data="collective.data" chart-labels="labels" chart-series="collective.series" chart-colors="collective.colors" chart-options="collective.options"></canvas>
+                      </div>
+                  </div>
+              </div>
+              <div class="register-pie">
+                <div class="stats-con">
+                    <div class="stats">
+                        <canvas id="pie" style="backgroundColor: #fff" class="chart chart-pie" chart-dataset-override="datasetOverride" chart-data="data" chart-data="data" chart-labels="labels" chart-options="options"></canvas>
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                  <ul class="pie-status">
+                    <li><span>OVERDUE: 150</span></li>
+                    <li><span>IN PROGRESS: 129</span></li>
+                    <li><span>OPEN: 2</span></li>
+                    <li><span>CLOSED: 129</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12 frmghpenrollment">
+            <div class="body">
+            <table style="100%">
+              <thead>
+                <tr>
+                  <td>id</td>
+                  <td>date</td>
+                  <td>worker name</td>
+                  <td>responsible</td>
+                  <td>action</td>
+                  <td>status</td>
+                  <td>due</td>
+                  <td>open</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>#1029</td>
+                  <td>23-01-2017</td>
+                  <td>Gary Keith</td>
+                  <td>ohs</td>
+                  <td>training required</td>
+                  <td>open</td>
+                  <td>29-01-2017</td>
+                  <td>
+                    <button class="btn btn-primary btn-save pull-right top-page-btn" type='button' role='btn'>open</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>#1030</td>
+                  <td>23-01-2017</td>
+                  <td>Jefferson Babuyo</td>
+                  <td>plant</td>
+                  <td>no prestarts conducted</td>
+                  <td>closed out</td>
+                  <td>n/a</td>
+                  <td>
+                    <button class="btn btn-primary btn-save pull-right top-page-btn" type='button' role='btn'>open</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</div>
+<style media="screen">
+  .main-container .container .main-content .left-container .body-content .body{
+    padding: 0
+  }
+  .main-container .container .main-content .left-container .body-content .body table thead{
+    color: #fff;
+    background: #157CC4;
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: 400;
+    padding: 15px 10px;
+    border: none;
+    border-radius: 4px 4px 0 0;
+    text-transform: uppercase;
+    margin: 0;
+  }
+  .main-container .container .main-content .left-container .body-content .body table thead tr td{
+    text-transform: uppercase;
+    padding: 1em;
+    text-align: left;
+    vertical-align: middle;
+  }
+  .main-container .container .main-content .left-container .body-content .body table tbody tr{
+    border-bottom: 1px solid #ccc;
+  }
+  .main-container .container .main-content .left-container .body-content .body table tbody tr td:nth-child(3){
+    color: #157CC4;
+  }
+  .main-container .container .main-content .left-container .body-content .body table tbody tr td{
+    text-align: left;
+    padding: 2em 1em;
+  }
+  .main-container .container .main-content .left-container .body-content .body table tbody tr td:nth-child(4){
+    text-transform: uppercase;
+    color: red;
+  }
+  .main-container .container .main-content .left-container .body-content .body table tbody tr td:nth-child(5){
+    text-transform: capitalize;
+    color: #157CC4;
+  }
+  .main-container .container .main-content .left-container .body-content .body table tbody tr td:nth-child(6){
+    text-transform: uppercase;
+    color: #26990;
+  }
+  .main-container .container .main-content .left-container .body-content .body table tbody tr td:nth-child(7){
+    text-transform: uppercase;
+    color: #157CC4;
+  }
+  .main-container .container .main-content .left-container .body-content .body table tbody tr td:nth-child(8) button{
+    text-transform: uppercase;
+    padding: 0.5em 3em !important;
+    vertical-align: middle;
+    float: left !important;
+  }
+  .frmghpenrollment{
+    margin-top: 30px;
+  }
+  .chart-wrapper{
+    background: #fff;
+    width: 100%;
+    position: relative;
+    display: block;
+    clear: both;
+    float: left;
+  }
+  .register{
+    width: 660px;
+    position: relative;
+    display: block;
+    float: left;
+  }
+  .register-pie{
+    width: 39%;
+    border: 1px solid #ccc;
+    position: relative;
+    display: block;
+    float: left;
+    margin: 0 auto;
+    top: 48px;
+    left: 20px;
+    padding: 50px 0;
+  }
+  .register-pie .stats-con{
+    width: 200px;
+    padding: 0 0 0 40px;
+    float: left;
+  }
+  .stats h3{
+    color: #157CC4;
+    background: #fff;
+    margin: 0;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 15px;
+    font-size: 17px;
+    border-bottom: 1px solid #ccc;
+  }
+  .register-pie ul.pie-status{
+    list-style: none;
+    padding: 0;
+    margin-top: 70px;
+    margin-left: 20px;
+  }
+  .register-pie ul.pie-status li span{
+    color: #157CC4;
+    font-size: 16px;
+  }
+
+</style>

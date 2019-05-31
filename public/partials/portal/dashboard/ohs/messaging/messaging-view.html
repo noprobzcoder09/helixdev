@@ -1,0 +1,86 @@
+<div class="col-md-12 no-padding ohs">
+	<div class="left-container">
+		<div class="top-content">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<div class="row">
+					<h4 class="breadcrumbs">OHS &gt; OHS/SAFETY &gt; MESSAGING</h4>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		<div class="col-md-12 body-content">
+			<div class="row">
+				<h5 class="fc-white">MESSAGE PREVIEW</h5>
+					
+				<div class="message-body preview">
+					<div class="recipient-con clearfix">
+						<div class="col-md-4">
+							<div class="row">
+								<h4 class="br-top-left">GROUP RECIPIENTS</h4>
+								<div class="recipient">
+									<div class="cell">
+										<p ng-repeat="empRole in messaging.empRoles">
+											<span ng-if="empRole == 3">SUPERVISOR</span>
+											<span ng-if="empRole == 4">LEADING HANDS</span>
+											<span ng-if="empRole == 5">MANAGEMENT</span>
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-4">
+							<div class="row">
+								<h4 class="no-border-radius">OTHER RECIPIENTS</h4>
+								<div class="recipient">
+									<div class="cell">
+										<p ng-repeat="individual in messaging.data.recepient">
+											<span ng-if="[3,4,5].indexOf(individual.employee.employee_role_id) == -1 ">{{ individual.employee.fullname }}</span>
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-4">
+							<div class="row">
+								<h4 class="br-top-right">DELIVERY METHOD</h4>
+								<div class="recipient">
+									<div class="cell">
+										<p>
+											<span ng-repeat="method in messaging.method">
+												<span ng-if="method == 1">SMS</span>
+												<span ng-if="method == 2">EMAIL</span>
+												<span ng-if="method == 3">PORTAL</span>
+											</span>
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>					
+				</div>
+				
+
+				<h4 class="no-border-radius">MESSAGE</h4>
+				<div class="message-body">
+					<table class="table">
+						<tr>
+							<td>SUBJECT</td>
+							<td>{{ messaging.data.alert[0].subject }}</td>
+						</tr>
+						<tr>
+							<td>BODY</td>
+							<td>{{ messaging.data.alert[0].content }}</td>
+						</tr>
+					</table>
+				</div>
+
+				
+				<div class="clearix"></div>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>
+<div class="clearfix"></div>

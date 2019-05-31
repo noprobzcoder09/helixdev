@@ -1,0 +1,436 @@
+<div class="onboarding">
+  <div class="col-md-12 no-padding">
+    <div class="left-container">
+      <div class="top-content">
+        <div class="col-md-9 col-sm-6 col-xs-6">
+          <div class="row">
+            <h4 class="breadcrumbs">HR > {{grProgram.view.first_name}} {{grProgram.view.last_name}} > Greenhat Program</h4>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="row">
+            <button class="btn btn-primary btn-save pull-right top-page-btn" type='button' role='btn'>
+                <i class="fa fa-floppy-o" aria-hidden="true"></i> SAVE
+            </button>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+
+      <div class="col-md-12 body-content">
+        <div class="row">
+          <div class="frmghpenrollment">
+            <div class="tab-header">
+              <h4>program signoff</h4>
+            </div>
+            <div class="body bg-gray">
+              <div class="row">
+                <div id="exTab2" class="col-md-12 clearfix" ng-init="tab=1">
+                  <ul class="nav nav-tabs clearfix">
+                    <li ng-class="{'active':tab==1}">
+                      <a ng-click="tab = 1">Worker Kickoff Test</a>
+                    </li>
+                    <li ng-class="{'active':tab==2}">
+                      <a ng-click="tab = 2">Direct Supervisor</a>
+                    </li>
+                    <li ng-class="{'active':tab==3}">
+                      <a ng-click="tab = 3">HR</a>
+                    </li>
+                    <li ng-class="{'active':tab==4}">
+                      <a ng-click="tab = 4">Conts Mananger</a>
+                    </li>
+                    <li ng-class="{'active':tab==5}">
+                      <a ng-click="tab = 5">Plant Dept</a>
+                    </li>
+                    <li ng-class="{'active':tab==6}">
+                      <a ng-click="tab = 6">OHS</a>
+                    </li>
+                    <li ng-class="{'active':tab==7}">
+                      <a ng-click="tab = 7">Enviro</a>
+                    </li>
+                    <div class="clearfix"></div>
+                  </ul>
+                  <div class="tab-content clearfix">
+                    <div class="tab-pane" ng-class="{'active':tab==1}" ng-show="tab == 1">
+
+                      <div class="col-md-6 no-padding-l">
+                        <div class="form-group">
+                          <label>1. What would you do if you noticed an unsafe condition at the worksite?</label>
+                          <div class="clearfix"></div>  
+                          <textarea name="name" class="form-control" rows="4">{{ grProgram.feedback.worker.unsafe_cond }}</textarea>
+                        </div>
+                        <div class="form-group">
+                          <label>3. List your 3 rights as a worker</label>
+                          <div class="clearfix"></div>
+                            <input type="text" name="" class="form-control" value="{{ grProgram.feedback.worker.right_one }}" />
+                            <input type="text" name="" class="form-control" value="{{ grProgram.feedback.worker.right_two }}" />
+                            <input type="text" name="" class="form-control" value="{{ grProgram.feedback.worker.right_three }}" />
+                        </div>
+                      </div>
+                      <div class="col-md-6 no-padding-r">
+                        <div class="form-group">
+                          <label>2. List your Health and Safety related responsibilities.</label>
+                          <div class="clearfix"></div>
+                          <textarea name="name" class="form-control" rows="4">{{ grProgram.feedback.worker.resp }}</textarea>
+                        </div>
+                        <div class="form-group">
+                          <label>4. What are the workplace health and safety rules?</label>
+                          <div class="clearfix"></div>
+                          <textarea name="name" class="form-control" rows="4" style="height: 128px;">{{ grProgram.feedback.worker.wp_rules }}</textarea>
+                        </div>
+                      </div>
+                      <div class="clearfix"></div>
+                      <div class="form-group">
+                        <div class="col-md-2 padding-half-r">
+                          <label>Proj Management Sign Off:</label>
+                        </div>
+                        <div class="col-md-8 no-padding">
+                          <input type="text" name="projmgmt_comment" placeholder="Comments" value="" class="form-control">
+                        </div>
+                        <div class="col-md-2 padding-half-l">
+                          <button id="proj-signoff" class="btn btn-primary btn-full">Sign Off</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tab-pane" ng-class="{'active':tab==2}" ng-show="tab == 2">
+                      <div class="form-wrapper cleafix">
+                          <div class="form-group clearfix">
+                            <p class="pull-left"><strong>Has the worker reviewed and signed on the SWMS?</strong></p>
+                            <div class="switch checkbox checkbox-slider--b-flat pull-right">
+                              <label>
+                                <input name="checkbox1" id="checkbox1" type="checkbox" checked="{{ grProgram.feedback.directSupervisor.swms }}">
+                                <span></span>
+                              </label> 
+                            </div>
+                          </div>
+                          <div class="form-group clearfix">
+                            <p class="pull-left"><strong>Does the worker required additional training?</strong></p>
+                            <div class="switch checkbox checkbox-slider--b-flat pull-right">
+                              <label>
+                                <input name="checkbox2" id="checkbox2" type="checkbox" checked="{{ grProgram.feedback.directSupervisor.req_training }}">
+                                <span></span>
+                              </label> 
+                            </div>
+                          </div>
+                          <div class="form-group clearfix">
+                            <p class="pull-left"><strong>Has the worker been familliarised with the ERP?</strong></p>
+                            <div class="switch checkbox checkbox-slider--b-flat pull-right">
+                              <label>
+                                <input name="checkbox3" id="checkbox3" type="checkbox" checked="{{ grProgram.feedback.directSupervisor.fam_erp }}">
+                                <span></span>
+                              </label> 
+                            </div>
+                          </div>
+
+                          <div class="form-group clearfix">
+                            <label>Are there any areas of improvement for this worker?</label>
+                            <div class="clearfix"></div>
+                            <textarea name="name" class="form-control" rows="4" >{{ grProgram.feedback.directSupervisor.improvement }}</textarea>
+                          </div>
+                          <div class="form-group clearfix">
+                            <label>General Comments</label>
+                            <div class="clearfix"></div>
+                            <textarea name="name" class="form-control" rows="4">{{ grProgram.feedback.directSupervisor.gen_comment }}</textarea>
+                          </div>
+                          <div class="form-group clearfix">
+                            <p class="pull-left"><strong>As the OHS Manager, has Gary Smith met their Greenhat Program requirements?</strong></p>
+                            <div class="switch checkbox checkbox-slider--b-flat pull-right">
+                              <label>
+                                <input name="checkbox4" id="checkbox4" type="checkbox" checked="{{ grProgram.feedback.directSupervisor.met_req }}">
+                                <span></span>
+                              </label> 
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" ng-class="{'active':tab==3}" ng-show="tab == 3">
+                      <div class="form-wrapper cleafix">
+                          <div class="form-group clearfix">
+                            <p class="pull-left"><strong>Has the worker submitted required documentation?</strong></p>
+                            <div class="switch checkbox checkbox-slider--b-flat pull-right">
+                              <label>
+                                <input name="checkbox5" id="checkbox5" type="checkbox" value="{{ grProgram.feedback.hr.documentation }}">
+                                <span></span>
+                              </label> 
+                            </div>
+                          </div>
+                          <div class="form-group clearfix">
+                            <p class="pull-left"><strong>Has the worker been paid correctly / Any issues with pay?</strong></p>
+                            <div class="switch checkbox checkbox-slider--b-flat pull-right">
+                              <label>
+                                <input name="checkbox6" id="checkbox6" type="checkbox" checked="{{ grProgram.feedback.hr.payment }}">
+                                <span></span>
+                              </label> 
+                            </div>
+                          </div>
+                          <div class="form-group clearfix">
+                            <label>Has the worker settled in with their crew?</label>
+                            <div class="clearfix"></div>
+                            <textarea name="name" class="form-control" rows="4">{{ grProgram.feedback.hr.settle_crew }}</textarea>
+                          </div>
+                          <div class="form-group clearfix">
+                            <label>Does the worker know where to seek help via the Employee Assistance Program?</label>
+                            <div class="clearfix"></div>
+                            <textarea name="name" class="form-control" rows="4">{{ grProgram.feedback.hr.seek_help }}</textarea>
+                          </div>
+                          <div class="form-group clearfix">
+                            <label>General Comments</label>
+                            <div class="clearfix"></div>
+                            <textarea name="name" class="form-control" rows="4">{{ grProgram.feedback.hr.gen_comment }}</textarea>
+                          </div>
+                          <div class="form-group clearfix">
+                            <p class="pull-left"><strong>As the Direct Supervisor, has Gary Smith met their Greenhat Program requirements?</strong></p>
+                            <div class="switch checkbox checkbox-slider--b-flat pull-right">
+                              <label>
+                                <input name="checkbox7" id="checkbox7" type="checkbox" value="{{ grProgram.feedback.hr.met_req }}">
+                                <span></span>
+                              </label> 
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="tab-pane" ng-class="{'active':tab==4}" ng-show="tab == 4">
+                      <div class="form-wrapper cleafix">
+                        <div class="form-group clearfix">
+                          <p class="pull-left"><strong>Has the worker submitted required documentation?</strong></p>
+                          <div class="switch checkbox checkbox-slider--b-flat pull-right">
+                              <label>
+                                <input name="checkbox8" id="checkbox8" type="checkbox" value="{{ grProgram.feedback.contsManager.req_doc }}">
+                                <span></span>
+                              </label> 
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                          <p class="pull-left"><strong>Has the worker been paid correctly / Any issues with pay?</strong></p>
+                          <div class="switch checkbox checkbox-slider--b-flat pull-right">
+                            <label>
+                              <input name="checkbox9" id="checkbox9" type="checkbox" checked="{{ grProgram.feedback.contsManager.payment }}">
+                              <span></span>
+                            </label> 
+                          </div>
+                        </div>
+
+                        <div class="form-group clearfix">
+                          <label>Has the worker settled in with their crew?</label>
+                          <div class="clearfix"></div>
+                          <textarea name="name" class="form-control" rows="4">{{ grProgram.feedback.contsManager.settle_crew }}</textarea>
+                        </div>
+                        <div class="form-group clearfix">
+                          <label>Does the worker know where to seek help via the Employee Assistance Program?</label>
+                          <div class="clearfix"></div>
+                          <textarea name="name" class="form-control" rows="4">{{ grProgram.feedback.contsManager.eap }}</textarea>
+                        </div>
+                        <div class="form-group clearfix">
+                          <label>General Comments</label>
+                          <div class="clearfix"></div>
+                          <textarea name="name" class="form-control" rows="4"></textarea>
+                        </div>
+
+                        <div class="form-group clearfix">
+                          <p class="pull-left"><strong>As the Construction Manager, has Gary Smith met their Greenhat Program requirements?</strong></p>
+                          <div class="switch checkbox checkbox-slider--b-flat pull-right">
+                            <label>
+                              <input name="checkbox10" id="checkbox10" type="checkbox" checked="{{ grProgram.feedback.contsManager.met_req }}">
+                              <span></span>
+                            </label> 
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tab-pane" ng-class="{'active':tab==5}" ng-show="tab == 5">
+                      <div class="form-wrapper cleafix">
+                        <div class="form-group clearfix">
+                          <p class="pull-left"><strong>Has the worker been made aware of their prestart and inspection requirements?</strong></p>
+                          <div class="switch checkbox checkbox-slider--b-flat pull-right">
+                            <label>
+                              <input name="checkbox11" id="checkbox11" type="checkbox" checked="{{ grProgram.feedback.pantDept.prestart_req }}">
+                              <span></span>
+                            </label> 
+                          </div>
+                        </div>
+                        <div class="form-group clearfix">
+                          <p class="pull-left"><strong>Does the worker required additional training?</strong></p>
+                          <div class="switch checkbox checkbox-slider--b-flat pull-right">
+                            <label>
+                              <input name="checkbox12" id="checkbox12" type="checkbox" checked="{{ grProgram.feedback.pantDept.trainig }}">
+                              <span></span>
+                            </label> 
+                          </div>
+                        </div>
+
+                        <div class="form-group clearfix">
+                          <label>Is the worker aware of the safety equipment?</label>
+                          <div class="clearfix"></div>
+                          <textarea name="name" class="form-control" rows="4">{{ grProgram.feedback.pantDept.safe_equip }}</textarea>
+                        </div>
+                        <div class="form-group clearfix">
+                          <label>Has the worker reviewed the plant risk assessment?</label>
+                          <div class="clearfix"></div>
+                          <textarea name="name" class="form-control" rows="4">{{ grProgram.feedback.pantDept.rist_assess }}</textarea>
+                        </div>
+                        <div class="form-group clearfix">
+                          <label>General Comments</label>
+                          <div class="clearfix"></div>
+                          <textarea name="name" class="form-control" rows="4">{{ grProgram.feedback.pantDept.gen_comment }}</textarea>
+                        </div>
+                        <div class="form-group clearfix">
+                          <p class="pull-left"><strong>As the Plant Department Manager, has Gary Smith met their Greenhat Program requirements?</strong></p>
+                          <div class="switch checkbox checkbox-slider--b-flat pull-right">
+                            <label>
+                              <input name="checkbox13" id="checkbox13" type="checkbox" checked="{{ grProgram.feedback.pantDept.met_req }}">
+                              <span></span>
+                            </label> 
+                          </div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="tab-pane" ng-class="{'active':tab==6}" ng-show="tab == 6">
+                      <div class="form-wrapper cleafix">
+                        <div class="form-group clearfix">
+                          <p class="pull-left"><strong>Has the worker reviewed and signed on the SWMS?</strong></p>
+                          <div class="switch checkbox checkbox-slider--b-flat pull-right">
+                            <label>
+                              <input name="checkbox14" id="checkbox14" type="checkbox" checked="{{ grProgram.feedback.ohs.swms }}">
+                              <span></span>
+                            </label> 
+                          </div>
+                        </div>
+                        <div class="form-group clearfix">
+                          <p class="pull-left"><strong>Does the worker required additional training?</strong></p>
+                          <div class="switch checkbox checkbox-slider--b-flat pull-right">
+                            <label>
+                              <input name="checkbox15" id="checkbox15" type="checkbox" checked="{{ grProgram.feedback.ohs.training }}">
+                              <span></span>
+                            </label> 
+                          </div>
+                        </div>
+                        <div class="form-group clearfix">
+                          <p class="pull-left"><strong>Has the worker been familliarised with the ERP?</strong></p>
+                          <div class="switch checkbox checkbox-slider--b-flat pull-right">
+                            <label>
+                              <input name="checkbox16" id="checkbox16" type="checkbox" checked="{{ grProgram.feedback.ohs.erp }}">
+                              <span></span>
+                            </label> 
+                          </div>
+                        </div>
+                        <div class="form-group clearfix">
+                          <p class="pull-left"><strong>Has the worker been familliarised with the project safety rules?</strong></p>
+                          <div class="switch checkbox checkbox-slider--b-flat pull-right">
+                            <label>
+                              <input name="checkbox17" id="checkbox17" type="checkbox" checked="{{ grProgram.feedback.ohs.safe_rules }}">
+                              <span></span>
+                            </label> 
+                          </div>
+                        </div>
+                        <div class="form-group clearfix">
+                          <p class="pull-left"><strong>Does the worker know how to report hazard or incident?</strong></p>
+                          <div class="switch checkbox checkbox-slider--b-flat pull-right">
+                            <label>
+                              <input name="checkbox18" id="checkbox18" type="checkbox" checked="{{ grProgram.feedback.ohs.hazard }}">
+                              <span></span>
+                            </label> 
+                          </div>
+                        </div>
+                        <div class="form-group clearfix">
+                          <p class="pull-left"><strong>Has the worker reported a hazard or incident?</strong></p>
+                          <div class="switch checkbox checkbox-slider--b-flat pull-right">
+                            <label>
+                              <input name="checkbox19" id="checkbox19" type="checkbox" checked="{{ grProgram.feedback.ohs.reported_hazard }}">
+                              <span></span>
+                            </label> 
+                          </div>
+                        </div>
+                        <div class="form-group clearfix">
+                          <label>Are there any areas of improvement for this worker?</label>
+                          <div class="clearfix"></div>
+                          <textarea name="name" class="form-control" rows="4">{{ grProgram.feedback.ohs.improvement }}</textarea>
+                        </div>
+                        <div class="form-group clearfix">
+                          <label>General Comments</label>
+                          <div class="clearfix"></div>
+                          <textarea name="name" class="form-control" rows="4">{{ grProgram.feedback.ohs.gen_comment }}</textarea>
+                        </div>
+                        <div class="form-group clearfix">
+                          <p class="pull-left"><strong>As the OHS Manager, has Gary Smith met their Greenhat Program requirements?</strong></p>
+                          <div class="switch checkbox checkbox-slider--b-flat pull-right">
+                            <label>
+                              <input name="checkbox20" id="checkbox20" type="checkbox" checked="{{ grProgram.feedback.ohs.met_req }}">
+                              <span></span>
+                            </label> 
+                          </div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="tab-pane" ng-class="{'active':tab==7}" ng-show="tab == 7">
+                      <div class="form-wrapper cleafix">
+                        <div class="form-group clearfix">
+                          <p class="pull-left"><strong>Has the worker been familiarised with the project environmental rules?</strong></p>
+                          <div class="switch checkbox checkbox-slider--b-flat pull-right">
+                            <label>
+                              <input name="checkbox21" id="checkbox21" type="checkbox" checked="{{ grProgram.feedback.enviro.env_rules }}">
+                              <span></span>
+                            </label> 
+                          </div>
+                        </div>
+                        <div class="form-group clearfix">
+                          <p class="pull-left"><strong>Does the worker know how to report or incident?</strong></p>
+                          <div class="switch checkbox checkbox-slider--b-flat pull-right">
+                            <label>
+                              <input name="checkbox22" id="checkbox22" type="checkbox" checked="{{ grProgram.feedback.enviro.hazard }}">
+                              <span></span>
+                            </label> 
+                          </div>
+                        </div>
+                        <div class="form-group clearfix">
+                          <p class="pull-left"><strong>Has the worker reported a hazard or incident?</strong></p>
+                          <div class="switch checkbox checkbox-slider--b-flat pull-right">
+                            <label>
+                              <input name="checkbox23" id="checkbox23" type="checkbox" checked="{{ grProgram.feedback.enviro.reported_hazard }}">
+                              <span></span>
+                            </label> 
+                          </div>
+                        </div>
+                        <div class="form-group clearfix">
+                          <p class="pull-left"><strong>Does the worker know of any areas or cultural heritage and significance?</strong></p>
+                          <div class="switch checkbox checkbox-slider--b-flat pull-right">
+                            <label>
+                              <input name="checkbox24" id="checkbox24" type="checkbox" checked="{{ grProgram.feedback.enviro.heritage }}">
+                              <span></span>
+                            </label> 
+                          </div>
+                        </div>
+                        <div class="form-grou clearfixp">
+                          <label>Are there any area of improvement for this workder?</label>
+                          <div class="clearfix"></div>
+                          <textarea name="name" class="form-control" rows="4">{{ grProgram.feedback.enviro.imporovement }}</textarea>
+                        </div>
+                        <div class="form-group clearfix">
+                          <label>General Comments</label>
+                          <div class="clearfix"></div>
+                          <textarea name="name" class="form-control" rows="4">{{ grProgram.feedback.enviro.gen_comment }}</textarea>
+                        </div>
+                        <div class="form-group clearfix">
+                          <p class="pull-left"><strong>As the Environmental Manager, has Gary Smith met their Greenhat Program requirements?</strong></p>
+                          <div class="switch checkbox checkbox-slider--b-flat pull-right">
+                            <label>
+                              <input name="checkbox25" id="checkbox25" type="checkbox" checked="{{ grProgram.feedback.enviro.met_req }}">
+                              <span></span>
+                            </label> 
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</div>

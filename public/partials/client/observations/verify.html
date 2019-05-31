@@ -1,0 +1,149 @@
+<div class="col-md-12">
+    <div class="row">
+        <div class="content-container">
+            <span class="back" ui-sref="main.alerts.home"><img class="img-responsive" src="../../img/client/arrow-back.png"> <label>BACK</label></span>
+
+            <div class="observations-content col-md-12">
+                <h4>SAFETY OBSERVATION CLOSEOUT</h4>
+                <div class="body">
+                    <div class="summary">
+                        <div class="col-md-12 summary-items">
+                            <div class="row">
+                                <div class="col-sm-5 col-xs-12">
+                                    <strong>Describe what you saw:</strong>
+                                </div>
+                                <div class="col-sm-7 col-xs-12">
+                                    <p>{{observation.view.seen}}</p>
+                                </div>
+                            </div>
+                            <div  class="row">
+                                <div class="col-sm-5 col-xs-12">
+                                    <strong>Initial Photo:</strong>
+                                </div>
+                                <div class="col-sm-7 col-xs-12">
+                                    <img class="img-responsive" src="{{observation.view.images.pre}}">
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+
+                        <div class="col-md-12 summary-items">
+                            <div class="row">
+                                <div class="col-sm-5 col-xs-5">
+                                    <strong>Category:</strong>
+                                </div>
+                                <div class="col-sm-7 col-xs-7">
+                                    <p>
+                                        <strong style="text-transform:capitalize;">{{observation.view.category}} </strong>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <strong>What did you do:</strong>
+                                </div>
+                                <div class="col-sm-7">
+                                    <p>{{observation.view.action_performed}}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <strong>Further action are required:</strong>
+                                </div>
+                                <div class="col-sm-5">
+                                    <p>{{observation.view.further_action}}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <strong>Post Action Photo:</strong>
+                                </div>
+                                <div class="col-sm-7">
+                                    <img class="img-responsive" src="{{observation.view.images.post}}">
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 summary-items">
+                          <div class="row">
+                            <div class="col-sm-12">
+                                <p><strong>Location: </strong> {{ observation.view.description }}</p>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-sm-5">
+                                <strong>GPS Details:</strong>
+                            </div>
+                            <div class="col-sm-7">
+                              <div id="map" style="height: 200px"></div>
+                              </br>
+                              <p>({{ observation.view.location }})</br><span class="classObservationAddress">{{ observation.view.address}}</span></p>
+                            </div>
+                          </div>
+                          <div class="clearfix"></div>
+                        </div>
+
+                        <div class="col-md-12 summary-items">
+                          <div class="row">
+                            <div class="col-md-12 margin-b">
+                              <p><strong>Closeout Photo: </strong></p>
+                              <div class="file-con">
+                                <div class="upload-photo">
+                                  <div class="fileinput fileinput-new" data-provides="fileinput">
+                                    <div class="fileinput-preview thumbnail" data-trigger="fileinput"></div>
+                                    <div class="upload-btn">
+                                        <span class="btn btn-outline btn-file btn-primary" style="background:none;border:none;">
+                                          <span class="fileinput-new">
+                                            <label class="lbl-file" for="file"><img src="../../img/client/upload-img.png"></label>
+                                          </span>
+                                          <span class="fileinput-exists"> Change </span>
+                                          <input type="hidden" value="" name="...">
+                                          <input type="file" class="form-control" accept="image/*;capture=camera"  name="file" id="idObservationPhoto">
+                                         </span>
+                                        <a href="javascript:;" class="btn btn-danger fileinput-exists " data-dismiss="fileinput"> Remove </a>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-12 margin-b">
+                              <textarea class="form-control margin-b" rows="5" id="comment" placeholder="What did you do about this?" ng-model="observation.view.verification_comment">
+                              </textarea>
+                            </div>
+                            <div class="col-md-12 margin-b">
+                              <strong>Due Date: </strong>{{ observation.view.due_date }}
+                              <br>
+                              <strong>Assigned by: </strong>{{ observation.view.assigned_to_name }}
+                            </div>
+                          </div>
+                          <div class="clearfix"></div>
+                        </div>
+
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="row margin-b">
+                    <div class="col-md-12 margin-b">
+                        <span class='complete'  ng-click="observation.closeOut()">CLOSEOUT</span>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="col-md-12 bottom-logo margin-t">
+                <img class="img-responsive" src="../../img/client/helix-logo.png"/>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+
+<script type="text/javascript">
+    (function( $ ) {
+        $(document).ready(function() {
+        });
+    })( jQuery );
+</script>

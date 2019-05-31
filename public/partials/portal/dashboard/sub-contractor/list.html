@@ -1,0 +1,143 @@
+<div class="col-md-12 no-padding">
+    <div class="left-container">
+        <div class="top-content">
+            <div class="col-md-8 col-sm-6 col-xs-6">
+                <div class="row">
+                    <h4 class="breadcrumbs">SUB-CONTRACTORS</h4>
+                </div>
+            </div>
+            <div class="col-md-4 pull-right">
+                <div class="row btn-action">
+                    <a type="button" role="btn" class="btn btn-primary pull-right top-page-btn" data-toggle="modal" data-target=".export"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> EXPORT</a>
+                    <a ui-sref="main.sub-contractor.add" type="button" role="btn" class="btn btn-primary pull-right top-page-btn with-margin-side">+ ADD NEW</a>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="middle-content">
+            <div class="search-con">
+                <div class="col-md-8 no-padding-l">
+                    <div class="search">
+                        <span><i class="fa fa-search" aria-hidden="true"></i></span>
+                        <input type="text" placeholder="Search">
+                        <button type="button" role="btn" class="btn btn-primary">SEARCH</button>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="filter">
+                            <select class="chosen-select" data-placeholder="FILTER PROJECT" chosen ng-model="subcon.new.state_id">
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="row">
+                <div class="bottom-content">
+                    <table class="table table-striped content-white">
+                        <thead>
+                        <tr>
+                            <th>COMPANY</th>
+                            <th width="">CONTACT</th>
+                            <th width="">PUBLIC LIABILITY</th>
+                            <th width="">WORK COVER</th>
+                            <th width="">STATUS</th>
+                            <th width="">APPROVED</th>
+                            <th width="">OPEN</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        <tr ng-repeat="subCon in subcon.lists" >
+                            <td>{{ subCon.name }}</td>
+                            <td>{{ subCon.contact }}</td>
+                            <td class="color-blue">{{ subCon.public_liability }}</td>
+                            <td class="color-blue">{{ subCon.work_cover }}</td>
+                            <td class="color-blue">{{ subCon.status }}</td>
+                            <td class="color-blue">{{ subCon.approved }}</td>
+                            <td>
+                                <a ui-sref="main.sub-contractor.view({id:subCon.id})" class="btn btn-primary" role="button" type="button">OPEN</a>
+                            </td>
+                        </tr>
+
+                        <tr ng-show="subCon.lists.length <= 0">
+                            <td colspan="7" style="text-align:center;">-- No records found --</td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<div class="clearfix"></div>
+
+<!-- Modal -->
+<div class="modal fade export" id="idExport" tabindex="-1" role="dialog" aria-labelledby="addCrewLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span style="text-transform:uppercase;color:#fff">EXPORT TO CSV</span>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-danger alert-dismissable" ng-repeat="error in subcon.modalErrors">
+                    <a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    {{ error }}
+                </div>
+                <div class="form-group m-bottom-10">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <p class="m-top-10 no-margin-bottom">From</p>
+                        </div>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control from_date" ng-model="subcon.filter_from_date">
+                            <span class="calendar-icon"><img src="http://localhost/img/client/calendar-icon.png"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group m-bottom-10">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <p class="m-top-10 no-margin-bottom">To</p>
+                        </div>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control to_date" ng-model="subcon.filter_to_date">
+                            <span class="calendar-icon"><img src="http://localhost/img/client/calendar-icon.png"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer text-center no-padding-b">
+                    <a type="button" class="btn btn-primary" ng-click="subcon.exportCsv()">
+                        DOWNLOAD
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+(function( $ ) {
+    $('.chosen-select').chosen({
+        no_results_text: "Oops, nothing found!",
+        width: "100%"
+    });
+    $( ".from_date" ).datepicker();
+    $( ".to_date" ).datepicker();
+
+    function checkDate()
+    {
+        console.log('xxxx');
+        return false;
+    }
+})( jQuery );
+</script>

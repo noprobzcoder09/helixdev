@@ -1,0 +1,242 @@
+<div class="col-md-12 no-padding chemicals add">
+    <div class="left-container">
+        <div class="top-content">
+            <div class="col-md-9 col-sm-6">
+                <div class="row">
+                    <h4 class="breadcrumbs">OHS > CHEMICAL > EDIT</h4>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="row">
+                    <button class="btn btn-primary btn-save pull-right top-page-btn" type='button' role='btn' ng-click="chemical.update()">UPDATE</button>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="row">
+                <div class="bottom-content">
+                    <h5 class="fc-white no-margin-top no-margin-bottom">CHEMICAL MANAGEMENT</h5>
+                    <div class="form">
+                        <div class="tab-header">
+                            <h4>EDIT CHEMICAL</h4>
+                        </div>
+                        <div class="body">
+                            <form class="frmChemicals">
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-3 no-padding-l">
+                                                    <p>SUBSTANCE</p>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <input class="form-control" type="text" ng-model="chemical.view.substance">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-3 no-padding-l">
+                                                    <p>TYPE</p>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <input class="form-control" type="text" ng-model="chemical.view.type">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-3 no-padding-l">
+                                                    <p>ISSUE DATE</p>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <div class="input-group input-medium date date-picker" data-date-format="yyyy-mm-dd">
+                                                      <input type="text" class="form-control no-margin" name="dob" ng-model="chemical.view.issue_date">
+                                            <span class="input-group-btn">
+                                                <button class="btn default" type="button">
+                                                    <i class="fa fa-calendar"></i>
+                                                </button>
+                                            </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-3 no-padding-l">
+                                                    <p>COMPANY</p>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <input class="form-control" type="text" ng-model="chemical.view.chemical_company">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-3 no-padding-l">
+                                                    <p>HAZCHEM</p>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <input class="form-control" type="text" ng-model="chemical.view.hazchem">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-3 no-padding-l">
+                                                    <p>UN</p>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <input class="form-control" type="text" ng-model="chemical.view.un">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-3 no-padding-l">
+                                                    <p>CLASSIFICATION</p>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <input class="form-control" type="text" ng-model="chemical.view.classification">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-3 no-padding-l">
+                                                    <p>PPE</p>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <div style="cursor:pointer;" class="col-md-4 padding-half" ng-repeat="ppe in chemical.ppes">
+                                                        <div class="ppe-con hover-effect" ng-class="{'fade-reverse': ppe.checked, 'fade' : !ppe.checked}" ng-click="chemical.checked(ppe)">
+                                                            <div class="icon">
+                                                                <img class="img-responsive" src="../../img/ohs/chemicals/{{ppe.name | strReplace : ' ':'_' }}.png">
+                                                            </div>
+                                                            <div class="heading">
+                                                                {{ ppe.name }} <br/>MUST BE WORN
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-3 no-padding-l">
+                                                    <p>PPE DESCRIPTION</p>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <input class="form-control" type="text" ng-model="chemical.view.ppe_text">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-3 no-padding-l">
+                                                    <p>GROUP / CREW</p>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <selectize
+                                                            placeholder='select a groups'
+                                                            options='chemical.groups'
+                                                            name='myName'
+                                                            config="chemical.config"
+                                                            ng-disabled='disable'
+                                                            ng-model="chemical.selectedGroups"
+                                                            >
+                                                    </selectize>
+                                                    <!-- <select class="groupselect" name="" ng-model="chemical.selectedGroups">
+
+                                                    </select> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-3 no-padding-l">
+                                                    <p>HEALTH HAZARDS</p>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <input class="form-control" type="text" name="address" ng-model="chemical.view.health_hazards">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-3 no-padding-l">
+                                                    <p>FIRST AID</p>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <input class="form-control" type="text" ng-model="chemical.view.first_aid">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-3 no-padding-l">
+                                                    <p>STORAGE</p>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <input class="form-control" type="text" ng-model="chemical.view.storage">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-3 no-padding-l">
+                                                    <p>MSDS</p>
+                                                </div>
+                                                <div class="col-md-9" id="c_msds">
+                                                    <div class="fileinput fileinput-exists" data-provides="fileinput">
+                                                        <span class="btn btn-primary btn-file cursor-pointer"><span class="fileinput-new"><i class="fa fa-paperclip" aria-hidden="true"></i> Attach File</span><span class="fileinput-exists">Change</span><input type="file" name="..." id="msds" class="cursor-pointer"></span>
+                                                        <span class="fileinput-filename">{{chemical.view.msds}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                      <div class="col-md-12">
+                                        <div class="row">
+                                          <div class="col-md-3 no-padding-l">
+                                            <p>PRODUCT PHOTO</p>
+                                          </div>
+                                          <div class="col-md-9" id="c_chemical_image">
+                                            <div class="fileinput fileinput-exists" data-provides="fileinput">
+                                              <span class="btn btn-primary btn-file cursor-pointer">
+                                                <span class="fileinput-new"><i class="fa fa-paperclip" aria-hidden="true"></i> Attach Photo</span>
+                                                <span class="fileinput-exists">Change</span><input type="file" name="..." id="chemical_image" class="cursor-pointer" accept="image/*">
+                                              </span>
+                                              <span class="fileinput-filename">{{chemical.view.image_url}}</span>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<div class="clearfix"></div>
+
+<script type="text/javascript">
+    $( function() {
+        $('.date-picker').datepicker({
+        });
+    } );
+</script>

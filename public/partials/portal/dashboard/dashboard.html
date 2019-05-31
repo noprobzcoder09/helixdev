@@ -1,0 +1,154 @@
+<div id="main-dashboard" class="col-md-12 no-padding">
+    <div class="left-container">
+        <div class="top-content">
+            <div class="col-md-7 col-sm-6 col-xs-6">
+                <div class="row">
+                    <h4 class="breadcrumbs">HOME</h4>
+                </div>
+            </div>
+            <div class="col-md-5 col-sm-6 col-xs-6">
+                <div class="row">
+                    <div class="filter">
+                        <select class="chosen-select" data-placeholder="FILTER PROJECT" chosen ng-model="subcon.new.state_id" width="100%">
+                            <option ng-repeat="state in subcon.states">{{state.name}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- observation -->
+                    <div class="row statistics">
+                        <div class="chart-content" style="padding: 20px 25px;">
+                            <h4>OBSERVATION REGISTER</h4>
+                            <div class="col-md-8 padding-half-r">
+                                <canvas id="bar"
+                                        class="chart chart-bar"
+                                        chart-data="main.charts.observations.bar_graph.data"
+                                        chart-labels="main.charts.observations.bar_graph.labels"
+                                        chart-colors='main.charts.observations.bar_graph.colors'
+                                ></canvas>
+                            </div>
+                            <div class="col-md-4 padding-half-l results graph">
+                                <div class="col-md-6 padding-half">
+                                    <canvas id="pie" class="chart chart-pie"
+                                            chart-data="main.charts.observations.circle1.data"
+                                            chart-labels="main.charts.observations.circle1.labels"
+                                            chart-options="main.charts.observations.circle1.options"
+                                            chart-colors="main.charts.observations.circle1.colors"
+                                            chart-dataset-override="main.charts.observations.circle1.dataset"
+                                    ></canvas>
+                                </div>
+                                <div class="col-md-6 padding-half">
+                                    <canvas id="pie"
+                                            class="chart chart-pie"
+                                            chart-data="main.charts.observations.circle2.data"
+                                            chart-labels="main.charts.observations.circle2.labels"
+                                            chart-options="main.charts.observations.circle2.options"
+                                            chart-colors="main.charts.observations.circle2.colors"
+                                            chart-dataset-override="main.charts.observations.circle2.dataset"
+                                    >
+                                    </canvas>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <!-- inspection -->
+                    <div class="row statistics">
+                        <div class="chart-content" style="padding: 20px 25px;">
+                            <h4>INSPECTION REGISTER</h4>
+                            <div class="col-md-8 padding-half-r">
+                                <canvas id="bar" class="chart chart-bar"
+                                        chart-data="main.charts.inspections.bar_graph.data"
+                                        chart-labels="main.charts.inspections.bar_graph.labels"
+                                        chart-series="series"
+                                        chart-colors="main.charts.inspections.bar_graph.colors"
+                                        chart-options="main.charts.inspections.bar_graph.options"
+                                ></canvas>
+                            </div>
+                            <div class="col-md-4 padding-half-l results">
+                                <canvas id="pie" class="chart chart-pie"
+                                        chart-data="main.charts.inspections.circle1.data"
+                                        chart-labels="main.charts.inspections.circle1.labels"
+                                        chart-options="main.charts.inspections.circle1.options"
+                                        chart-colors="main.charts.inspections.circle1.colors"
+                                        chart-dataset-override="main.charts.inspections.circle1.dataset"
+                                ></canvas>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <!-- corrective actions -->
+                    <div class="row statistics">
+                        <div class="chart-content" style="padding: 20px 25px;">
+                            <h4>CORRECTIVE ACTION REGISTER</h4>
+                            <div class="col-md-8 padding-half-r">
+                                <canvas id="bar"
+                                        class="chart chart-bar"
+                                        chart-data="main.charts.corrective_actions.bar_graph.data"
+                                        chart-labels="main.charts.corrective_actions.bar_graph.labels"
+                                        chart-series="series"
+                                        chart-colors="main.charts.corrective_actions.bar_graph.colors"
+                                        chart-options="main.charts.corrective_actions.bar_graph.options"
+                                ></canvas>
+                            </div>
+                            <div class="col-md-4 padding-half-l results graph">
+                                <div class="col-md-6 padding-half">
+                                    <canvas id="pie"
+                                            class="chart chart-pie"
+                                            chart-data="main.charts.corrective_actions.circle1.data"
+                                            chart-labels="main.charts.corrective_actions.circle1.labels"
+                                            chart-options="main.charts.corrective_actions.circle1.options"
+                                            chart-colors="main.charts.corrective_actions.circle1.colors"
+                                            chart-dataset-override="main.charts.corrective_actions.circle1.dataset">
+                                    </canvas>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <!-- skill gap analysis -->
+                    <div class="row statistics">
+                        <div class="chart-content" style="padding: 20px 25px;">
+                            <h4>SKILLS GAP ANALYSIS</h4>
+                            <div class="col-md-8 padding-half-r">
+                                <canvas id="bar"
+                                        class="chart chart-bar"
+                                        chart-data="skillGap.chart.data"
+                                        chart-labels="skillGap.chart.labels"
+                                        chart-series="series"
+                                        chart-colors="skillgap.chart.colors"
+                                        chart-options="skillGap.chart.options"
+                                ></canvas>
+                            </div>
+                            <div class="col-md-4 padding-half-l results">
+                                <canvas id="pie"
+                                        class="chart chart-pie"
+                                        chart-data="skillGap.pie.data"
+                                        chart-labels="skillGap.pie.labels"
+                                        chart-options="options"
+                                        chart-colors="colors"
+                                        chart-dataset-override="dataset"></canvas>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<div class="clearfix"></div>
+<script type="text/javascript">
+(function( $ ) {
+    $('.chosen-select').chosen({
+        no_results_text: "Oops, nothing found!",
+        width: "100%"
+    });
+})( jQuery );
+</script>

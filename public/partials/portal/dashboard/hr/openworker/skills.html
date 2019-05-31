@@ -1,0 +1,44 @@
+<div class="col-md-12 no-padding">
+    <div class="left-container">
+        <div class="top-content">
+          <div class="col-md-8 col-sm-6 col-xs-6">
+            <div class="row">
+              <h4 class="breadcrumbs">HR &gt; OPEN WORKER &gt; SKILLS</h4>
+            </div>
+          </div>
+          <div class="col-md-4 pull-right">
+            <div class="row btn-action">
+              <button ui-sref="main.hr.workforce-worker-skills-edit({id:hrOpenworkerSkills.id})" type="button" role="btn" class="btn btn-primary pull-right top-page-btn"><i class="fa fa-pencil" aria-hidden="true"></i> EDIT</button>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <div class="col-md-12">
+          <div class="row">
+            <h5 class="fc-white">{{ hrOpenworkerSkills.employee.name }}</h5>
+            <div class="bottom-content">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>ROLE</th>
+                    <th>REQUIRED SKILLS</th>
+                    <th width="20%"></th>
+                  </tr>
+                </thead>
+                <tbody class="content-white">
+                  <tr ng-repeat="role in hrOpenworkerSkills.employeeRoleList">
+                    <td style="text-transform:capitalize;">{{role.name}}</td>
+                    <td class="fc-blue" style="text-transform:capitalize;">{{role.skills.length}} Skills</td>
+                    <td class="color-blue">
+                      <button class="btn btn-primary" ui-sref="main.hr.workforce-skills-details({id:hrOpenworkerSkills.id, role_id:role.id})">OPEN</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<div class="clearfix"></div>

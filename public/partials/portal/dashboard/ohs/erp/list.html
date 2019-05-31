@@ -1,0 +1,156 @@
+<div class="col-md-12 no-padding ohs">
+    <div class="left-container">
+        <div class="top-content">
+            <div class="col-md-7 col-sm-6 col-xs-6">
+                <div class="row">
+                    <h4 class="breadcrumbs">OHS &gt; ERP</h4>
+                </div>
+            </div>
+            <div class="col-md-3 pull-right">
+                <div class="row btn-action">
+
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary pull-right top-page-btn" data-toggle="modal" data-target="#myModal">
+                        <span class="add-sign">+</span> ADD CONTACT
+                    </button>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="col-md-12 bottom-content registers">
+            <div class="row">
+                <h5 class="fc-white">EMERGENCY RESPONSE CONTACTS</h5>
+                <table class="table table-striped" ng-repeat="group in erp.emergency_groups">
+                    <thead>
+                    <tr>
+                        <th width="10%" colspan="5">{{ group.name }}</th>
+                    </tr>
+                    </thead>
+                    <tbody class="content-white">
+                    <tr class="border-bottom" ng-repeat="responder in group.responders">
+                        <td width="20"># {{ $index + 1 }}</td>
+                        <td>{{ responder.role }}</td>
+                        <td>{{ responder.name }}</td>
+                        <td>{{ responder.mobile }}</td>
+                        <td>
+                          <button type="button" class="btn btn-primary btn-75" data-toggle="modal" data-target="#myModal2" ng-click="erp.edit(responder)">EDIT</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <div class="clearix"></div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<div class="clearfix"></div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span style="text-transform:uppercase;color:#fff">ADD CONTACT</span>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group margin-b">
+                    <div class="col-md-2">
+                        <p class="m-top-10 no-margin-bottom">Role</p>
+                    </div>
+                    <div class="col-md-10">
+                        <input ng-model="erp.new.role" class="form-control">
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="form-group margin-b">
+                    <div class="col-md-2">
+                        <p class="m-top-10" class="form-control no-margin-bottom">Name</p>
+                    </div>
+                    <div class="col-md-10">
+                        <input ng-model="erp.new.name" class="form-control">
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="form-group margin-b">
+                    <div class="col-md-2">
+                        <p class="m-top-10 no-margin-bottom">Mobile</p>
+                    </div>
+                    <div class="col-md-10">
+                        <input ng-model="erp.new.mobile" class="form-control">
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="form-group margin-b">
+                    <div class="col-md-2">
+                        <p class="m-top-10 no-margin-bottom">Team</p>
+                    </div>
+                    <div class="col-md-10">
+                        <select placeholder="Please Select" name="" id="" ng-model="erp.new.group" class="form-control">
+                            <option ng-repeat="group in erp.emergency_groups" ng-value="group.id">{{ group.name }}</option>
+                        </select>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="modal-footer text-center no-padding-b">
+                    <button ng-click="erp.add()" class="btn btn-primary" data-dismiss="modal">Add New Contact</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal2 for edit contact popup -->
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span style="text-transform:uppercase;color:#fff">EDIT CONTACT</span>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group m-bottom">
+                  <div class="col-md-2">
+                      <p class="m-top-10 no-margin-bottom">Role</p>
+                  </div>
+                  <div class="col-md-10">
+                      <input ng-model="erp.view.role" class="form-control">
+                  </div>
+                  <div class="clearfix"></div>
+              </div>
+              <div class="form-group">
+                  <div class="col-md-2">
+                      <p class="m-top-10 no-margin-bottom">Name</p>
+                  </div>
+                  <div class="col-md-10">
+                      <input ng-model="erp.view.name" class="form-control">
+                  </div>
+                  <div class="clearfix"></div>
+              </div>
+              <div class="form-group">
+                  <div class="col-md-2">
+                      <p class="m-top-10 no-margin-bottom">Mobile</p>
+                  </div>
+                  <div class="col-md-10">
+                      <input ng-model="erp.view.mobile" class="form-control">
+                  </div>
+                  <div class="clearfix"></div>
+              </div>
+              <div class="modal-footer text-center no-padding-b">
+                <button class="btn btn-primary" data-dismiss="modal" ng-click="erp.update()">UPDATE</button>
+                <button class="btn btn-primary" data-dismiss="modal" ng-click="erp.remove(erp.view)">DELETE</button>
+              </div>
+            </div>
+            <!-- <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div> -->
+        </div>
+    </div>
+</div>

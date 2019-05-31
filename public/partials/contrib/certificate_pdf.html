@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-US" prefix="og: http://ogp.me/ns#" class="no-js">
+<head>
+    <title>{{title}} - Certificate</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <style>
+        @font-face {
+          font-family: 'playbold';
+          src: url('{{url("/font/play-bold-webfont.woff2")}}') format('woff2'),
+               url('/font/play-bold-webfont.woff') format('woff');
+          font-weight: normal;
+          font-style: normal;
+        }
+
+        @font-face {
+          font-family: 'playregular';
+          src: url('/font/play-regular-webfont.woff2') format('woff2'),
+               url('/font/play-regular-webfont.woff') format('woff');
+          font-weight: normal;
+          font-style: normal;
+        }
+
+        body{
+            font-family: 'playregular', sans-serif;
+            font-style: normal;
+            font-weight: 300;
+            color: #636b6f;
+        }
+        h4 {
+          font-family: 'playbold';
+        }
+        .summary-content{
+            background: #fff;
+            padding: 20px;
+        }
+        .summary-con{
+            border: 2px solid #4B585B;
+            text-align: center;
+            padding: 20px;
+            height: 860px;
+        }
+        .top-content{
+            margin: 20px 0 15px;
+        }
+        .top-content img{
+            width: 250px;
+            max-width: 100%;
+            height: auto;
+        }
+        .top-content h4{
+            font-size: 48px;
+            line-height: 47px;
+            color: #1787CB;
+            font-weight: bold;
+            margin-top: 50px;
+            margin-bottom: 0;
+            text-transform: uppercase;
+        }
+        .top-content p{
+            font-size: 11px;
+            line-height: 12px;
+            text-transform: uppercase;
+        }
+        .middle-content{
+            margin: 70px 0;
+        }
+        .middle-content p{
+            font-size: 13px;
+            line-height: 15px;
+        }
+        .middle-content h4{
+            color: #1787CB;
+            font-size: 48px;
+            line-height: 100%;
+            padding-bottom: 10px;
+            font-family: sans-serif;
+            border-bottom: 1px solid #4B585B;
+        }
+        .middle-content p{
+            font-size: 15px;
+            line-height: 100%;
+        }
+    </style>
+</head>
+
+<body style="font-family: 'Play', sans-serif; font-style: normal; font-weight: 300; color: #636b6f;">
+    <div class="main-container">
+        <div class="content-container">
+            <div class="summary-container col-md-12">
+                <div class="summary-content">
+                    <div class="summary-con">
+                        <div class="top-content">
+                            <p style="text-align: center;"><img src="{{image}}" style="width:230px;margin-top:20px;"></p>
+                            <div style="margin:90px 0 130px;">
+                              <img src="{{certificate_image}}" alt="" style="width:450px;height:auto;">
+                            </div>
+                        </div>
+                        <div class="middle-content">
+                            <p style="line-height:100%;font-size:22px;margin-bottom:0;">This Certificate is awarded to</p>
+                            <h4 style="text-transform:capitalize;margin:50px 5% 0;">{{name}}</h4>
+                            <p style="font-size:20px;">For completing the "{{videoTitle}}" on {{videoCompletedAt}}.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

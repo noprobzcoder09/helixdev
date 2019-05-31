@@ -1,0 +1,206 @@
+<div class="col-md-12 no-padding ohs">
+	<div class="left-container">
+		<div class="top-content">
+			<div class="col-md-7 col-sm-6 col-xs-6">
+				<div class="row">
+					<h4 class="breadcrumbs">OHS > INSPECTIONS</h4>
+				</div>
+			</div>
+			<div class="col-md-3 pull-right">
+				<div class="row btn-action">
+					<button type="button" role="btn" class="btn btn-primary pull-right top-page-btn" href="javascript:void(0)" data-dialog="createDialog" class="trigger"><span class="add-sign">+</span> CREATE NEW INSPECTION</button>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		<div class="col-md-12 body-content inspections">
+			<div class="row">
+				<div class="inspections-content">
+					<div class="inspections-data m-bottom" ng-repeat="category in inspectionsList.categories" ng-if="category.inspections.length">
+						<h4>{{category.name}}</h4>
+						<table class="table table-striped">
+							<tbody class="content-white">
+							<tr class="border-bottom" ng-repeat="item in category.inspections">
+								<td width="80%">{{item.title}}</td>
+								<td width="10%">
+									<button type="button" role="btn" class="btn btn-primary btn-view pull-left btn-full" data-toggle="modal" data-target="#idEditInspection" ng-click="inspectionsList.select(item)">EDIT</button>
+								</td>
+								<td width="10%">
+									<button type="button" role="btn" class="btn btn-primary btn-view pull-left btn-full" ui-sref="main.inspections.view({id:item.id})">VIEW</button>
+								</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+
+				<div class="clearix"></div>
+			</div>
+		</div>
+		<div class="clearfix"></div>`
+	</div>
+</div>
+
+<div class="clearfix"></div>
+
+<!-- Modal -->
+<div class="modal fade" id="idEditInspection" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<span style="text-transform:uppercase;color:#fff">EDIT INSPECTION</span>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<i class="fa fa-times" aria-hidden="true"></i>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="form-group m-bottom-10">
+					<div class="row">
+						<div class="col-md-2">
+							<p class="m-top-10 no-margin-bottom">TITLE</p>
+						</div>
+						<div class="col-md-10">
+							<input ng-model="inspectionsList.view.title" class="form-control">
+						</div>
+					</div>
+				</div>
+				<div class="form-group m-bottom-10">
+					<div class="row">
+						<div class="col-md-2">
+							<p class="m-top-10 no-margin-bottom">CATEGORY</p>
+						</div>
+						<div class="col-md-10">
+							<select ng-model="inspectionsList.view.inspection_category_id" class="form-control">
+								<option ng-repeat="category in inspectionsList.categories" ng-value="category.id">{{ category.name }}</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer text-center no-padding-b">
+					<button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close" ng-click="inspectionsList.update()">
+						UPDATE
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="createDialog" class="dialog">
+	<div class="dialog__overlay"></div>
+	<div class="dialog__content">
+		<div class="morph-shape">
+			<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 560 280" preserveAspectRatio="none">
+				<rect x="3" y="3" fill="none" width="556" height="276"/>
+			</svg>
+		</div>
+		<div class="dialog-inner">
+			<button class="action close-diaglog" data-dialog-close><i class="fa fa-times" aria-hidden="true"></i></button>
+
+			<div class="header">
+				<h4 class="t-align-left fc-white">CREATE NEW INSPECTION</h4>
+			</div>
+			<div class="body">
+				<div class="col-md-12">
+					<div class="row">
+						<div class="col-md-3 col-sm-3 no-padding-l">
+							<p class="m-top-10">TITLE</p>
+						</div>
+						<div class="col-md-9 col-sm-9 no-padding-r">
+							<input type="text" class="form-control" name="title" ng-model="inspectionsList.new.title">
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-12">
+					<div class="row">
+						<div class="col-md-3 col-sm-3 no-padding-l">
+							<p class="m-top-10">CATEGORY</p>
+						</div>
+						<div class="col-md-9 col-sm-9 no-padding-r">
+							<select class="disable-search chosen-select" chosen ng-model="inspectionsList.new.inspection_category_id">
+								<option></option>
+								<option ng-repeat="category in inspectionsList.categories" ng-value="category.id">{{category.name}}</option>
+							</select>
+						</div>
+					</div>
+				</div>
+
+				<div class="clearfix"></div>
+				<hr/>
+
+				<div ng-repeat="item in inspectionsList.new.items">
+					<div class="col-md-12">
+						<div class="row">
+							<div class="col-md-3 col-sm-3 no-padding-l">
+								<p class="m-top-10">NEW INSPECTION</p>
+							</div>
+							<div class="col-md-9 col-sm-9 no-padding-r">
+								<input type="text" class="form-control" name="new_inspection" ng-model="item.name">
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-12">
+						<div class="row">
+							<div class="col-md-12 col-sm-12 no-padding">
+								<p class="m-tb-7">OPTIONS</p>
+							</div>
+							<div class="col-md-12 col-sm-12 no-padding">
+								<div class="radio">
+									<label ng-repeat="option in inspectionsList.inspection_options">
+										<input class="form-check" type="radio" name="inspection_option" ng-value="option.id" ng-model="item.options">
+										<span></span>
+										{{option.title}}
+									</label>
+								</div>
+								<div class="checkbox dialog-checkbox">
+									<input type="checkbox" class="icheckbox" ng-model="item.not_applicable">
+									<label></label>
+									<span>N/A</span>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-12">
+						<div class="row">
+							<div class="col-md-2 col-sm-3 no-padding-l">
+								<p class="m-top-10">CATEGORY</p>
+							</div>
+							<div class="col-md-10 col-sm-9 no-padding-r">
+								<select class="disable-search" chosen data-placeholder="Category" ng-model= "inspectionsList.itemCategorySelected" ng-options = "size as size.name for size in inspectionsList.itemCategories">
+									<option></option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-12">
+					<div class="row btn-action text-center">
+						<button class="btn btn-primary btn-new-inspection m-top-10" role="btn" ng-click="inspectionsList.add()">BUILD NEW INSPECTION</button>
+					</div>
+				</div>
+
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	(function( $ ) {
+
+		$(document).ready(function(){
+			var dlgtrigger = document.querySelector( '[data-dialog]' ),
+					somedialog = document.getElementById( dlgtrigger.getAttribute( 'data-dialog' ) ),
+					dlg = new DialogFx( somedialog );
+			dlgtrigger.addEventListener( 'click', dlg.toggle.bind(dlg) );
+
+			//  var btnupdate = document.querySelector( '[data-dialog-close2]' );
+			//  btnupdate.addEventListener('click', dlg.toggle.bind(dlg));
+		});
+	})( jQuery );
+</script>

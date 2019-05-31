@@ -1,0 +1,77 @@
+<div cg-busy="{promise:inspection.promise, templateUrl:'/partials/loader.html', minDuration: 500}"></div>
+<div ng-include="'/partials/loader.html'" style="position:fixed; z-index: 999; display:none; padding-left: 20%; padding-top: 40%; width: 100%" id="inspectionLoader"></div>
+<div class="col-md-12">
+    <div class="row">
+        <div class="content-container">
+            <span class="back" ui-sref="main.inspections.home"><img class="img-responsive" src="../../img/client/arrow-back.png"> <label>Back</label></span>
+            <span class="continue">
+              <!-- <label class="ms-view">Start Inspection</label> -->
+              <label class="ms-view" ng-click="inspection.start()">Start</label>
+            </span>
+
+            <div class="inspections-content col-md-12">
+                <h4>{{inspection.view.title}}</h4>
+                <div class="body">
+                    <form>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-3 col-sm-3 col-xm-12 no-padding-l">
+                                    <p class="margin-top-10">Site/Location</p>
+                                </div>
+                                <div class="col-md-9 col-sm-9 col-xm-12 no-padding-r no-padding-l">
+                                    <input class="form-control" name="site_location" placeholder="Site/Location" ng-model="inspection.setup.site_location">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-3 col-sm-3 col-xm-12 no-padding-l">
+                                    <p class="margin-top-10">Supervisor</p>
+                                </div>
+                                <div class="col-md-9 col-sm-9 col-xm-12 no-padding-r no-padding-l">
+                                    <input class="form-control" name="supervisor" placeholder="Supervisor" ng-model="inspection.setup.supervisor">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-3 col-sm-3 col-xm-12 no-padding-l">
+                                    <p class="margin-top-10">Crew/Group</p>
+                                </div>
+                                <div class="col-md-9 col-sm-9 col-xm-12 no-padding-r no-padding-l">
+                                    <selectize placeholder='Crew/Group' options='inspection.searchItem' config="inspection.config" ng-model="inspection.setup.group"></selectize>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-3 col-sm-3 col-xm-12 no-padding-l"></div>
+                                <div class="col-md-9 col-sm-9 col-xm-12 no-padding-r no-padding-l">
+                                  <button class="btn btn-gps" ng-click="inspection.getGeoLocation()">Add GPS Location Details</button>
+                                  <div id="location-details" class=" margin-top-10">
+                                    <div class="location-address margin-top-10">
+                                      <strong>Address</strong>: <span id="addr"></span>
+                                    </div>
+                                    <div class="location-long-lat">
+                                        <strong>Lat/Long</strong>: <span id="lat-long"></span>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </form>
+                </div>
+
+                <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+    </div>
+</div>
+
+<div class="clearfix"></div>

@@ -1,0 +1,151 @@
+<div class="col-md-9">
+    <div class="left-container">
+        <div class="top-content">
+            <div class="col-md-7 col-sm-6 col-xs-6">
+                <div class="row">
+                    <h3>New Client</h3>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="col-md-12">
+            <div class="row">
+
+                <form class="formNewClient formClient" name="formNewClient">
+
+                    <div class="general">
+                        <div class="d-header">
+                            <h4>&nbsp;</h4>
+                        </div>
+                        <div class="d-body">
+
+                            <div class="col-md-4">
+                                <div class="row m-right">
+                                    <div class="file-con">
+                                        <div class="upload-photo">
+                                            <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                <div class="fileinput-preview fileinput-exists thumbnail img-con" data-trigger="fileinput">
+                                                    <img src="img/Helix-Solutions-bw.png" alt="...">
+                                                </div>
+                                                <div class="upload-btn">
+                                              <span class="btn btn-outline btn-file btn btn-primary">
+                                                <span class="fileinput-new"><i class="fa fa-upload" aria-hidden="true"></i> UPLOAD IMAGE</span>
+                                                <span class="fileinput-exists"> Change </span>
+                                                <input type="hidden" value="" name="..."><input type="file" name="company_logo" id="company_logo" accept="image/*">
+                                              </span>
+                                                    <a href="javascript:;" class="btn btn-danger fileinput-exists " data-dismiss="fileinput"> Remove </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <input class="form-control link" type="text" name="name" ng-model="company.new.name">
+                                            <label><span>Name</span></label>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="row m-right">
+                                            <input class="form-control contact_name" type="text" name="contact_name" ng-model="company.new.contact_name">
+                                            <label class="input-ph"><span>Contact name</span></label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="row m-left">
+                                            <input class="form-control email" type="email" name="email" ng-model="company.new.email">
+                                            <label class="input-ph"><span>Email</span></label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="row m-right">
+                                            <input class="form-control mobile" type="text" name="mobile" ng-model="company.new.mobile">
+                                            <label class="input-ph"><span>Mobile</span></label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="row m-left">
+                                            <input class="form-control website" type="url" name="website" ng-model="company.new.website">
+                                            <label class="input-ph"><span>Company Website</span></label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="row m-right">
+                                            <input class="form-control account_contact" type="text" name="account_contact" ng-model="company.new.account_contact">
+                                            <label class="input-ph"><span>Account Contact</span></label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="row m-left">
+                                            <input class="form-control account_email" type="email" name="account_email" ng-model="company.new.account_email">
+                                            <label class="input-ph"><span>Account Email</span></label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="row m-right">
+                                            <input class="form-control head_office_state" type="text" name="head_office_state" ng-model="company.new.head_office_state">
+                                            <label class="input-ph"><span>Head Office State</span></label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="row m-left">
+                                            <input class="form-control abn" type="text" name="abn" ng-model="company.new.abn">
+                                            <label class="input-ph"><span>ABN</span></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+
+                    <div class="modules">
+                        <div class="d-header">
+                            <h4>MODULES</h4>
+                        </div>
+                        <div class="d-body">
+
+                            <div class="col-md-3" ng-repeat="module in company.modules track by $index">
+                                <div class="row">
+                                    <div class="checkbox checkbox-slider--b-flat">
+                                        <label>
+                                            <input type="checkbox" name="observations" class="modules-cb" ng-model="module.isChecked" ng-click="toggleSelection($event)">
+                                            <span>{{module.name}}</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+
+<div class="col-md-3">
+    <div class="right-container">
+        <div class="action-button">
+            <button class="btn-save" ng-click="company.save()"><i class="fa fa-floppy-o" aria-hidden="true"></i> SAVE NEW CLIENT</button>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<div class="clearfix"></div>

@@ -1,0 +1,92 @@
+<div class="col-md-12 no-padding ohs">
+	<div class="left-container">
+		<div class="top-content">
+			<div class="col-md-12 col-sm-12 col-xs-12">
+				<div class="row">
+					<h4 class="breadcrumbs">OHS &gt; OHS/SAFETY &gt; MESSAGING</h4>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		<div class="col-md-12 body-content">
+			<div class="row">
+				<h5 class="fc-white">MESSAGE PREVIEW</h5>
+					
+				<!-- <pre>
+				{{messaging.data}}
+				</pre> -->
+
+				
+
+				<div class="message-body preview">
+					<div class="recipient-con clearfix">
+						<div class="col-md-4">
+							<div class="row">
+								<h4 class="br-top-left">GROUP RECIPIENTS</h4>
+								<div class="recipient">
+									<div class="cell">
+										<p ng-repeat="empRole in messaging.data.employeeRoles">{{ empRole.name }}</p>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-4">
+							<div class="row">
+								<h4 class="no-border-radius">OTHER RECIPIENTS</h4>
+								<div class="recipient">
+									<div class="cell">
+										<p ng-repeat="individual in messaging.data.individualRecipient">{{ individual.name }}</p>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-4">
+							<div class="row">
+								<h4 class="br-top-right">DELIVERY METHOD</h4>
+								<div class="recipient">
+									<div class="cell">
+										<p>
+											<span ng-repeat="method in messaging.data.deliveryMethods">
+												{{ method.name }},
+											</span>
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>					
+				</div>
+
+				<h4 class="no-border-radius">MESSAGE</h4>
+				<div class="message-body">
+					<table class="table">
+						<tr>
+							<td>SUBJECT</td>
+							<td>{{ messaging.data.subject }}</td>
+						</tr>
+						
+						<tr>
+							<td>BODY</td>
+							<td>{{ messaging.data.body }}</td>
+						</tr>
+					</table>
+				</div>
+
+				<div class="col-md-12">
+					<div class="row">
+						<div class="message-body btn-action">
+							<button class="btn btn-primary pull-right" ng-click="messaging.send()">SEND MESSAGE</button>
+							<div class="clearfix"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="clearix"></div>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>
+<div class="clearfix"></div>

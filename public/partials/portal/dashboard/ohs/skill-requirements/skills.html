@@ -1,0 +1,73 @@
+<style>
+    .active {
+        background: #157CC4 !important;
+        color: white !important;
+    }
+</style>
+<div class="col-md-12 no-padding">
+    <div class="left-container">
+        <div class="top-content">
+          <div class="col-md-8 col-sm-6 col-xs-6">
+            <div class="row">
+              <h4 class="breadcrumbs">OHS &gt; SKILL REQUIREMENTS</h4>
+            </div>
+          </div>
+          <div class="col-md-4 pull-right">
+            <div class="row btn-action">
+              <button type="button" role="btn" class="btn btn-primary pull-right top-page-btn with-margin-left" data-toggle="modal" data-target="#add-skill">+ ADD NEW SKILLS</button>
+              <button type="button" role="btn" class="btn btn-primary pull-right top-page-btn with-margin-side" ng-click="skillReq.remove()">DELETE ROLE</button>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <div class="col-md-12">
+          <div class="row">
+            <div class="bottom-content">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>{{ skillReq.role.name }}</th>
+                    <th width="20%"></th>
+                  </tr>
+                </thead>
+                <tbody class="content-white">
+                  <tr ng-repeat="skill in skillReq.skillList">
+                    <td style="text-transform:capitalize;">{{ skill.name }}</td>
+                    <td>
+                      <button class="btn btn-primary" ng-click="skillReq.removeSkill(skill.id)">REMOVE</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<div class="clearfix"></div>
+
+<div id="add-skill" class="modal fade bs-example-modal-lg" tabindex="-2" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span style="text-transform:uppercase;color:#fff">ADD NEW SKILL</span>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <div class="col-md-2 no-padding-l">
+            <p class="m-top-10">Skill Name</p>
+          </div>
+          <div class="col-md-8">
+            <input type="text" class="form-control" name="roles" ng-model="skillReq.skillName.name">
+          </div>
+          <div class="col-md-2 text-right no-padding-r">
+            <button class="btn btn-primary" ng-click="skillReq.addSkill()" data-dismiss="modal" aria-label="Close">ADD</button>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

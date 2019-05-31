@@ -1,0 +1,84 @@
+@media (max-width: 991px) {
+	.main-container{
+		.main-content{
+			margin-top: -10px;
+
+			.right-container{
+				.sidebar-usage{
+					margin-bottom: 5em;
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 640px) {
+	table, thead, tbody, th, td, tr { 
+		display: block; 
+	}
+	thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	
+	.main-container{
+		.main-content{
+			.left-container {
+				table{
+					&.table{
+						tbody{
+							background-color: #f2f2f2;
+
+							tr{
+								border: 1px solid #eee;
+								margin-bottom: 4em;
+								background-color: #fff;
+
+								&:hover{
+									border: none;
+									border: 1px solid #F2FAFF;
+
+									td{
+										border-top: none;
+										border-bottom: 1px solid #E3F2FC;
+									}
+								}
+
+								td{
+									border: none;
+									border-bottom: 1px solid #eee; 
+									position: relative;
+									padding-left: 50%; 
+
+									&:last-child{
+										border-bottom: none; 
+									}
+
+									&:before{
+										position: absolute;
+										top: 0;
+										left: 6px;
+										width: 30%; 
+										padding-right: 10px; 
+										white-space: nowrap;
+										bottom: 0;
+										padding: 1.5em 1em;
+										color: #023C6F;
+										font-weight: bold;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	td:nth-of-type(1):before { content: "ID"; }
+	td:nth-of-type(2):before { content: "CREATION DATE"; }
+	td:nth-of-type(3):before { content: "COMPANY"; }
+	td:nth-of-type(4):before { content: "MODULES"; }
+	td:nth-of-type(5):before { content: "EDIT"; }
+}

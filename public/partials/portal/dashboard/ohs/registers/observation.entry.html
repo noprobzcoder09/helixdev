@@ -1,0 +1,200 @@
+<div class="col-md-12 no-padding ohs">
+    <div class="left-container">
+        <div class="top-content">
+            <div class="col-md-7 col-sm-6 col-xs-6">
+                <div class="row">
+                    <h4 class="breadcrumbs">OHS &gt; OBSERVATION REGISTER</h4>
+                </div>
+            </div>
+            <div class="col-md-3 pull-right">
+                <div class="row btn-action">
+                    <button type="button" role="btn" class="btn btn-primary pull-right top-page-btn"ui-sref="main.register.observation-edit({id: observation.view.id})">
+                        <span class="add-sign">
+                            <img src="../../img/edit-icon.png" style="width: 15px;margin-top: -3px;"></span> EDIT
+                    </button>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="col-md-12 body-content registers">
+            <div class="row">
+                <h5 class="fc-white">OBSERVATION REGISTER</h5>
+                <div class="top-content">
+                    <div class="status">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="type">
+                                  <div class="col-md-1">
+                                    <div class="row">
+                                    <p class="fc-blue" style="margin:14px 0 0;">STATUS</p>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-11">
+                                    <div class="row">
+                                    <div class="radio-group col-md-3">
+                                        <input class="form-control" value="1" type="radio" ng-model="observation.view.status">
+                                        <label class="btn btn-primary">OPEN</label>
+                                    </div>
+                                    <div class="radio-group col-md-3">
+                                        <input class="form-control" value="2" type="radio" ng-model="observation.view.status">
+                                        <label class="btn btn-primary">CLOSED OUT</label>
+                                    </div>
+                                    <div class="radio-group col-md-3">
+                                        <input class="form-control" value="3" type="radio" ng-model="observation.view.status">
+                                        <label class="btn btn-primary">OVERDUE</label>
+                                    </div>
+                                    <div class="radio-group col-md-3">
+                                        <input class="form-control" value="4" type="radio" ng-model="observation.view.status">
+                                        <label class="btn btn-primary">IN PROGRESS</label>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                  </div>
+                                  <div class="clearfix"></div>
+                                </div>
+                                <div class="clearfix"></div>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="action">
+                      <div class="col-md-2">
+                        <div class="row">
+                          <p class="fc-blue">OBSERVATION BY</p>
+                          <p class="fc-blue">ASSIGNED TO</p>
+                          <p class="fc-blue">DUE DATE</p>
+                        </div>
+                      </div>
+                      <div class="col-md-10 no-padding-r">
+                        <p style="text-transform:uppercase">{{ observation.view.created_by_name }}</p>
+                        <p style="text-transform:uppercase">{{ observation.view.assigned_to_name }}</p>
+                        <p style="text-transform:uppercase">{{ observation.view.due_date }}</p>
+                      </div>
+                      <div class="clearfix"></div>
+                    </div>
+                </div>
+
+                <div class="bottom-content">
+                  <h4>SAFETY HAZARD OBSERVATION SUMMARY</h4>
+                  <div class="content">
+                    <div class="col-md-12">
+                      <div class="row">
+                        <div class="col-md-3 no-padding-l">
+                          <p><strong>Description:</strong></p>
+                        </div>
+                        <div class="col-md-6">
+                          <p>{{ observation.view.seen }}</p>
+                        </div>
+                        <div class="col-md-3 no-padding-r"></div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-3 no-padding-l"><strong>Initial Photo:</strong></div>
+                        <div class="col-md-6" ng-if="observation.view.images.pre.length > 0">
+                          <a class="colorbox" href="{{observation.view.images.pre}}">
+                            <img class="img-responsive" src="{{observation.view.images.pre}}">
+                          </a>
+                        </div>
+                        <div class="col-md-3"></div>
+                      </div>
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
+
+                  <div class="content">
+                    <div class="col-md-12">
+                      <div class="row">
+                        <div class="col-md-3 no-padding-l">
+                          <p><strong>Category:</strong></p>
+                        </div>
+                        <div class="col-md-6">
+                          {{ observation.view.category.name }}
+                        </div>
+                        <div class="col-md-3"></div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-3 no-padding-l">
+                          <p><strong>What did you do:</strong></p>
+                        </div>
+                        <div class="col-md-6">
+                          {{ observation.view.action_performed }}
+                        </div>
+                        <div class="col-md-3"></div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-3 no-padding-l">
+                          <p><strong>Further action are required:</strong></p>
+                        </div>
+                        <div class="col-md-6">
+                          {{ observation.view.further_action }}
+                        </div>
+                        <div class="col-md-3"></div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-3 no-padding-l">
+                          <p><strong>Post Action Photo:</strong></p>
+                        </div>
+                        <div class="col-md-6" ng-if="observation.view.images.post.length > 0">
+                          <a class="colorbox" href="{{observation.view.images.post}}">
+                            <img class="img-responsive" src="{{observation.view.images.post}}">
+                          </a>
+                        </div>
+                        <div class="col-md-3"></div>
+                      </div>
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
+
+                  <div class="content">
+                    <div class="col-md-12">
+                      <div class="row">
+                        <div class="col-md-3 no-padding-l">
+                          <p><strong>Location:</strong></p>
+                        </div>
+                        <div class="col-md-6">
+                          <p>{{ observation.view.description }}</p>
+                        </div>
+                        <div class="col-md-3 no-padding-r"></div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-3 no-padding-l">
+                          <p><strong>GPS Details:</strong></p>
+                        </div>
+                        <div class="col-md-9">
+                          <p>({{ observation.view.location }})</br><span class="classObservationAddress">{{ observation.view.address }}</span></p>
+                          <br>
+                          <div id="map" style="height: 200px"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
+
+                  <div class="content" ng-if="observation.view.status == 2">
+                    <div class="col-md-12">
+                      <div class="row">
+                        <div class="col-md-3 no-padding-l">
+                          <p>
+                            <strong>Close out verification:</strong>
+                          </p>
+                        </div>
+                        <div class="col-md-9">
+                          <p>
+                           {{ observation.view.verification_comment }}
+                          </p>
+                          <p>
+                            <img class="img-responsive" src="{{observation.view.close_out_image_url}}">
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
+              </div>
+
+                <div class="clearix"></div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<div class="clearfix"></div>

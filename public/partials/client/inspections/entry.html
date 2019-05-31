@@ -1,0 +1,109 @@
+<div cg-busy="{promise:inspection.promise, templateUrl:'/partials/loader.html', minDuration: 500}"></div>
+<div class="col-md-12">
+    <div class="row">
+        <div class="content-container">
+            <span class="back" ng-click="inspection.prevPage()"><img class="img-responsive" src="../../img/client/arrow-back.png"> <label>Back</label></span>
+
+            <div class="inspections-content col-md-12">
+                <h4>{{inspection.view.title}} <span class="counter">{{inspection.pageInfo}}</span></h4>
+                <div class="body">
+                    <p class="margin-b text-upper"><strong>{{inspection.pageItem.name}}</strong></p>
+                    <form>
+                        <div class="">
+                            <div class="display-flex">
+                                <div class="radio-group" ng-repeat="button in inspection.buttons track by $index">
+                                    <input type="radio" class="form-control" ng-model="inspection.pageItem.answer" ng-value="$index + 1">
+                                    <label class="btn btn-primary hover-effect blue">{{button}}</label>
+                                </div>
+                                <div class="radio-group not-applicable" ng-if="inspection.pageItem.not_applicable">
+                                    <input type="radio" class="form-control" ng-model="inspection.pageItem.answer" ng-value="3">
+                                    <label class="btn btn-primary hover-effect blue">N/A</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="row">
+                                <textarea class="form-control" name="describe" rows="5" placeholder="Describe what you saw..." ng-model="inspection.pageItem.description"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="row">
+                                <textarea class="form-control" name="action_required" rows="4" placeholder="Action required..." ng-model="inspection.pageItem.required_action"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-3 col-sm-2 hidden-xs no-padding-l">
+                                    <p>Assign Action</p>
+                                </div>
+                                <div class="col-md-9 col-sm-10 col-xs-12 no-padding-r input-dt">
+                                  <selectize placeholder='Assign Action' options='inspection.employees' config="inspection.config" ng-model="inspection.pageItem.assigned_to"></selectize>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-3 col-sm-2 hidden-xs no-padding-l">
+                                    <p>Action Due</p>
+                                </div>
+                                <div class="col-md-9 col-sm-10 col-xs-12 no-padding-r input-dt">
+                                    <input class="form-control action_due" name="action_due" placeholder="Action Due" ng-model="inspection.pageItem.action_due" data-date-format="dd-mm-yyyy">
+                                    <span class="calendar-icon"><img src="../../img/client/calendar-icon.png"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="file-con">
+                                    <div class="upload-photo">
+                                        <div class="fileinput fileinput-new" data-provides="fileinput">
+                                            <div class="fileinput-preview thumbnail" data-trigger="fileinput"></div>
+                                            <div class="upload-btn">
+                                                <span class="btn btn-outline btn-primary btn-file">
+                                                  <span class="fileinput-new">
+                                                    <label class="lbl-file" for="file"><img src="../../img/client/upload-img.png"></label>
+                                                  </span>
+                                                  <span class="fileinput-exists"> Change </span>
+                                                  <input type="hidden" value="" name="...">
+                                                  <input type="file" class="form-control" accept="image/*;capture=camera"  name="file" id="idInspectionPhoto">
+                                                 </span>
+                                                <a href="javascript:;" class="btn btn-danger fileinput-exists " data-dismiss="fileinput"> Remove </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="clearfix"></div>
+                    </form>
+                </div>
+                <div class="clearfix"></div>
+                <span class="next" ng-click="inspection.nextPage()">Next</span>
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-md-12 bottom-logo">
+                <img class="img-responsive" src="../../img/client/helix-logo.png" />
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="clearfix"></div>
+
+<script type="text/javascript">
+    (function( $ ) {
+        $(document).ready(function() {
+            $('.lbl-file').on('click', function(){
+                $('.file-con input').click();
+            });
+            $( ".action_due" ).datepicker();
+        });
+    })( jQuery );
+</script>

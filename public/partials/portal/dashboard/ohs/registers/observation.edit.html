@@ -1,0 +1,272 @@
+<div class="col-md-12 no-padding ohs">
+    <div class="left-container">
+        <div class="top-content">
+            <div class="col-md-7 col-sm-6 col-xs-6">
+                <div class="row">
+                    <h4 class="breadcrumbs">OHS &gt; OBSERVATION REGISTER</h4>
+                </div>
+            </div>
+            <div class="col-md-3 pull-right">
+                <div class="row btn-action">
+                    <button type="button" role="btn" class="btn btn-primary pull-right top-page-btn" data-dialog="createDialog" ng-click="observation.update()"><span class="add-sign"><img src="../../img/edit-icon.png" style="width: 15px;margin-top: -3px;"></span> UPDATE</button>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="col-md-12 body-content registers">
+            <div class="row">
+                <h5 class="fc-white">OBSERVATION UPDATE</h5>
+
+                <div class="top-content">
+                    <div class="status">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="type">
+                                    <div class="col-md-1">
+                                        <div class="row">
+                                            <p class="fc-blue" style="margin-top:14px;">STATUS</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-11">
+                                      <div class="row">
+                                          <div class="radio-group col-md-3">
+                                            <input class="form-control" value="1" type="radio" ng-model="observation.view.status">
+                                            <label class="btn btn-primary">OPEN</label>
+                                          </div>
+                                          <div class="radio-group col-md-3">
+                                            <input class="form-control" value="2" type="radio" ng-model="observation.view.status">
+                                            <label class="btn btn-primary">CLOSED OUT</label>
+                                          </div>
+                                          <div class="radio-group col-md-3">
+                                            <input class="form-control" value="3" type="radio" ng-model="observation.view.status">
+                                            <label class="btn btn-primary">OVERDUE</label>
+                                          </div>
+                                          <div class="radio-group col-md-3">
+                                            <input class="form-control" value="4" type="radio" ng-model="observation.view.status">
+                                            <label class="btn btn-primary">IN PROGRESS</label>
+                                          </div>
+                                          <div class="clearfix"></div>
+                                      </div>
+                                      <div class="clearfix"></div>
+                                  </div>
+                                  <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="action">
+                      <div class="row">
+                        <div class="col-md-2">
+                          <p class="fc-blue">OBSERVATION BY</p>
+                        </div>
+                        <div class="col-md-5">
+                          <selectize
+                                  placeholder=''
+                                  ng-model="observation.view.created_by_id"
+                                  options='observation.employees_observation_by'
+                                  name='myName' config="observation.observationByConfig"
+                                  ng-disabled='disable' required='true'
+                          ></selectize>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-2">
+                          <p class="fc-blue">ASSIGN ACTION</p>
+                        </div>
+                        <div class="col-md-5">
+                          <selectize
+                                  placeholder=''
+                                  ng-model="observation.view.performed_by_id"
+                                  options='observation.employees'
+                                  name='myName' config="observation.config"
+                                  ng-disabled='disable' required='true'
+                          ></selectize>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-2">
+                          <p class="fc-blue">DUE DATE</p>
+                        </div>
+                        <div class="col-md-5 frmChemicals">
+                          <div class="input-group input-medium date date-picker" data-date-format="yyyy-mm-dd">
+                            <input type="text" class="form-control" name="dob" ng-model="observation.view.due">
+                            <span class="input-group-btn">
+                              <button class="btn default" type="button" style="background:none;">
+                                  <i class="fa fa-calendar"></i>
+                              </button>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="clearfix"></div>
+                    </div>
+                </div>
+
+                <div class="bottom-content">
+                  <h4>OBSERVATION SUMMARY</h4>
+                  <div class="content">
+                    <div class="col-md-12">
+                        <div class="row">
+                          <div class="col-md-3 no-padding-l">
+                            <p class="m-top-10"><strong>Description</strong></p>
+                          </div>
+                          <div class="col-md-9">
+                            <p>
+                              <input type="text" class="form-control no-margin" ng-model="observation.view.seen">
+                            </p>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <div class="col-md-12">
+                      <div class="row">
+                        <div class="col-md-3 no-padding-l">
+                          <p class="m-top-10">
+                            <strong>Initial Photo</strong>
+                          </p>
+                        </div>
+                        <div class="col-md-3">
+                          <p class="m-top-10">
+                            <img class="img-responsive" src="{{observation.view.images.pre}}">
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
+
+                  <div class="content">
+                    <div class="col-md-12">
+                      <div class="row">
+                        <div class="col-md-3 no-padding-l">
+                          <p class="m-top-10"><strong>Category:</strong></p>
+                        </div>
+                        <div class="col-md-9">
+                          <p><input type="text" class="form-control no-margin" ng-model="observation.view.sub_categories"></p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-md-12">
+                      <div class="row">
+                        <div class="col-md-3 no-padding-l">
+                          <p class="m-top-10">
+                              <strong>What did you do:</strong>
+                          </p>
+                        </div>
+                        <div class="col-md-9">
+                          <p>
+                              <input type="text" class="form-control no-margin" ng-model="observation.view.action_performed">
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <div class="col-md-12">
+                      <div class="row">
+                        <div class="col-md-3 no-padding-l">
+                          <p class="m-top-10">
+                            <strong>Further action are required:</strong>
+                          </p>
+                        </div>
+                        <div class="col-md-9">
+                          <p>
+                            <input type="text" class="form-control no-margin" ng-model="observation.view.further_action">
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <div class="col-md-12">
+                      <div class="row">
+                        <div class="col-md-3 no-padding-l">
+                          <p class="m-top-10">
+                              <strong>Post Action Photo:</strong>
+                          </p>
+                        </div>
+                        <div class="col-md-3">
+                          <p class="m-top-10">
+                              <img class="img-responsive" src="{{observation.view.images.post}}">
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
+
+                  <div class="content">
+                    <div class="col-md-12">
+                      <div class="row">
+                        <div class="col-md-3 no-padding-l">
+                          <p class="m-top-10">
+                            <strong>Location:</strong>
+                          </p>
+                        </div>
+                        <div class="col-md-9">
+                          <p>
+                            <input type="text" class="form-control no-margin" ng-model="observation.view.description">
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-md-12">
+                      <div class="row">
+                        <div class="col-md-3 no-padding-l">
+                          <p class="m-top-10">
+                            <strong>GPS Details:</strong>
+                          </p>
+                        </div>
+                        <div class="col-md-9">
+                          <p>({{ observation.view.location }})</br><span class="classObservationAddress">{{ observation.view.address }}</span></p>
+                          <br>
+                          <div id="map" style="height: 200px"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
+
+                  <div class="content" ng-if="observation.view.status == 2">
+                    <div class="col-md-12">
+                      <div class="row">
+                        <div class="col-md-3 no-padding-l">
+                          <p class="m-top-10">
+                            <strong>Close out verification:</strong>
+                          </p>
+                        </div>
+                        <div class="col-md-9">
+                          <p>
+                            <input type="text" class="form-control no-margin" ng-model="observation.view.verification_comment">
+                          </p>
+                          <p>
+                            <img class="img-responsive" src="{{observation.view.close_out_image_url}}">
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="clearfix"></div>
+                  </div>
+                </div>
+
+                <div class="clearix"></div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<div class="clearfix"></div>
+
+<script>
+    $( function() {
+        $('.date-picker').datepicker({
+            startView: 'years'
+        });
+        $(".chosen-select").chosen();
+    } );
+
+</script>

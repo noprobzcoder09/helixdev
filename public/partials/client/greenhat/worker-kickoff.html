@@ -1,0 +1,81 @@
+
+<div class="onboarding">
+  <div class="col-md-12 no-padding">
+    <div class="left-container">
+      <div class="top-content">
+        <div class="col-md-9 col-sm-6 col-xs-6">
+          <div class="row">
+            
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="row">
+            <button class="btn btn-primary btn-save pull-right top-page-btn" type='button' role='btn' ng-click="greenhat.submitFeedback()">
+                <i class="fa fa-floppy-o" aria-hidden="true"></i> SAVE
+            </button>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+
+      <div class="col-md-12 body-content" >
+        <div class="row">
+          <div class="frmghpenrollment">
+            <div class="tab-header">
+              <h4>Greenhat Program</h4>
+            </div>
+
+            <div class="body" ng-show="greenhat.feedback.exist"><!-- true -->
+              <div class="alert alert-danger"> 
+                <p>You can submit feedback only at once!</p>
+              </div>
+            </div>
+
+            <div class="body" ng-show="!greenhat.feedback.exist"><!-- false -->
+
+             
+
+              The following test reviews information covered in a company health and safety orientation. It is recommended that you develop
+              a written test that is specific to your health and safety program. Workers that successfully complete the health and safety review
+              wil graduate out of the greem hands sticker.
+
+
+                <div class="form-group">
+                  <label>1. What would you do if you noticed an unsafe condition at the worksite?</label>
+                  <div class="clearfix"></div>
+                  <textarea name="unsafe_cond" class="form-control" rows="4" ng-model="greenhat.feedback.unsafe_cond"></textarea>
+                </div>
+                <div class="form-group">
+                  <label>3. List your 3 rights as a worker</label>
+                  <div class="clearfix"></div>
+                    <input type="text" name="right_one" class="form-control" ng-model="greenhat.feedback.right_one">
+                    <input type="text" name="right_two" class="form-control" ng-model="greenhat.feedback.right_two">
+                    <input type="text" name="right_three" class="form-control" ng-model="greenhat.feedback.right_three">
+                </div>
+                <div class="form-group">
+                  <label>2. List your Health and Safety related responsibilities.</label>
+                  <div class="clearfix"></div>
+                  <textarea name="resp" class="form-control" rows="4" ng-model="greenhat.feedback.resp"></textarea>
+                </div>
+                <div class="form-group">
+                  <label>4. What are the workplace health and safety rules?</label>
+                  <div class="clearfix"></div>
+                  <textarea name="wp_rules" class="form-control" rows="4" style="height: 128px;" ng-model="greenhat.feedback.wp_rules"></textarea>
+                </div>
+                <div class="form-group">
+                    <label> 5. List hazards that you face at work, and explain what you do to protect yourself from those hazards.</label>
+                      <div class="clearfix"></div>
+                      <textarea name="haz_at_work" class="form-control" rows="4" ng-model="greenhat.feedback.haz_at_work"></textarea>
+                </div>
+              <div class="clearfix"></div>
+            </div>
+
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</div>

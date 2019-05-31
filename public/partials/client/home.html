@@ -1,0 +1,94 @@
+<div cg-busy="{promise:myPromise, templateUrl:'/partials/loader.html', minDuration: 500}"></div>
+<div class="col-md-12 home-con">
+        <div class="row">
+            <div class="top-container">
+
+                <div class="col-xs-4 items">
+                    <a href="javascript:void(0);" ui-sref="main.inductions.list">
+                        <div class="img-con">
+                            <img class="img-responsive" src="../../img/client/inductions.png">
+                        </div>
+                        <p class="heading">Inductions</p>
+                    </a>
+                </div>
+
+                <div class="col-xs-4 items">
+                    <a href="javascript:void(0);" ui-sref="main.chemicals.select-group">
+                        <div class="img-con">
+                            <img class="img-responsive" src="../../img/client/chemical.png">
+                        </div>
+                        <p class="heading">Chemical Management</p>
+                    </a>
+                </div>
+
+                <div class="col-xs-4 items" ui-sref="main.inspections.home">
+                    <a href="javascript:void(0);">
+                        <div class="img-con">
+                            <img class="img-responsive" src="../../img/client/inspections.png">
+                        </div>
+                        <p class="heading">Inspections</p>
+                    </a>
+                </div>
+
+                <div class="col-xs-4 items">
+                    <a href="javascript:void(0);" ui-sref="main.safety-videos.list">
+                        <div class="img-con">
+                            <img class="img-responsive" src="../../img/client/safety_videos.png">
+                        </div>
+                        <p class="heading">Safety Videos</p>
+                    </a>
+                </div>
+
+                <div class="col-xs-4 items">
+                    <a href="javascript:void(0);" ui-sref="main.observations.home">
+                        <div class="img-con">
+                            <img class="img-responsive" src="../../img/client/observation.png">
+                        </div>
+                        <p class="heading">Observation</p>
+                    </a>
+                </div>
+
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="bottom-container">
+
+                <div class="col-xs-4 items">
+                    <a href="javascript:void(0);" ui-sref="main.emergency.home">
+                        <div class="img-con">
+                            <img class="img-responsive" src="../../img/client/emergency.png">
+                        </div>
+                        <p class="heading">Emergency Info</p>
+                    </a>
+                </div>
+
+                <div class="col-xs-4 items">
+                    <a href="javascript:void(0);" ui-sref="main.alerts.home">
+                        <span class="notify btn-danger" ng-if="home.alerts.count > 0"><span>{{ home.alerts.count }}</span></span>
+                        <div class="img-con">
+                            <img class="img-responsive" src="../../img/client/alerts.png">
+                        </div>
+                        <p class="heading">Alerts</p>
+                    </a>
+                </div>
+
+                <div class="col-xs-4 items">
+                    <a href="javascript:void(0);" ui-sref="main.resources.home">
+                        <div class="img-con">
+                            <img class="img-responsive" src="../../img/client/resources.png">
+                        </div>
+                        <p class="heading">Resources</p>
+                    </a>
+                </div>
+
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="col-md-12 bottom-logo">
+                <img class="img-responsive" src="../../img/client/helix-logo.png" alt="{{ env('APP_NAME" title="{{ env('APP_NAME"/>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="clearfix"></div>

@@ -1,0 +1,163 @@
+<div class="col-md-12 no-padding ohs">
+    <div class="left-container">
+        <div class="top-content">
+            <div class="col-md-7 col-sm-6 col-xs-6">
+                <div class="row">
+                    <h4 class="breadcrumbs">OHS &gt; INSPECTIONS REGISTER</h4>
+                </div>
+            </div>
+            <div class="col-md-3 pull-right">
+                <div class="row btn-action">
+                    <button type="button" role="btn" class="btn btn-primary pull-right top-page-btn" href="javascript:void(0)" data-dialog="createDialog" ng-click="inspection.update()"><span class="add-sign"><img src="../../img/edit-icon.png" style="width: 15px;margin-top: -3px;"></span> UPDATE</button>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="col-md-12 body-content registers">
+            <div class="row">
+                <h5 class="fc-white">INSPECTIONS REGISTER</h5>
+
+                <div class="top-content">
+                    <div class="status action">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="type">
+                                  <div class="col-md-1">
+                                    <div class="row">
+                                      <p class="fc-blue">STATUS</p>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-11">
+                                    <div class="row">
+                                      <div class="radio-group col-md-3">
+                                          <input class="form-control" value="1" type="radio" ng-model="inspection.view.status">
+                                          <label class="btn btn-primary">OPEN</label>
+                                      </div>
+                                      <div class="radio-group col-md-3">
+                                          <input class="form-control" value="2" type="radio" ng-model="inspection.view.status">
+                                          <label class="btn btn-primary">CLOSED OUT</label>
+                                      </div>
+                                      <div class="radio-group col-md-3">
+                                          <input class="form-control" value="3" type="radio" ng-model="inspection.view.status">
+                                          <label class="btn btn-primary">OVERDUE</label>
+                                      </div>
+                                      <div class="radio-group col-md-3">
+                                          <input class="form-control" value="4" type="radio" ng-model="inspection.view.status">
+                                          <label class="btn btn-primary">IN PROGRESS</label>
+                                      </div>
+                                      <div class="clearfix"></div>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+
+                <div class="bottom-content">
+                    <h5 class="fc-white">OUTSTANDING INSPECTION TASKS</h5>
+                    <h4>{{ inspection.view.inspection.title }}</h4>
+                    <div class="content">
+                        <div class="col-md-12 no-padding-l">
+                            <h5><strong>{{ inspection.view.name }}</strong></h5>
+
+                            <div class="type">
+                                <div class="radio-group with-margin-right" ng-repeat="btn in inspection.view.buttons track by $index">
+                                    <input class="form-control" value="{{$index + 1}}" type="radio" ng-model="inspection.view.answer">
+                                    <label class="btn btn-primary">{{ btn }}</label>
+                                </div>
+                                <div class="radio-group not-applicable" ng-if="inspection.view.not_applicable">
+                                    <input class="form-control" value="3" type="radio" ng-model="inspection.view.answer">
+                                    <label class="btn btn-primary">N/A</label>
+                                </div>
+                            </div>
+
+                            <div class="body">
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <p><textarea class="form-control" name="describe" style="resize:none;" rows="4" ng-model="inspection.view.description">{{ inspection.view.description }}</textarea></p>
+                                        <p><textarea class="form-control" name="action_required" style="resize:none;" rows="4" ng-model="inspection.view.required_action"> {{ inspection.view.required_action }}</textarea></p>
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-3 no-padding-l">
+                                                    <p class="margin-tb">Assign Action</p>
+                                                </div>
+                                                <div class="col-md-9 no-padding-r">
+                                                    <selectize placeholder='assign to'  options='inspection.employees' ng-model="inspection.assignTo" config="inspection.config"  ng-disabled='disable' required='true'></selectize>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-3 no-padding-l">
+                                                    <p class="margin-tb">Assign Due</p>
+                                                </div>
+                                                <div class="col-md-9 input-dt no-padding-r">
+                                                    <input type="text" class="form-control action_due" name="action_due" ng-model="inspection.view.action_due">
+                                                    <span class="calendar-icon"><img src="http://localhost/img/client/calendar-icon.png"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 no-padding-r">
+                                    <div ng-if="inspection.view.image_url.length > 0"  class="upload-photo file-con img-file-con">
+                                        <div class="fileinput fileinput-exists" data-provides="fileinput" >
+                                            <div class="fileinput-preview thumbnail img-con" data-trigger="fileinput">
+                                              <img src="{{inspection.view.image_url}}" style="max-width: 100%"/>
+                                            </div>
+                                            <div class="upload-btn">
+                                                <span class="btn btn-outline btn-file btn btn-primary">
+                                                  <span class="fileinput-new"><img src="http://localhost/img/client/upload-img.png"></span>
+                                                  <span class="fileinput-exists btn btn-primary btn-change"> Change </span>
+                                                  <input value="" name="..." autocomplete="off" type="hidden"><input name="image" id="inspectionPhoto" accept="image/*" type="file">
+                                                </span>
+                                                <a href="javascript:;" class="btn btn-danger fileinput-exists btn-remove" data-dismiss="fileinput"> Remove </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                  <div  ng-if="inspection.view.image_url.length == 0"  class="upload-photo file-con img-file-con">
+                                    <div class="fileinput fileinput-new" data-provides="fileinput" >
+                                      <div class="fileinput-preview thumbnail img-con" data-trigger="fileinput">
+                                        <img src="" style="max-width: 100%"/>
+                                      </div>
+                                      <div class="upload-btn">
+                                        <span class="btn btn-outline btn-file btn btn-primary">
+                                          <span class="fileinput-new"><img src="http://localhost/img/client/upload-img.png"></span>
+                                          <span class="fileinput-exists btn btn-primary btn-change"> Change </span>
+                                          <input value="" name="..." autocomplete="off" type="hidden"><input name="image" accept="image/*" type="file" id="inspectionPhoto">
+                                        </span>
+                                        <a href="javascript:;" class="btn btn-danger fileinput-exists btn-remove" data-dismiss="fileinput"> Remove </a>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="clearix"></div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<div class="clearfix"></div>
+
+<script type="text/javascript">
+    (function( $ ) {
+        $(document).ready(function() {
+            setTimeout(function() {
+                $(".chosen-select").chosen();
+            }, 500);
+            $( ".action_due" ).datepicker();
+        });
+    })( jQuery );
+</script>

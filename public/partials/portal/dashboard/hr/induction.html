@@ -1,0 +1,147 @@
+<div class="induction">
+    <div class="col-md-9 no-padding">
+        <div class="left-container">
+            <div class="top-content">
+                <div class="col-md-7 col-sm-6 col-xs-6"> 
+                    <div class="row">
+                        <h4 class="breadcrumbs">HR > Induction</h4>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="statistics">
+                            <div class="top-stats">
+                                <h3>STATISTICS</h3>
+                                <div class="stats">
+                                    <!--
+                                    <img class="img-responsive" src="../../img/induction.png" />
+                                    -->
+                                    <canvas id="line" class="chart chart-line" chart-data="data" chart-labels="labels" chart-series="series" chart-options="options" chart-dataset-override="datasetOverride" chart-click="onClick" chart-colors="colors"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="col-md-12 middle-content">
+                <div class="row">
+                    <div class="content-title">
+                        <h4>Induction Register</h4>
+                    </div>
+                    <div class="search-con">
+                        <div class="col-md-8 no-padding-l">
+                            <div class="search">
+                                <span><i class="fa fa-search" aria-hidden="true"></i></span>
+                                <input type="text" placeholder="Search" ng-model="hrInduction.keywords" ng-enter="hrInduction.search(hrInduction.keywords)" class="col-md-10 no-padding-r" style="width:83.3333%;position:initial;">
+                                <button type="button" role="btn" class="btn btn-primary col-md-2 no-padding-l" ng-click="hrInduction.search(hrInduction.keywords)" style="width: 16.6666%">SEARCH</button>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="filter">
+                                    <select chosen data-placeholder="FILTER PROJECT">
+                                        <option value=""></option>
+                                        <option value="">Option</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="col-md-12 bottom-content">
+                <div class="row">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th width="100">ID</th>
+                            <th width="">DATE ADDED</th>
+                            <th width="">NAME</th>
+                            <th width="140">INDUCTIONS</th>
+                            <th width="180">LAST COMPLETION</th>
+                            <th width="110"></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="employee in hrInduction.pagination.data">
+                            <td>#{{employee.id}}</td>
+                            <td>{{employee.created_at | moment : 'YYYY-MM-DD'}}</td>
+                            <td class="color-blue">{{employee.name}}</td>
+                            <td class="color-blue" style="text-align: center;">{{employee.no_of_inductions}}</td>
+                            <td class="color-blue">{{employee.last_completion}}</td>
+                            <td>
+                                <button class="btn btn-primary" role="button" type="button" ui-sref="main.hr.workforce-worker-inductions({id:employee.id})">OPEN</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="pagination" ng-if="hrInduction.keywords.length <= 0">
+                        <ul>
+                            <li ng-click="hrInduction.prevPage()"><a href="javascript:void(0)">&#60;</a></li>
+                            <li ng-repeat="n in [].constructor(hrInduction.pagination.last_page) track by $index"><a href="javascript:void(0)" ng-click="hrInduction.goPage($index+1)" ng-class="app.checkCurrentPagination($index+1, hrInduction.currentPage) ? 'active' : ''">{{$index + 1}}</a></li>
+                            <li ng-click="hrInduction.nextPage()"><a href="javascript:void(0)" >&#62;</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="row">
+            <div class="right-container">
+                <div class="sidebar-usage">
+                    <div class="usage">
+
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            <div class="row">
+                                <div class="usage-con">
+                                    <p><img src="../../img/statistics.png"></p>
+                                    <p>Inductions Completed<span>1375</span></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            <div class="row">
+                                <div class="usage-con">
+                                    <p><img src="../../img/statistics.png"></p>
+                                    <p>This Week<span>125</span></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            <div class="row">
+                                <div class="usage-con">
+                                    <p><img src="../../img/statistics.png"></p>
+                                    <p>This Month<span>459</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="btn-action">
+                        <button type="button" class="btn btn-primary btn-common active" ui-sref="main.hr.induction">INDUCTION MANAGEMENT</button>
+                        <button type="button" class="btn btn-primary">EXPORT INDUCTION REGISTER</button>
+                        <button type="button" class="btn btn-primary" ui-sref="main.hr.induction-list">EDIT CURRENT INDUCTIONS</button>
+                        <button type="button" class="btn btn-primary" ui-sref="main.hr.induction-add">ADD NEW INDUCTIONS</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+</div>

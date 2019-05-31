@@ -1,0 +1,209 @@
+<?php
+
+namespace App\Http\Controllers\Api\Admin;
+
+use App\Models\Notification;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
+use App\Http\Helpers\ValidationHelper;
+use App\Http\Helpers\ConstantHelper;
+use App\Http\Helpers\AppHelper;
+
+use App\Events\SendSMS;
+use App\Events\SendPortal;
+use App\Events\SendEmail;
+use App\Events\SaveAlertHistory;
+
+use App\Alert;
+use App\AlertHistory;
+use App\Employee;
+
+use Validator;
+use DB;
+use Auth;
+
+class MessageController extends Controller
+{
+    public $collection;   
+
+    public function __construct(Request $request){
+        $this->request  = $request;
+        
+        //$this->$collection = [];
+    }
+
+
+    public function send(){
+
+        
+        DB::beginTransaction();
+
+        try {
+
+            $validator = Validator::make($this->request->all(), ValidationHelper::$MESSAGING);
+
+            if($validator->fails()) {
+                return Response()->json(ValidationHelper::error($validator->errors()));
+            }
+
+
+            $collection = [
+                'subject' => $this->request->subject, 
+                'short_text' => $this->request->short_text, 
+                'body' => $this->request->body, 
+                'file' => $this->request->file,
+                'type' => $this->request->type,
+                'method' => json_decode($this->request->method),
+                'recepient' => [],
+            ];
+
+            $this->collection = $collection;
+
+           
+            if( !empty( $this->request->employee_role_id ) ){
+                //get employee role id obj data
+                $employee_collection = $employees = Employee::whereIn('employee_role_id', json_decode($this->request->employee_role_id) )->get(); 
+
+                //this will extract employee id when portal option is selected
+                if( !empty( $employee_collection ) && $employee_collection->count() > 0 && in_array(3, json_decode($this->request->method) ) ){
+                    $this->push_collection($employee_collection, 'id');
+                }
+
+            }
+
+            
+            if( !empty( $this->request->individual ) ){
+                //get individual obj data
+                $individual_collection = Employee::whereIn('id', json_decode($this->request->individual) )->get();
+
+                //this will extract employee id when portal option is selected
+                if( !empty( $individual_collection ) && $individual_collection->count() > 0 && in_array(3, json_decode($this->request->method) ) ){
+                    $this->push_collection($individual_collection, 'id');
+                }                
+            }
+
+            //by default save as alert for history
+            event(new SendPortal( (object)$this->collection) );
+
+         
+            //sms
+            if( in_array(1, json_decode($this->request->method) ) ){
+
+                //employee role id collection
+                $push_employee_collection = ( !empty( $employee_collection ) && $employee_collection->count() > 0 )  ?   $this->push_collection($employee_collection, 'mobile') : null;
+
+                //individual collection 
+                $push_individual_collection = ( !empty( $individual_collection ) && $individual_collection->count() > 0 ) ? $this->push_collection($individual_collection, 'mobile') : null;
+
+                //fire send sms
+                event(new SendSMS( (object)array_filter($this->collection) ) );               
+            }
+
+            //email
+            if( in_array(2, json_decode($this->request->method) ) ){
+
+                //employee role id collection
+                $push_employee_collection = ( !empty( $employee_collection ) && $employee_collection->count() > 0 ) ?   $this->push_collection($employee_collection, 'email') : null;
+
+                $push_individual_collection = ( !empty( $individual_collection ) && $individual_collection->count() > 0 )   ?   $this->push_collection($individual_collection, 'email') : null;
+                 
+                //fire send email
+                event(new SendEmail( (object)$this->collection) );               
+            }
+           
+
+            
+            DB::commit();
+
+            dd($this->collection);    
+
+            return Response()->json(['result' => true]);
+        }
+        catch(\Exception $e) {
+            DB::rollback();
+
+            dd($e);exit;
+        }
+
+        return Response()->json(ConstantHelper::$SERVER_ERROR);
+    }
+
+
+    public function history(){
+
+        DB::beginTransaction();
+        try {
+
+            $messages = AlertHistory::with('alert','recepient')->whereUserId(Auth::user()->id)->paginate(ConstantHelper::$PAGINATION_LIMIT);
+
+            dd($messages);exit;
+
+            return Response()->json(['messages' => $messages]);
+            
+            DB::commit();
+
+        }catch(\Exception $e) {
+            DB::rollback();
+        }
+    }
+
+    public function view(){
+        DB::beginTransaction();
+        try {
+
+            /*$validator = Validator::make($this->request->all(), ValidationHelper::$MESSAGING_VIEW);
+
+            if($validator->fails()) {
+                return Response()->json(ValidationHelper::error($validator->errors()));
+            }*/
+
+            //echo $this->request->route('mId');exit;
+
+            $message = AlertHistory::with('alert','alert.recepient')->find($this->request->route('mId'));
+
+            //dd( $messages );exit;
+
+            if( is_null( $message ) ){
+                return Response()->json([ConstantHelper::$INVALID_ID]);
+            }
+
+            return Response()->json(['message' => $message]);            
+            DB::commit();
+
+        }catch(\Exception $e) {
+            DB::rollback();
+        }
+    }
+
+
+    protected function push_collection($collection = array(), $field){
+        if( !empty( $collection ) ){
+
+            $data = array();
+            
+            foreach($collection as $employee){
+                if( !empty( $employee->$field ) ){
+                    array_push($data, $employee->$field);
+                }
+            }
+            $this->collection['recepient'][$field] = $data;
+            
+            return $this->collection; 
+            
+        }else{
+            return null;
+        }
+    }
+
+    /* client sides */
+    protected function clientGetUserAlerts()
+    {
+        $alerts = Notification::getUserNotifications($this->request->route('userId'));
+        
+        return Response()->json([
+            'result' => 'true',
+            'alerts' => ['data' => $alerts]
+        ]);
+    }
+}

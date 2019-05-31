@@ -1,0 +1,274 @@
+<div class="onboarding">
+    <div class="col-md-12 no-padding">
+        <div class="left-container">
+            <div class="top-content">
+                <div class="col-md-9 col-sm-6">
+                    <div class="row">
+                        <h4 class="breadcrumbs">HR > ONBOARDING</h4>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="col-md-12 body-content">
+                <div class="row">
+                    <div class="frmInduction">
+                        <div class="tab-header">
+                            <h4>EDIT EMPLOYEE</h4>
+                        </div>
+                        <div class="body">
+                            <form class="frmAddPerson">
+                                <div class="col-md-8">
+                                    <div class="row">
+                                        <div class="col-md-3 no-padding-l">
+                                            <p>FIRST NAME</p>
+                                        </div>
+                                        <div class="col-md-9 no-padding-r">
+                                            <input class="form-control" type="text" name="first_name" ng-model="hrEditWorker.view.first_name">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-3 no-padding-l">
+                                            <p>LAST NAME</p>
+                                        </div>
+                                        <div class="col-md-9 no-padding-r">
+                                            <input class="form-control" type="text" name="last_name" ng-model="hrEditWorker.view.last_name">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-3 no-padding-l">
+                                            <p>EMAIL</p>
+                                        </div>
+                                        <div class="col-md-9 no-padding-r">
+                                            <input class="form-control" type="email" name="email" ng-model="hrEditWorker.view.email">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-3 no-padding-l">
+                                            <p>MOBILE</p>
+                                        </div>
+                                        <div class="col-md-9 no-padding-r">
+                                            <input class="form-control" type="text" name="mobile" ng-model="hrEditWorker.view.mobile">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-3 no-padding-l">
+                                            <p>DATE OF BIRTH</p>
+                                        </div>
+                                        <div class="col-md-9 no-padding-r">
+                                            <div class="input-group input-medium date date-picker" data-date-format="yyyy-mm-dd">
+                                                <input type="text" class="form-control" name="dob" ng-model="hrEditWorker.view.dob">
+                  														<span class="input-group-btn">
+                  																<button class="btn default" type="button">
+                                                                                    <i class="fa fa-calendar"></i>
+                                                                                </button>
+                  														</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-3 no-padding-l">
+                                            <p>ADDRESS</p>
+                                        </div>
+                                        <div class="col-md-9 no-padding-r">
+                                            <input class="form-control" type="text" name="address" ng-model="hrEditWorker.view.address">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-3 no-padding-l">
+                                                <p>STATE</p>
+                                            </div>
+                                            <div class="col-md-9 no-padding-r">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <selectize
+                                                                placeholder='state'
+                                                                options="hrEditWorker.states"
+                                                                config="hrEditWorker.statesConfig"
+                                                                ng-model="hrEditWorker.view.state_id"
+                                                        ></selectize>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <p>POSTCODE</p>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <input class="form-control" type="text" name="postal_code" ng-model="hrEditWorker.view.postal_code">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-3 no-padding-l">
+                                            <p>NEXT OF KIN NAME</p>
+                                        </div>
+                                        <div class="col-md-9 no-padding-r">
+                                            <input class="form-control" type="text" name="kin_name" ng-model="hrEditWorker.view.kin_name">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-3 no-padding-l">
+                                            <p>NEXT OF KIN MOBILE</p>
+                                        </div>
+                                        <div class="col-md-9 no-padding-r">
+                                            <input class="form-control" type="text" name="kin_mobile" ng-model="hrEditWorker.view.kin_mobile">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-3 no-padding-l">
+                                            <p class="no-margin">NEXT OF KIN RELATIONSHIP</p>
+                                        </div>
+                                        <div class="col-md-9 no-padding-r">
+                                            <input class="form-control" type="text" name="kin_relationship" ng-model="hrEditWorker.view.kin_relationship">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-3 no-padding-l">
+                                            <p>MEDICAL CONDITIONS</p>
+                                        </div>
+                                        <div class="col-md-9 no-padding-r">
+                                            <input class="form-control" type="text" name="med_conditions" ng-model="hrEditWorker.view.med_conditions">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3 no-padding-l">
+                                            <p>ALERGIES</p>
+                                        </div>
+                                        <div class="col-md-9 no-padding-r">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <input class="form-control alergies" type="text" name="allergies" ng-model="hrEditWorker.view.allergies">
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                                <!-- <div class="col-md-6">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox" class="icheckbox" ng-model="hrEditWorker.hasSubCon">
+                                                        <label></label>
+                                                        <span>SUB-CONTRACTOR EMPLOYEE</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <selectize
+                                                            placeholder='Select a Subcontractor'
+                                                            options='hrEditWorker.subContractors'
+                                                            config="hrEditWorker.subConfig"
+                                                            ng-model="hrEditWorker.selectedSubCon",
+                                                            ng-disabled="!hrEditWorker.hasSubCon"
+                                                    ></selectize>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                                <div class="col-md-12">
+                                                    <div class="checkbox">
+                                                        <input type="checkbox"class="icheckbox" ng-model="hrEditWorker.view.isAdmin">
+                                                        <label></label>
+                                                        <span>ADMIN ACCESS</span>
+                                                    </div>
+                                                </div> -->
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-3 no-padding-l">
+                                            <p>PROJECTS</p>
+                                        </div>
+                                        <div class="col-md-9 no-padding-r">
+                                            <div ng-repeat="input in hrEditWorker.projectInputs">
+                                                <div class="col-md-5 no-padding-l">
+                                                    <button class="hr-project-btn">{{ input.project.name }} <span class="project-remove">x</span></button>
+                                                </div>
+                                                <div class="col-md-7 no-padding-r">
+                                                    <div class="col-md-2 no-padding-l">
+                                                        <strong class="hr-crew">CREWS</strong>
+                                                    </div>
+                                                    <div class="col-md-10 no-padding-r">
+                                                        <!--<selectize-->
+                                                                <!--placeholder="crews"-->
+                                                                <!--options="input.crews"-->
+                                                                <!--config="hrEditWorker.crewsConfig"-->
+                                                                <!--ng-model="input.selected_crews"-->
+                                                        <!--&gt;</selectize>-->
+                                                        <select id="selectProject{{input.id}}"></select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="worker-project">
+                                                <div class="col-md-6 no-padding-l">
+                                                    <selectize
+                                                            placeholder='Add a project'
+                                                            options="hrEditWorker.projects"
+                                                            config="hrEditWorker.projectsConfig"
+                                                            ng-model="hrEditWorker.selectedProject"
+                                                    ></selectize>
+                                                </div>
+                                                <div class="col-md-6 no-padding-r">
+                                                    <!-- <button class="btn btn-primary" ng-click="hrOnboard.clear2()">CLEAR</button> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-3 no-padding-l">
+                                            <button class="btn btn-primary btn-save top-page-btn" type='button' role='btn' ng-click="hrEditWorker.update()">
+                                                UPDATE
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="upload-photo">
+
+                                                <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                    <div class="fileinput-preview fileinput-exists thumbnail" data-trigger="fileinput">
+                                                        <img src="{{hrEditWorker.view.avatar}}" />
+                                                    </div>
+                                                    <div class="upload-btn">
+                                                        <span class="btn btn-outline btn-file btn btn-primary">
+                                                        <span class="fileinput-new"><i class="fa fa-upload" aria-hidden="true"></i> CHANGE IMAGE</span>
+                                                        <span class="fileinput-exists"> Change </span>
+                                                        <input type="hidden" value="" name="..."><input type="file" name="avatar" id="avatar"> </span>
+                                                        <a href="javascript:;" class="btn btn-danger fileinput-exists " data-dismiss="fileinput"> Remove </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="clearfix"></div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<script>
+    $( function() {
+        $('.date-picker').datepicker({
+            startView: 'years'
+        });
+        $(".chosen-select").chosen({
+            disable_search: true
+        });
+    });
+</script>

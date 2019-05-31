@@ -1,0 +1,58 @@
+<div class="col-md-12 emergency">
+    <div class="row">
+        <div class="content-container">
+            <span class="back" ui-sref="main.home"><img class="img-responsive" src="../../img/client/arrow-back.png"> <label>Back</label></span>
+
+            <div class="emergency-container col-md-12">
+                <h4>IN CASE OF EMERGENCY, PLEASE TAP BELOW</h4>
+                <div class="hotline">
+                    <div class="img">
+                        <img class="img-responsive" src="../../img/client/hotline.png">
+                        <div class="button-action">
+                            <a  class="btn btn-hotline" href="tel:+000">Click Here</a>
+                            <!-- <button class="btn btn-hotline" role="button">Click Here</button> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="map">
+                    <div class="col-sm-7 col-xs-12">
+                        <div class="visible-xs">
+                            <img class="img-responsive" src="../../img/client/map.png">
+                        </div>
+                    </div>
+                    <div class="map-details col-sm-5 col-xs-12">
+                        <p>Tell the Operator</p>
+                        <p>Address: 3 Sandstone Dr, Botanic Ridge VIC 3977</p>
+                        <p>GPS Co-ordinate:</br>
+                            Latitude: -38.1443745</br>
+                            Longitude: 145.2586735</p>
+                        <p>Response Required<br/>
+                            POLICE, FIRE OR<br/>
+                            AMBULANCE</p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="response" ng-repeat="category in erp.categories">
+                    <h4>{{ category.name }}</h4>
+                    <div class="coordinators">
+                        <table>
+                            <tr ng-repeat="responder in category.responders">
+                                <td>{{ responder.name }}</td>
+                                <td>{{ responder.role }}</td>
+                                <td>{{ responder.mobile }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+            </div>
+        </div>
+
+        <div class="col-md-12 bottom-logo">
+            <img class="img-responsive" src="../../img/client/helix-logo.png"/>
+        </div>
+    </div>
+</div>
+
+<div class="clearfix"></div>

@@ -1,0 +1,82 @@
+.ion-close:before, .ion-close-circled:before, .ion-close-round:before, .ion-closed-captioning:before, .ion-close:before {
+  content: "\f12a";
+}
+
+.ion-close-circled:before {
+  content: "\f128";
+}
+
+.ion-close-round:before {
+  content: "\f129";
+}
+
+.ion-closed-captioning:before {
+  content: "\f317";
+}
+
+.mrg-top50 {
+  margin-top: 50px;
+}
+
+.list-inline {
+  padding-left: 0;
+  list-style: none;
+  margin-left: -5px;
+  > li {
+    display: inline-block;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-left: 7px;
+    padding-right: 7px;
+  }
+}
+
+.candidate-info-wrap .list-inline li {
+  vertical-align: middle;
+  &.align-super {
+    vertical-align: super;
+  }
+  &.align-middle {
+    vertical-align: middle;
+  }
+}
+
+.autocomplete-list {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+  position: absolute;
+  width: 100%;
+  z-index: 100;
+  ul {
+    margin: 0;
+    padding: 0;
+    li {
+      cursor: pointer;
+      list-style: inside none none;
+      padding: 5px 0 5px 10px;
+      &.autocomplete-active {
+        background-color: #23a9e1;
+      }
+    }
+  }
+}
+
+.autocomplete-active {
+  background-color: #0000cc;
+  color: #FFFFFF;
+}
+
+.ng-ms {
+  &.form-item-container {
+    border-color: rgb(149, 152, 154);
+    border: 1px solid rgb(149, 152, 154);
+    padding: 8px 5px 0px 5px;
+  }
+  ul.list-inline li input {
+    border-radius: 5px;
+    box-shadow: none;
+    border: 1px solid rgb(149, 152, 154);
+  }
+}

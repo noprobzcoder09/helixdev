@@ -1,0 +1,242 @@
+<div class="col-md-12 no-padding subcon-view">
+    <div class="left-container">
+        <div class="top-content">
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="row">
+                    <h4 class="breadcrumbs">SUB-CONTRACTORS > DETAILED</h4>
+                </div>
+            </div>
+            <div class="col-md-6 pull-right">
+                <div class="row btn-action">
+                    <button ui-sref="main.sub-contractor.list" type="button" role="btn" class="btn btn-primary btn-close btn-sub-con pull-right top-page-btn"><i class="fa fa-times" aria-hidden="true"></i> CLOSE</button>
+                    <button ui-sref="main.sub-contractor.edit({id: subcon.view.id})" type="button" role="btn" class="btn btn-primary btn-close btn-sub-con pull-right top-page-btn"><i class="fa fa-edit" aria-hidden="true"></i> EDIT</button>
+                    <button ng-click="subcon.remove()" type="button" role="btn" class="btn btn-primary btn-delete btn-sub-con pull-right top-page-btn"><i class="fa fa-trash-o" aria-hidden="true"></i> DELETE SUB-CONTRACTOR</button>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="row">
+                <div class="bottom-content">
+                    <div class="form">
+                        <div class="header">
+                            <h5>{{ subcon.view.name }}</h5>
+                        </div>
+                        <div class="body">
+                            <form>
+                                <div class="col-md-8 details-con">
+                                    <div class="row">
+                                        <div class="details">
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-4 no-padding-l">
+                                                        <p><strong>Contact:</strong></p>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <p>{{ subcon.view.contact }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-4 no-padding-l">
+                                                        <p><strong>Contact Number:</strong></p>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <p>{{ subcon.view.contact_number }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-4 no-padding-l">
+                                                        <p><strong>Email:</strong></p>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <p><a href="mailto:{{subcon.view.email}}">{{ subcon.view.email }}</a></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-4 no-padding-l">
+                                                        <p><strong>Sole Trader / Company:</strong></p>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <p>{{ subcon.view.type }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-4 no-padding-l">
+                                                        <p><strong>Aprroved:</strong></p>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <p>{{ subcon.view.approved }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-4 no-padding-l">
+                                                        <p><strong>Address:</strong></p>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <p>{{ subcon.view.address }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-4 no-padding-l">
+                                                        <p><strong>State:</strong></p>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <p>Vic</p>
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <p>Postcode:</p>
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <p>{{ subcon.view.postal_code }}</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-4 no-padding-l">
+                                                        <p><strong>ABN:</strong></p>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <p>{{ subcon.view.abn }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+
+                                        <h4>
+                                            <strong>Documents</strong>
+                                            <!-- <span><a href="javascript:void(0)" data-dialog="documentsDialog" class="trigger">Update Documents</a></span> -->
+                                            <span>
+                                              <a href="javascript:void(0)" data-toggle="modal" data-target="#modalSetDocs">Update Documents</a>
+                                            </span>
+                                            <!-- <button class="btn btn-primary btn-add-documents" data-toggle="modal" data-target="#modalSetDocs">ADD DOCUMENTS</button> -->
+                                        </h4>
+
+                                        <div class="documents">
+                                            <div class="col-md-3 padding-half doc-items" ng-if="subcon.hasDocs()" ng-repeat="doc in subcon.view.docs">
+                                                <div class="img-con file-preview" ng-if="doc.file_type">
+                                                    <a class="subcon-doc test-cbox" href="{{ doc.image_url }}" target="_blank">
+                                                        <img class="xd" src="../../img/sub-con/document.png" >
+                                                        <img src="../../img/sub-con/ext-pdf.png" class="file-icon">
+                                                    </a>
+                                                </div>
+                                                <div class="img-con file-preview" ng-if="!doc.file_type">
+                                                    <a class="subcon-doc colorbox test-cbox" href="{{doc.image_url}}" >
+                                                        <img class="xd" src="{{ doc.image_url }}">
+                                                        <img src="../../img/sub-con/ext-jpg.png" class="file-icon">
+                                                    </a>
+                                                </div>
+                                                <p class="doc-type-title">{{ doc.type.replace('_', ' ') }}</p>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 no-padding-r">
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="upload-photo file-con">
+                                                <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                    <div class="fileinput-preview fileinput-exists thumbnail img-con" data-trigger="fileinput">
+                                                        <img src="{{ subcon.getLogo() }}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="row btn-action">
+                                            <button class="btn btn-primary btn-send-email" role="btn">SEND WELCOME EMAIL</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<div class="clearfix"></div>
+
+<!-- modal add for subcon docs -->
+<div class="modal fade document-modal" id="modalSetDocs" tabindex="-1" role="dialog" aria-labelledby="modalSetDocs">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span style="text-transform:uppercase;color:#fff">{{ subcon.view.name }}'s Documents</span>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+              <p>Evidence of Documentation</p>
+              <div class="document-con">
+                  <div class="col-md-12" ng-repeat="doc in subcon.required_docs" id="container_required_doc_{{doc}}">
+                    <div class="col-md-3 no-padding-l">
+                      <p style="text-transform:capitalize;">{{doc.replace('_', ' ')}}</p>
+                    </div>
+                    <div class="col-md-9 no-padding-r ta-r text-right">
+                      <span class="icon" ng-if="subcon.checkDocView(doc)"><img class="img-responsive" src="../../img/check-icon2.png"></span>
+                      <!-- <span class="btn btnFileUpload" ng-if="!subcon.checkDocView(doc)">Upload Image/PDF</span>
+                      <span class="btn btnFileUpload" ng-if="subcon.checkDocView(doc)">Update Ticket</span>
+                      <input type="file" id="required_doc_{{doc}}" accept="image/jpeg,image/gif,image/png,application/pdf"> -->
+                      <div class="fileinput" data-provides="fileinput" ng-class="subcon.checkDocView(doc) ? 'fileinput-exists' : 'fileinput-new'">
+                        <span class="fileinput-filename label_required_doc_{{doc}}"></span>
+                        <span class="btn btn-primary btn-file btnFileUpload">
+                           <!-- ng-if="!subcon.checkDoc(doc)" -->
+                          <!-- <span class="fileinput-new">Upload Image/PDF</span>
+                          <span class="fileinput-exists">Change</span> -->
+                          <span class="fileinput-new">Upload Image/PDF</span>
+                          <span class="fileinput-exists">Change</span>
+
+                          <input type="file" id="required_doc_{{doc}}" accept="image/jpeg,image/gif,image/png,application/pdf">
+                        </span>
+                        <button class="btn btn-primary close fileinput-exists" data-dismiss="fileinput" ng-click="subcon.removeDoc('required_doc_'+doc)" style="">Remove</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="modal-footer text-center no-padding-b">
+                    <button class="btn btnUpdateDocuments" role="button" ng-click="subcon.uploadDocs()">
+                        <i class="fa fa-upload" aria-hidden="true"></i> Update Documents
+                    </button>
+                    <div  style="margin:10px auto 0;width:400px;"class="alert alert-danger" role="alert" ng-if="subcon.fileLimit">
+                      cannot exceed 10MB limit
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

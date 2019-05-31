@@ -1,0 +1,211 @@
+<div class="col-md-12 no-padding chemicals">
+    <div class="left-container">
+        <div class="top-content">
+          <div class="row">
+            <div class="col-md-4">
+              <h4 class="breadcrumbs">OHS > CHEMICAL MANAGEMENT</h4>
+            </div>
+            <div class="col-md-8 pull-right">
+              <button type="button" role="btn" class="btn btn-danger pull-right top-page-btn" class="trigger" ng-click="chemical.remove()"><i class="fa fa-trash-o" aria-hidden="true"></i> DELETE</button>
+              <button type="button" role="btn" class="btn btn-primary pull-right top-page-btn with-margin-right" ui-sref="main.chemical.edit({id:chemical.view.id})"><i class="fa fa-edit" aria-hidden="true"></i> EDIT</button>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <div class="col-md-12">
+            <div class="row">
+                <div class="bottom-content">
+                    <h5 class="fc-white no-margin-top no-margin-bottom">CHEMICAL MANAGEMENT</h5>
+                    <div class="form">
+                        <div class="tab-header">
+                            <h4>{{chemical.view.substance}}</h4>
+                        </div>
+                        <div class="body">
+                            <form class="frmChemicals">
+                                <div class="col-md-9">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-3 no-padding-l">
+                                                    <p>SUBSTANCE</p>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <p>{{chemical.view.substance}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-3 no-padding-l">
+                                                    <p>TYPE</p>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <p>{{chemical.view.type}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-3 no-padding-l">
+                                                    <p>ISSUE DATE</p>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <p>{{chemical.view.issue_date}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-3 no-padding-l">
+                                                    <p>COMPANY</p>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <p>{{chemical.view.chemical_company}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-3 no-padding-l">
+                                                    <p>HAZCHEM</p>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <p>{{chemical.view.hazchem}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-3 no-padding-l">
+                                                    <p>UN</p>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <p>{{chemical.view.un}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-3 no-padding-l">
+                                                    <p>CLASSIFICATION</p>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <p>{{chemical.view.classification}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-3 no-padding-l">
+                                                    <p>PPE</p>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <div style="cursor:pointer;" class="col-md-6 padding-half" ng-repeat="ppe in chemical.view.ppes">
+                                                        <div class="ppe-con">
+                                                            <div class="icon">
+                                                                <img class="img-responsive" src="../../img/ohs/chemicals/{{ppe.name | strReplace : ' ':'_' }}.png">
+                                                            </div>
+                                                            <div class="heading">
+                                                                {{ ppe.name }} <br/>MUST BE WORN
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-3 no-padding-l">
+                                                    <p>PPE DESCRIPTION</p>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <p>{{chemical.view.ppe_text}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-3 no-padding-l">
+                                                    <p>HEALTH HAZARDS</p>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <p>{{chemical.view.health_hazards}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-3 no-padding-l">
+                                                    <p>FIRST AID</p>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <p>{{chemical.view.first_aid}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-3 no-padding-l">
+                                                    <p>STORAGE</p>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <p>{{chemical.view.storage}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-3 no-padding-l">
+                                                    <p>MSDS</p>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <a href="{{chemical.view.msds}}" class="btn btn-primary" download><i class="fa fa-download" aria-hidden="true"></i> &nbsp; Download</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3 no-padding-r">
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="upload-photo file-con">
+                                                <div class="fileinput fileinput-new">
+                                                    <div class="fileinput-preview fileinput-exists thumbnail img-con">
+                                                        <a href="{{chemical.view.image_url}}" class="colorbox">
+                                                            <img src="{{chemical.view.image_url}}" style="width: 100%;">
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="clearfix"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<div class="clearfix"></div>
+
+<script type="text/javascript">
+    $( function() {
+        $('.date-picker').datepicker({
+            startView: 'years'
+        });
+    } );
+</script>

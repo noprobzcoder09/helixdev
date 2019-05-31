@@ -1,0 +1,188 @@
+<div class="col-md-12 no-padding ohs">
+    <div class="left-container">
+        <div class="top-content">
+            <div class="col-md-4 col-sm-6 col-xs-6">
+                <div class="row">
+                    <h4 class="breadcrumbs">OHS > INSPECTIONS > SITE INSPECTION</h4>
+                </div>
+            </div>
+
+            <div class="col-md-8 pull-right">
+                <div class="row btn-action">
+                    <button type="button" role="btn" class="btn btn-primary btn-finalise-inspection pull-right top-page-btn" ui-sref="main.inspections.summary({id: inspectionsView.list.id})" ng-if="inspectionsView.isFinalize">FINALISE INSPECTION</button>
+                    <button type="button" role="btn" class="btn btn-primary btn-new-inspection pull-right top-page-btn with-margin-right" data-toggle="modal" data-target=".bs-example-modal-lg" class="trigger bs-example-modal-lg" ng-click="inspectionsView.addTrigger()">ADD NEW INSPECTION</button>
+                    <button type="button" role="btn" class="btn btn-danger btn-new-inspection pull-right top-page-btn with-margin-right" href="javascript:void(0)"  class="trigger" ng-click="inspectionsView.remove()">DELETE INSPECTION</button>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <h5 class="fc-white no-margin-top">BUILD NEW INSPECTION</h5>
+        <div class="col-md-12 body-content inspections">
+            <div class="row">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th width="50%">{{inspectionsView.list.title}}</th>
+                        <th>CATEGORY</th>
+                        <th>OPTION</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody class="content-white">
+                    <tr class="border-bottom" ng-repeat="item in inspectionsView.items">
+                        <td>{{item.name}}</td>
+                        <td>{{inspectionsView.itemCategories[item.inspection_item_category_id - 1].name}}</td>
+                        <td>{{ item.options | inspectionProper}}</td>
+                        <td width="15%">
+                            <button type="button" class="btn btn-primary btn-view pull-left btn-full" data-toggle="modal" data-target=".bs-example-modal-lg" ng-click="inspectionsView.viewItem(item)">VIEW</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <div class="clearix"></div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+
+<div class="modal fade bs-example-modal-lg" tabindex="-2" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span style="text-transform:uppercase;color:#fff" ng-if="inspectionsView.popup == 1">CREATE NEW INSPECTION</span>
+                <span style="text-transform:uppercase;color:#fff" ng-if="inspectionsView.popup == 2">UPDATE {{ inspectionsView.itemData.name}}</span>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div id="add-inspection" class="modal-body" ng-if="inspectionsView.popup == 1">
+                <div class="clearfix"></div>
+
+                <div ng-repeat="item in inspectionsView.update.items">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3 no-padding-l">
+                                <p class="m-top-10">NEW INSPECTION</p>
+                            </div>
+                            <div class="col-md-9 col-sm-9 no-padding-r">
+                                <input type="text" class="form-control" name="new_inspection" ng-model="inspectionsView.newItem.name">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 no-padding">
+                                <p class="m-tb-7">OPTIONS</p>
+                            </div>
+                            <div class="col-md-12 col-sm-12 no-padding">
+                                <div class="radio">
+                                    <label ng-repeat="option in inspectionsView.inspection_options">
+                                        <input class="form-check" type="radio" name="inspection_option" ng-value="option.id" ng-model="inspectionsView.newItem.options">
+                                        <span></span>
+                                        {{option.title}}
+                                    </label>
+                                </div>
+
+                                <div class="checkbox">
+                                    <input type="checkbox" class="icheckbox" ng-checked="item.not_applicable == 1" ng-model="inspectionsView.newItem.not_applicable">
+                                    <label></label>
+                                    <span>N/A</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-2 col-sm-3 no-padding-l">
+                                <p style="margin:15px 0!important;">CATEGORY</p>
+                            </div>
+                            <div class="col-md-10 col-sm-9 no-padding-r">
+                                <select class="disable-search" chosen data-placeholder="Category" ng-model="inspectionsView.newItem.itemCategorySelected" ng-options="size as size.name for size in inspectionsView.itemCategories">
+                                    <option></option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="row btn-action text-center">
+                        <button class="btn btn-primary btn-new-inspection m-top-10" data-dismiss="modal" aria-label="Close" ng-click="inspectionsView.add()">DONE</button>
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+            </div>
+
+            <div id="update-inspection" class="modal-body" ng-if="inspectionsView.popup == 2">
+                <div class="clearfix"></div>
+                <div ng-repeat="item in inspectionsView.update.items">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3 no-padding-l">
+                                <p class="m-top-10">NEW INSPECTION</p>
+                            </div>
+                            <div class="col-md-9 col-sm-9 no-padding-r">
+                                <input type="text" class="form-control" name="new_inspection" ng-model="inspectionsView.itemData.name">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 no-padding">
+                                <p class="m-tb-7">OPTIONS</p>
+                            </div>
+                            <div class="col-md-12 col-sm-12 no-padding">
+                                <div class="radio">
+                                    <label ng-repeat="option in inspectionsView.inspection_options">
+                                        <input class="form-check" type="radio" name="inspection_option" ng-value="option.id" ng-model="inspectionsView.itemData.options">
+                                        <span></span>
+                                        {{option.title}}
+                                    </label>
+                                </div>
+
+                                <div class="checkbox">
+                                    <input type="checkbox" class="icheckbox" ng-checked="inspectionsView.itemData.not_applicable" ng-model="inspectionsView.itemData.not_applicable">
+                                    <label></label>
+                                    <span>N/A</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-2 col-sm-3 no-padding-l">
+                                <p style="margin:15px 0!important;">CATEGORY</p>
+                            </div>
+                            <div class="col-md-10 col-sm-9 no-padding-r">
+                                <!--<select class="disable-search" chosen data-placeholder="Category" ng-model="inspectionsView.itemData.inspection_item_category_id" ng-options="item.id as item.name for item in inspectionsView.itemCategories">-->
+                                    <!--<option></option>-->
+                                <!--</select>-->
+                                <select class="disable-search" chosen data-placeholder="Category" ng-model="inspectionsView.itemData.inspection_item_category_id">
+                                    <option></option>
+                                    <option ng-value="item.id" ng-repeat="item in inspectionsView.itemCategories" ng-selected="inspectionsView.itemData.inspection_item_category_id == item.id">{{ item.name }}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="row text-center m-top-10">
+                        <button type="button" class="btn btn-primary btn-view" data-dismiss="modal" aria-label="Close" ng-click="inspectionsView.deleteItem(inspectionsView.itemData)">DELETE</button>
+                        <button type="button" class="btn btn-primary btn-view" data-dismiss="modal" aria-label="Close" ng-click="inspectionsView.updateItem(inspectionsView.itemData)">UPDATE</button>
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="clearfix"></div>

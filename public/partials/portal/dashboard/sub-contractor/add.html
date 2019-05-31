@@ -1,0 +1,262 @@
+<div class="col-md-12 no-padding">
+    <div class="left-container">
+        <div class="top-content">
+            <div class="col-md-9 col-sm-6 col-xs-6">
+                <div class="row">
+                    <h4 class="breadcrumbs">SUB-CONTRACTORS > NEW SUB-CONTRACTORS</h4>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="row btn-action">
+                    <button type="button" role="btn" class="btn btn-primary btn-save top-page-btn pull-right" ng-click="subcon.add()"><i class="fa fa-floppy-o" aria-hidden="true"></i> SAVE SUB-CONTRACTOR</button>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="row">
+                <div class="bottom-content">
+                    <div class="form">
+                        <div class="header">
+                            <h5>NEW SUB-CONTRACTOR</h5>
+                        </div>
+                        <div class="body">
+                            <form style="z-index:99;position:relative">
+                                <div class="col-md-8">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-3 no-padding-l">
+                                                    <p>Company Name</p>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <input class="form-control" type="text" name="company_name" ng-model="subcon.new.name">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-3 no-padding-l">
+                                                    <p>Contact</p>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <input class="form-control" type="text" name="contact" ng-model="subcon.new.contact">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-3 no-padding-l">
+                                                    <p>Contact Number</p>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <input class="form-control" type="text" name="contact_number" ng-model="subcon.new.contact_number">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-3 no-padding-l">
+                                                    <p>Email</p>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <input class="form-control" type="email" name="email" ng-model="subcon.new.email">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-3 no-padding-l">
+                                                    <p>&nbsp;</p>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <div class="radio subcon-radio">
+                                                        <label>
+                                                            <input class="form-check" type="radio" name="work_force" value="Sole Trader" ng-model="subcon.new.type">
+                                                            <span></span>
+                                                            Sole Trader
+                                                        </label>
+                                                        <label>
+                                                            <input class="form-check" type="radio" name="work_force" value="Company" ng-model="subcon.new.type">
+                                                            <span></span>
+                                                            Company
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-3 no-padding-l">
+                                                    <p>Address</p>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <input class="form-control" type="text" name="address" ng-model="subcon.new.address">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-3 no-padding-l">
+                                                    <p>State</p>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <div class="col-md-5 no-padding-l">
+                                                        <select class="chosen-select" chosen ng-model="subcon.new.state_id">
+                                                            <option ng-repeat="state in subcon.states">{{state.name}}</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-7 no-padding">
+                                                        <div class="col-md-4 no-padding-r">
+                                                            <p>Postcode</p>
+                                                        </div>
+                                                        <div class="col-md-8 no-padding-r">
+                                                            <input class="form-control" type="text" name="postcode" ng-model="subcon.new.postal_code" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-3 no-padding-l">
+                                                    <p>ABN</p>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <input class="form-control" type="text" name="abn" ng-model="subcon.new.abn" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-3 no-padding-l">
+                                                    <p>Approved</p>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <div class="col-md-3">
+                                                        <div class="row">
+                                                            <select class="chosen-select" data-placeholder="&nbsp;" width="100%" name=ng-model="subcon.new.approved">
+                                                                <option value="yes">YES</option>
+                                                                <option value="no">NO</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 no-padding-r">
+
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="upload-photo file-con">
+                                                <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                    <div class="fileinput-preview fileinput-exists thumbnail img-con" data-trigger="fileinput">
+                                                        <img src="../../img/Helix-Solutions-bw.png" alt="...">
+                                                    </div>
+                                                    <div class="upload-btn">
+                                                  <span class="btn btn-outline btn-file btn btn-primary">
+                                                    <span class="fileinput-new"><i class="fa fa-upload" aria-hidden="true"></i> UPLOAD IMAGE</span>
+                                                    <span class="fileinput-exists"> Change </span>
+                                                    <input type="hidden" value="" name="..."><input type="file" name="company_logo" id="company_logo" accept=".jpeg,.jpg,.png">
+                                                  </span>
+                                                        <a href="javascript:;" class="btn btn-danger fileinput-exists " data-dismiss="fileinput"> Remove </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="row btn-action">
+                                            <button class="btn btn-primary btn-send-email" role="btn">SEND WELCOME EMAIL</button>
+                                            <button class="btn btn-primary btn-add-documents" data-toggle="modal" data-target="#modalSetDocs">ADD DOCUMENTS</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="clearfix"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<div class="clearfix"></div>
+
+<!-- modal add for subcon docs -->
+<div class="modal fade document-modal" id="modalSetDocs" tabindex="-1" role="dialog" aria-labelledby="modalSetDocs">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span style="text-transform:uppercase;color:#fff">Evidence of Documentation</span>
+                <!--//{{ subcon.view.name }}-->
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- <p>Evidence of Documentation</p> -->
+                <div class="document-con">
+                    <div class="col-md-12" ng-repeat="doc in subcon.required_docs">
+                        <div class="col-md-3 no-padding-l">
+                            <p style="text-transform:capitalize;">{{doc.replace('_', ' ')}}</p>
+                        </div>
+                        <div class="col-md-9 no-padding-r ta-r text-right">
+                            <span class="icon" ng-if="subcon.checkDoc(doc)" style="">
+                              <img class="img-responsive" src="../../img/check-icon2.png">
+                            </span>
+
+                            <div id="container_required_doc_{{doc}}" class="fileinput fileinput-new" data-provides="fileinput">
+                              <span class="fileinput-filename label_required_doc_{{doc}}"></span>
+                              <span class="btn btn-primary btn-file btnFileUpload">
+                                 <!-- ng-if="!subcon.checkDoc(doc)" -->
+                                <span class="fileinput-new">Upload Image/PDF</span>
+                                <span class="fileinput-exists">Change</span>
+                                <input type="file" id="required_doc_{{doc}}" accept="image/jpeg,image/gif,image/png,application/pdf">
+                              </span>
+                              <button class="btn btn-primary close fileinput-exists" data-dismiss="fileinput">Remove</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+
+                </div>
+                <div class="modal-footer text-center no-padding-b">
+                    <button class="btn btnUpdateDocuments action" role="button" ng-click="subcon.setDocs()">
+                        <i class="fa fa-upload" aria-hidden="true"></i> Set Documents
+                    </button>
+                    <div  style="margin:10px auto 0;width:250px;"class="alert alert-danger" role="alert" ng-if="subcon.fileLimit">
+                      <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Cannot exceed 10MB limit
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    (function( $ ) {
+        $('.chosen-select').chosen({
+            no_results_text: "Oops, nothing found!",
+            width          : "100%",
+            disable_search : true
+        });
+    })( jQuery );
+</script>

@@ -1,0 +1,88 @@
+<style>
+    .upload-photo .upload-btn .btn-file .fileinput-new {
+        position: relative !important;
+        left: 0;
+        top: 30%;
+        right: 0;
+    }
+</style>
+<div class="col-md-12">
+    <div class="row">
+        <div class="content-container">
+            <span class="back" ui-sref="main.home"><img class="img-responsive" src="../../img/client/arrow-back.png"> <label>BACK</label></span>
+            <!-- <span class="continue" ng-click="observation.start()">NEXT</span> -->
+
+            <div class="inspections-content col-md-12">
+                <h4>What did you see?</h4>
+                <div class="body">
+                    <form>
+                        <div class="col-md-12">
+                            <div class="row">
+                              <div class="file-con">
+                                  <div class="upload-photo">
+                                      <div class="fileinput fileinput-new" data-provides="fileinput">
+                                          <div class="fileinput-preview thumbnail" data-trigger="fileinput"></div>
+                                          <div class="upload-btn">
+                                              <span class="btn btn-outline btn-file btn btn-primary">
+                                                <span class="fileinput-new">
+                                                  <label class="lbl-file" for="file"><img src="../../img/client/upload-img.png"></label>
+                                                </span>
+                                                <span class="fileinput-exists"> Change </span>
+                                                <input type="hidden" value="" name="...">
+                                                <input type="file" class="form-control" accept="image/*;capture=camera" name="file" id="idObservationPhoto">
+                                              </span>
+                                              <a href="javascript:;" class="btn btn-danger fileinput-exists " data-dismiss="fileinput"> Remove </a>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                            </div>
+                            <div class="row text-center">
+                              <small>Try adding an image to vissually explain what you saw.</small>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 margin-t">
+                          <div class="row margin-t" style='color:black;'>
+                            Describe what you saw...
+                          </div>
+                          <div class="row">
+                              <textarea class="form-control" name="description" rows="5" placeholder="" ng-model="observation.new.seen"></textarea>
+                          </div>
+                        </div>
+
+                        <div class="clearfix"></div>
+                    </form>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- <div class="alert alert-warning tip-box" role="alert">Tip: It is always best to do this when submittings on Observation as it will help to do the following.</div> -->
+                        <span class='complete' ng-click="observation.start()">NEXT</span>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="col-md-12 bottom-logo">
+                <img class="img-responsive" src="../../img/client/helix-logo.png"/>
+                <div class="clearfix"></div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<div class="clearfix"></div>
+
+<script type="text/javascript">
+    (function( $ ) {
+        $(document).ready(function() {
+            $('.lbl-file').on('click', function(){
+                $('.file-con input').click();
+            });
+            $( ".action_due" ).datepicker();
+        });
+    })( jQuery );
+</script>

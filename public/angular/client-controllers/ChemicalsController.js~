@@ -1,0 +1,17 @@
+(function () {
+    'use strict';
+
+    angular
+        .module('app')
+        .controller('ChemicalStartController', ChemicalStartController);
+
+    function ChemicalStartController(
+        $localStorage,
+        $state,
+        $scope,
+        $stateParams,
+        ChemicalService
+    ) {
+        var safety = this;
+    }
+})();

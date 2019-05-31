@@ -1,0 +1,192 @@
+<div cg-busy="{promise:induction.promise, backdrop:true, templateUrl:'/partials/loader.html', minDuration: 500}"></div>
+<div class="col-md-12">
+  <div class="row">
+    <div class="content-container">
+      <span class="back" ui-sref="main.home"><img class="img-responsive" src="../../img/client/arrow-back.png"> <label>Back</label></span>
+
+      <div class="profile-content col-md-12">
+        <h4>User Profile</h4>
+        <div class="body">
+          <form style="padding-bottom:20px;">
+            <div class="col-md-12">
+              <div class="row">
+                <div class="col-md-5 col-sm-5 no-padding-l input-con">
+                  <div class="upload-photo">
+                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                      <div class="fileinput-preview thumbnail" data-trigger="fileinput"><img src="{{user.view.avatar}}" alt=""></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-7 col-sm-7 no-padding-r input-con">
+                  <p>&nbsp;</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="row">
+                <div class="col-md-5 col-sm-5 no-padding-l input-con">
+                  <p><b>First Name</b></p>
+                </div>
+                <div class="col-md-7 col-sm-7 no-padding-r input-con">
+                  <p>{{ user.view.first_name }}</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="row">
+                <div class="col-md-5 col-sm-5 no-padding-l input-con">
+                  <p><b>Last Name</b></p>
+                </div>
+                <div class="col-md-7 col-sm-7 no-padding-r input-con">
+                  <p>{{ user.view.last_name }}</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="row">
+                <div class="col-md-5 col-sm-5 no-padding-l input-con">
+                  <p><b>Contact Number</b></p>
+                </div>
+                <div class="col-md-7 col-sm-7 no-padding-r input-con">
+                  <p>{{ user.view.mobile }}</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="row">
+                <div class="col-md-5 col-sm-5 no-padding-l input-con">
+                  <p><b>Email</b></p>
+                </div>
+                <div class="col-md-7 col-sm-7 no-padding-r input-con">
+                  <p>{{ user.view.email }}</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- <div class="col-md-12">
+              <div class="row">
+                <div class="col-md-5 col-sm-5 no-padding-l input-con">
+                  <p>Worksite</p>
+                </div>
+                <div class="col-md-7 col-sm-7 no-padding-r input-con">
+                  <div class="filter">
+                    <select class="chosen-select" data-placeholder="WORKSITE">
+                      <option value=""></option>
+                      @for ($i = 1; $i < 5; $i++)
+                        <option value="">Option {{ $i }}</option>
+                      @endfor
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+
+            <div class="col-md-12">
+              <div class="row">
+                <div class="col-md-5 col-sm-5 no-padding-l input-con">
+                  <p><b>Date of Birth</b></p>
+                </div>
+                <div class="col-md-7 col-sm-7 no-padding-r input-dt input-con">
+                  <p>{{ user.view.dob }}</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="row">
+                <div class="col-md-5 col-sm-5 no-padding-l input-con">
+                  <p><b>Address</b></p>
+                </div>
+                <div class="col-md-7 col-sm-7 no-padding-r input-con">
+                  <p>{{ user.view.address }}</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="row">
+                <div class="col-md-5 col-sm-5 no-padding-l input-con">
+                  <p><b>State</b></p>
+                </div>
+                <div class="col-md-7 col-sm-7 no-padding-r input-con">
+                  <div class="filter">
+                    <p>{{ user.view.current_state.name }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="row">
+                <div class="col-md-5 col-sm-5 no-padding-l input-con">
+                  <p><b>Next of Kin Name</b></p>
+                </div>
+                <div class="col-md-7 col-sm-7 no-padding-r input-con">
+                  <p>{{ user.view.kin_name }}</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="row">
+                <div class="col-md-5 col-sm-5 no-padding-l input-con">
+                  <p><b>Next of Kin Mobile</b></p>
+                </div>
+                <div class="col-md-7 col-sm-7 no-padding-r input-con">
+                  <p>{{ user.view.kin_mobile }}</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="row">
+                <div class="col-md-5 col-sm-5 no-padding-l input-con">
+                  <p><b>Next of Kin Relationship</b></p>
+                </div>
+                <div class="col-md-7 col-sm-7 no-padding-r input-con">
+                  <p>{{ user.view.kin_relationship }}</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="row">
+                <div class="col-md-5 col-sm-5 no-padding-l input-con">
+                  <p><b>Medical Conditions</b></p>
+                </div>
+                <div class="col-md-7 col-sm-7 no-padding-r input-con">
+                  <p>{{ user.view.med_conditions }}</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="row">
+                <div class="col-md-5 col-sm-5 no-padding-l input-con">
+                  <p><b>Allergies</b></p>
+                </div>
+                <div class="col-md-7 col-sm-7 no-padding-r input-con">
+                  <p>{{ user.view.allergies }}</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="clearfix"></div>
+          </form>
+
+        </div>
+      </div>
+
+      <!-- <div class="col-md-12 bottom-logo">
+        <img class="img-responsive" src="{{ url('img/client/helix-logo.png') }}" alt="{{ env('APP_NAME') }}" title="{{ env('APP_NAME') }}"/>
+      </div> -->
+
+    </div>
+
+  </div>
+</div>
+<div class="clearfix"></div>

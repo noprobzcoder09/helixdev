@@ -1,0 +1,328 @@
+(function () {
+    'use strict';
+
+    angular
+        .module('app', ['ui.router', 'ngStorage', 'ui.bootstrap', 'ngMaterial', 'cgBusy'])
+        .config(config)
+        .run(run)
+        .constant('baseUrl', {
+            'client': 'api/v1/admin'
+        })
+
+        .filter('html', ['$sce', function ($sce) {
+            return function (text) {
+                return $sce.trustAsHtml(text);
+            };
+        }]);
+
+    function config($stateProvider, $urlRouterProvider)
+    {
+        $urlRouterProvider.otherwise("home");
+
+        $stateProvider
+            .state('main', {
+                url: '/',
+                templateUrl: '/partials/client/main.html',
+                controller: 'MainController',
+                controllerAs: 'main',
+            })
+            .state('main.home', {
+                url: 'home',
+                templateUrl: '/partials/client/home.html',
+                controller: function() {
+                    console.log('home controller');
+                }
+            })
+            .state('main.inductions', {
+                abstract: true,
+                views: {
+                    '': {
+                        templateUrl: '/partials/client/inductions/main.html'
+                    }
+                }
+            })
+            .state('main.inductions.list', {
+                url: 'inductions',
+                views: {
+                    'induction-list@main.inductions': {
+                        templateUrl: '/partials/client/inductions/list.html',
+                        controller: 'InductionController',
+                        controllerAs: 'induction'
+                    }
+                }
+            })
+            .state('main.inductions.view', {
+                url: 'inductions/:id',
+                views: {
+                    'induction-view@main.inductions': {
+                        templateUrl: '/partials/client/inductions/view.html',
+                        controller: 'InductionController',
+                        controllerAs: 'induction'
+                    }
+                }
+            })
+            .state('main.inductions.questions', {
+                url: 'inductions/:id/questions',
+                views: {
+                    'induction-questions@main.inductions': {
+                        templateUrl: '/partials/client/inductions/questions.html',
+                        controller: 'InductionController',
+                        controllerAs: 'induction'
+                    }
+                }
+            })
+            .state('main.safety-videos', {
+                abstract: true,
+                views: {
+                    '': {
+                        templateUrl: '/partials/client/safety-videos/main.html'
+                    }
+                }
+            })
+            .state('main.safety-videos.list', {
+                url: 'safety-videos',
+                views: {
+                    'safety-list@main.safety-videos': {
+                        templateUrl: '/partials/client/safety-videos/list.html',
+                        controller: 'SafetyVideosController',
+                        controllerAs: 'safety'
+                    }
+                }
+            })
+            .state('main.safety-videos.view', {
+                url: 'safety-videos/:id',
+                views: {
+                    'safety-view@main.safety-videos': {
+                        templateUrl: '/partials/client/safety-videos/view.html',
+                        controller: 'SafetyVideosController',
+                        controllerAs: 'safety'
+                    }
+                }
+            })
+            .state('main.safety-videos.questions', {
+                url: 'safety-videos/:id/questions',
+                views: {
+                    'safety-questions@main.safety-videos': {
+                        templateUrl: '/partials/client/safety-videos/questions.html',
+                        controller: 'SafetyVideosController',
+                        controllerAs: 'safety'
+                    }
+                }
+            })
+            .state('main.inspections', {
+                abstract: true,
+                views: {
+                    '': {
+                        templateUrl: '/partials/client/inspections/main.html'
+                    }
+                }
+            })
+            .state('main.inspections.home', {
+                url: 'inspections',
+                views: {
+                    'inspection-home@main.inspections': {
+                        templateUrl: '/partials/client/inspections/home.html',
+                        controller: 'InspectionHomeController',
+                        controllerAs: 'inspections'
+                    }
+                }
+            })
+            .state('main.inspections.setup', {
+                url: 'inspections/:id/setup',
+                views: {
+                    'inspection-setup@main.inspections': {
+                        templateUrl: '/partials/client/inspections/setup.html',
+                        controller: 'InspectionSetupController',
+                        controllerAs: 'inspection'
+                    }
+                }
+            })
+            .state('main.inspections.entry', {
+                url: 'inspections/:id/entry/:page/page',
+                views: {
+                    'inspection-entry@main.inspections': {
+                        templateUrl: '/partials/client/inspections/entry.html',
+                        controller: 'InspectionEntryController',
+                        controllerAs: 'inspection'
+                    }
+                }
+            })
+            .state('main.inspections.summary', {
+                url: 'inspections/:id/summary/:lastPage',
+                views: {
+                    'inspection-summary@main.inspections': {
+                        templateUrl: '/partials/client/inspections/summary.html',
+                        controller: 'InspectionSummaryController',
+                        controllerAs: 'inspection'
+                    }
+                }
+            })
+            .state('main.inspections.action', {
+                url: 'inspections/:id/items/:itemId/action',
+                views: {
+                    'inspection-action@main.inspections': {
+                        templateUrl: '/partials/client/inspections/action.html',
+                        controller: 'InspectionActionController',
+                        controllerAs: 'inspection'
+                    }
+                }
+            })
+            .state('main.resources', {
+                abstract: true,
+                views: {
+                    '': {
+                        templateUrl: '/partials/client/resources/main.html'
+                    }
+                }
+            })
+            .state('main.resources.home', {
+                url: 'resources',
+                views: {
+                    'resources-home@main.resources': {
+                        templateUrl: '/partials/client/resources/home.html',
+                        controller: 'ResourcesController',
+                        controllerAs: 'resources'
+                    }
+                }
+            })
+            .state('main.alerts', {
+                abstract: true,
+                views: {
+                    '': {
+                        templateUrl: '/partials/client/alerts/main.html'
+                    }
+                }
+            })
+            .state('main.alerts.home', {
+                url: 'alerts',
+                views: {
+                    'alerts-home@main.alerts': {
+                        templateUrl: '/partials/client/alerts/home.html',
+                        controller: 'AlertsController',
+                        controllerAs: 'alerts'
+                    }
+                }
+            })
+            // .state('main.inspections.closeout', {
+            //     url: 'inspections/close',
+            //     views: {
+            //         'inspection-closeout@main.inspections': {
+            //             templateUrl: '/partials/client/inspections/closeout.html',
+            //             controller: 'InspectionController',
+            //             controllerAs: 'inspection'
+            //         }
+            //     }
+            // })
+            // .state('main.inspections.entry', {
+            //     url: 'inspections/entry',
+            //     views: {
+            //         'inspection-entry@main.inspections': {
+            //             templateUrl: '/partials/client/inspections/closeout.html',
+            //             controller: 'InspectionController',
+            //             controllerAs: 'inspection'
+            //         }
+            //     }
+            // })
+
+            // .state('main.inspections.summary', {
+            //     url: 'inspections/summary',
+            //     views: {
+            //         'inspection-summary@main.inspections': {
+            //             templateUrl: '/partials/client/inspections/summary.html',
+            //             controller: 'InspectionController',
+            //             controllerAs: 'inspection'
+            //         }
+            //     }
+            // })
+            .state('login', {
+                url: '/login',
+                templateUrl: '/partials/client/login.html',
+                controller: 'LoginController',
+                controllerAs: 'vm'
+            })
+            .state('main.observations', {
+                abstract: true,
+                views: {
+                    '': {
+                        templateUrl: '/partials/client/observations/main.html'
+                    }
+                }
+            })
+            .state('main.observations.home', {
+                url: 'observations',
+                views: {
+                    'observation-start@main.observations': {
+                        templateUrl: '/partials/client/observations/start.html',
+                        controller: 'ObservationsController',
+                        controllerAs: 'observation'
+                    }
+                }
+            })
+            .state('main.observations.categorized', {
+                url: 'observations/:id',
+                views: {
+                    'observation-categorized@main.observations': {
+                        templateUrl: '/partials/client/observations/categorized.html',
+                        controller: 'ObservationsCategorizedController',
+                        controllerAs: 'observation'
+                    }
+                }
+            })
+            .state('main.observations.action', {
+                url: 'observations/:id/action',
+                views: {
+                    'observation-action@main.observations': {
+                        templateUrl: '/partials/client/observations/action.html',
+                        controller: 'ObservationsActionController',
+                        controllerAs: 'observation'
+                    }
+                }
+            })
+            .state('main.observations.summary', {
+                url: 'observations/:id/summary',
+                views: {
+                    'observation-summary@main.observations': {
+                        templateUrl: '/partials/client/observations/summary.html',
+                        controller: 'ObservationsSummaryController',
+                        controllerAs: 'observation'
+                    }
+                }
+            });
+    }
+
+    function run($rootScope, $http, $location, $localStorage)
+    {
+        /* keep user logged in after page refresh */
+        if ($localStorage.currentUser) {
+            $http.defaults.headers.common.Authorization = 'Bearer ' + $localStorage.currentUser.access_token;
+        }
+
+        /* redirect to login page if not logged in and trying to access a restricted page */
+        $rootScope.$on('$locationChangeStart', function (event, next, current) {
+            var publicPages = ['/login'];
+            var restrictedPage = publicPages.indexOf($location.path()) === -1;
+            if (restrictedPage && !$localStorage.currentUser) {
+                $location.path('/login');
+            } else{}
+        });
+
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": true,
+            "positionClass": "toast-bottom-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "3000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+    }
+
+})();

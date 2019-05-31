@@ -1,0 +1,113 @@
+<div ng-include="'/partials/loader.html'" style="position:fixed; z-index: 999; display:none; padding-left: 20%; padding-top: 40%; width: 100%" id="observationLoader"></div>
+<div class="col-md-12">
+    <div class="row">
+        <div class="content-container">
+            <span class="back" ui-sref="main.observations.home"><img class="img-responsive" src="../../img/client/arrow-back.png"> <label>BACK</label></span>
+            <!-- <span class="continue" ng-click="observation.action()">NEXT</span> -->
+
+            <div class="observations-content col-md-12">
+                <div class="col-md-12">
+                    <div class="row">
+                        <img class="img-responsive" src="{{observation.view.images.pre}}">
+                    </div>
+                </div>
+                <div class="body">
+                    <form>
+                        <div class="input-con">
+                            <h4>Observation Category</h4>
+                            <div class="input-body">
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-3 col-sm-3 col-xs-6 padding-half" ng-repeat="(key, value) in observation.categories">
+                                            <button type="button" class="btn-category btn" aria-controls="safety" role="tab" data-toggle="tab" id="id_{{key}}" ng-click="observation.runTab(key)">{{value.name}}</button>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <uib-tabset class="tab-content" active="active">
+                                <uib-tab index="1">
+                                    <div class="input-con">
+                                        <h4>Observation Type</h4>
+
+                                        <div class="input-body observe-type">
+                                            <div class="col-md-6 col-sm-6 col-xs-6 padding-half" ng-repeat="(key, value) in observation.tab.types track by $index">
+                                                <label>
+                                                    <input type="radio" name="observation_type" value="{{value.value}}" ng-model="observation.tab.selected_type">
+                                                    <span>{{key}}</span>
+                                                </label>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="input-con">
+                                        <h4>Observation Sub-Category</h4>
+
+                                        <div class="input-body input-checkbox">
+                                            <label ng-repeat="(key, value) in observation.tab.categories">
+                                                <input type="checkbox" value="{{key}}" ng-model="value.isChecked">
+                                                <span>{{value.name}}</span>
+                                            </label>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="input-con">
+                                        <h4>Observation Location</h4>
+                                        <div class="input-body">
+                                            <!-- <div class="col-sm-2">
+                                                <p class="description">Description</p>
+                                            </div>
+                                            <div class="col-sm-5">
+                                                <input type="text" name="description" placeholder="Description">
+                                            </div> -->
+                                            <div class="col-sm-12">
+                                                <input type="text" class="form-control" placeholder="Description" ng-model="observation.tab.description">
+                                                <button class="btn btn-gps" ng-click="observation.getGeoLocation()">Add GPS Location Details</button>
+                                                <div id="location-details" class=" margin-top-10">
+                                                    <div class="location-address margin-top-10">
+                                                        <strong>Address</strong>: <span id="addr"></span>
+                                                    </div>
+                                                    <div class="location-long-lat">
+                                                        <strong>Lat/Long</strong>: <span id="lat-long"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </div>
+                                </uib-tab>
+                            </uib-tabset>
+                        </div>
+                        <div class="clearfix"></div>
+                    </form>
+                </div>
+                <div class="clearfix"></div>
+
+                <div class="row margin-b">
+                    <div class="col-md-12 margin-b">
+                        <span class='complete' ng-click="observation.action()">NEXT</span>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="col-md-12 bottom-logo">
+                <img class="img-responsive" src="../../img/client/helix-logo.png" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+
+<script type="text/javascript">
+    (function( $ ) {
+        $(document).ready(function() {
+            $( ".action_due" ).datepicker();
+        });
+    })( jQuery );
+</script>

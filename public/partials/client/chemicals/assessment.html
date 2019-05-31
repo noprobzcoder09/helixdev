@@ -1,0 +1,199 @@
+<div class="col-md-12 chemicals">
+    <div class="row chemical-assessment">
+        <div class="content-container">
+          <span class="back"><img class="img-responsive" src="../../img/client/arrow-back.png" ng-click="chemical.prevPage()"> <label>BACK</label></span>
+          <span class="continue" ng-click="chemical.nextPage()" ng-if="chemical.currentPage < 7 && chemical.currentPage != 2 && chemical.currentPage != 3 && chemical.currentPage != 4">CONTINUE</span>
+
+          <div class="inspections-content col-md-12" ng-if="chemical.currentPage == 1">
+            <h4>CHEMICAL RISK MANAGEMENT</h4>
+            <div class="body">
+              <div class="substance-name">
+                <div class="col-md-12 margin-b">
+                    <div class="row">
+                      <div class="col-md-2 col-sm-3 col-xm-12 display-mobile">
+                        <p><label class="margin-top-10">Substance</label></p>
+                      </div>
+                      <div class="col-md-10 col-sm-9 col-xm-12">
+                        <selectize placeholder='Substance' options='chemical.list' config="{maxItems:1,valueField:'id',labelField:'substance'}" ng-model="chemical.selected_chemical"></selectize>
+                      </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+              </div>
+              <div class="form-container">
+                <div class="form-assesment-container" ng-repeat="input in chemical.currentForm">
+                  <div class="margin-t margin-b">
+                    <div class="col-md-12">
+                      <label>{{ input.label }}</label>
+                    </div>
+                    <div class="col-md-12">
+                      <input type="text" ng-model="input.value"/>
+                    </div>
+                  </div>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="inspections-content col-md-12" ng-if="chemical.currentPage == 2">
+            <h4>SUBSTANCE: {{ chemical.selected_chemical.substance }}</h4>
+            <div class="body">
+              <div class="col-md-12">
+                <div class="margin-t margin-b">
+                  <label>Nature of the Hazard</label>
+                  <div class="input-body input-checkbox">
+                    <label ng-repeat="checkBox in chemical.currentForm.nature_of_the_hazard">
+                      <input type="checkbox" ng-model="checkBox.isChecked">
+                      <span>{{ checkBox.label }}</span>
+                    </label>
+                    <div class="clearfix"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+          <div class="inspections-content col-md-12" ng-if="chemical.currentPage == 3">
+            <h4>SUBSTANCE: {{ chemical.selected_chemical.substance }}</h4>
+            <div class="body">
+              <div class="col-md-12">
+                <div class="margin-t margin-b">
+                  <label>Possible Routes of Exposure</label>
+                  <div class="input-body input-checkbox">
+                    <label ng-repeat="checkBox in chemical.currentForm.routes_of_exposure">
+                      <input type="checkbox" ng-model="checkBox.isChecked">
+                      <span>{{ checkBox.label }}</span>
+                    </label>
+                    <div class="clearfix"></div>
+                  </div>
+                </div>
+                <div class="margin-t margin-b">
+                  <label>Monitoring Required</label>
+                  <div class="input-body input-checkbox">
+                    <label ng-repeat="checkBox in chemical.currentForm.monitoring_required">
+                      <input type="checkbox" ng-model="checkBox.isChecked">
+                      <span>{{ checkBox.label }}</span>
+                    </label>
+                    <div class="clearfix"></div>
+                  </div>
+                </div>
+                <div class="margin-t margin-b">
+                  <label>Conclusion</label>
+                  <div class="input-body input-checkbox">
+                    <label ng-repeat="checkBox in chemical.currentForm.conclusion">
+                      <input type="checkbox" ng-model="checkBox.isChecked">
+                      <span>{{ checkBox.label }}</span>
+                    </label>
+                    <div class="clearfix"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+          <div class="inspections-content col-md-12" ng-if="chemical.currentPage == 4">
+            <h4>SUBSTANCE: {{ chemical.selected_chemical.substance }}</h4>
+            <div class="body">
+              <div class="col-md-12">
+                <div class="">
+                  <label>Adequate Controls</label>
+                  <p>Current controls are inadequate if not present when SDS required them or if not funstioning well. Consider each control does the SDS recommend it and is it present?</p>
+                  <div class="input-body input-checkbox">
+                    <label ng-repeat="checkBox in chemical.currentForm.adequate_controls">
+                        <input type="checkbox" ng-model="checkBox.isChecked">
+                        <span>{{ checkBox.label }}</span>
+                    </label>
+                    <div class="clearfix"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+          <div class="inspections-content col-md-12" ng-if="chemical.currentPage == 5">
+            <h4>SUBSTANCE: {{ chemical.selected_chemical.substance }}</h4>
+            <div class="body">
+              <div class="col-md-12">
+                <div class="">
+                  <label>Adequacy of Currency Controls</label>
+                  <p>Is action required to reduce risk?</p>
+                  <p>List changes needed, by when and by whom</p>
+                  <textarea class="form-control" rows=5 ng-model="chemical.currentForm.by"></textarea>
+                  <div class="input-body input-checkbox" style="border:none!important;">
+                    <label style="border:none;padding:20px 0;">
+                        <input type="checkbox" ng-model="chemical.currentForm.isRequiredAction">
+                        <span style="display:inline-block;">Is further action required?</span>
+                    </label>
+                    <div class="clearfix"></div>
+                  </div>
+                </div>
+                <div class="margin-b">
+                  <h4 class="no-background no-padding-l no-padding-r">Risk Matrix <!---span style="display:block;float:right;">Yes/No</span---></h4>
+                  <p>Hazard Risk Assessment (Safety &amp; Enviro)</p>
+                  <select class="form-control margin-b" ng-options="item.detail for item in chemical.assessmentForms.matrix2" ng-model="chemical.assessmentForms.selected_matrix">
+                      <!-- <option value="" disabled></option> -->
+                  </select>
+                </div>
+                <div class="">
+                  <p>Likelihood of Occuring?</p>
+                  <select class="form-control" ng-options="item.detail for item in chemical.assessmentForms.selected_matrix.items" ng-model="chemical.assessmentForms.selected_matrix.impact">
+                      <!-- <option value="" disabled></option> -->
+                  </select>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+          <div class="inspections-content col-md-12" ng-if="chemical.currentPage == 6">
+            <h4>SUBSTANCE: {{ chemical.selected_chemical.substance }}</h4>
+            <div class="body" style="padding-top:0!important;">
+              <div class="risk-matrix margin-b" style="background-color:{{chemical.assessmentForms.selected_matrix.impact.colorhex}};">
+                <div class="col-md-12">
+                  <h5>Risk Matrix Level: {{chemical.assessmentForms.selected_matrix.impact.value}}</h5>
+                </div>
+              </div>
+              <div class="col-md-12">
+                  <div class="">
+                    <p>Adequacy of Currency Controls</p>
+                    <p>High Risk (INTOLERABLE, significant and
+                        urgent actions required). Corrective actions
+                        taken if needed (please state below)</p>
+                    <textarea class="form-control" ng-model="chemical.currentForm.current_controls.value" rows="5"></textarea>
+                  </div>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+          <div class="inspections-content col-md-12" ng-if="chemical.currentPage == 7">
+            <h4>SUBSTANCE: {{ chemical.selected_chemical.substance }}</h4>
+            <div class="body">
+                <div class="col-md-12">
+                    <div class="">
+                        <label>Photo</label>
+                        <img style="max-width: 100%" ng-src="{{ chemical.image_url }}" />
+                        <div>
+                            MSDS: <>
+                        </div>
+                        <div ng-repeat="(key, value) in chemical.assessmentForms.display">
+                            <p><strong style="text-transform:uppercase;">{{ key }}</strong>: {{ value }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <span class="complete" ng-click="chemical.nextPage()" ng-if="chemical.currentPage == 2 || chemical.currentPage == 3 || chemical.currentPage == 4">CONTINUE</span>
+            <span class="complete" ng-click="chemical.doneAssessment()" ng-if="chemical.currentPage >= 7">DONE</span>
+          </div>
+        </div>
+    </div>
+    <!-- <div style="background: white">
+        <code>
+           {{ chemical.assessmentForms.matrix }}
+        </code>
+
+    </div> -->
+    <div class="clearfix"></div>
+</div>

@@ -1,0 +1,70 @@
+<div class="col-md-12 chemicals">
+    <div class="row">
+        <div class="content-container">
+            <span class="back" ui-sref="main.home"><img class="img-responsive" src="../../img/client/arrow-back.png"> <label>BACK</label></span>
+            <div class="inspections-content col-md-12">
+                <h4>{{ chemical.view.substance }} <span class="view-sds" ng-click="chemical.viewSDS()">VIEW <br> FULL SDSD</span></h4>
+                <div class="body">
+                    <div class="chemical-col">
+                      <div class="col-md-12">
+                        <h6><strong>Purpose / User</strong></h6>
+                        <p>
+                          {{ chemical.view.use }}
+                        </p>
+                      </div>
+                      <div class="clearfix"></div>
+                    </div>
+                    <div class="chemical-col">
+                      <div class="col-md-12">
+                        <h6><strong>PPE</strong></h6>
+                        <div class="ppe-images">
+                          <div class="ppe-image" style="background:#157CC4" ng-repeat="ppe in chemical.view.ppes">
+                            <img class="" src="../../img/ohs/chemicals/{{ppe.name | strReplace : ' ':'_' }}.png">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="clearfix"></div>
+                    </div>
+                    <div class="chemical-col">
+                      <div class="col-md-12">
+                        <h6><strong>First Aid</strong></h6>
+                        <p>
+                          {{ chemical.view.first_aid }}
+                        </p>
+                      </div>
+                      <div class="clearfix"></div>
+                    </div>
+                    <div class="chemical-col">
+                      <div class="col-md-12">
+                        <h6><strong>Health Considerations</strong></h6>
+                        <p>
+                          {{ chemical.view.health_hazards }}
+                        </p>
+                      </div>
+                      <div class="clearfix"></div>
+                    </div>
+                    <div class="chemical-col">
+                      <div class="col-md-12">
+                        <h6><strong>Storage</strong></h6>
+                        <p>
+                          {{ chemical.view.storage }}
+                        </p>
+                      </div>
+                      <div class="clearfix"></div>
+                    </div>
+                    <div class="chemical-col">
+                      <div class="col-md-12">
+                        <h6><strong>Risk Assessment</strong></h6>
+                        <p>
+                          <span style="margin-right:20px;">{{ chemical.checkAssessment() }}</span> <button class="btn btn-primary" ui-sref="main.chemicals.view-assessments({id: chemical.view.id, chemical:chemical.view})">OPEN RISK ASSESSMENT</button>
+                        </p>
+                      </div>
+                      <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>

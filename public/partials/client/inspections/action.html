@@ -1,0 +1,107 @@
+<div cg-busy="{promise:inspection.promise, templateUrl:'/partials/loader.html', minDuration: 500}"></div>
+<div class="col-md-12">
+    <div class="row">
+        <div class="content-container">
+            <span class="back"><img class="img-responsive" src="../../img/client/arrow-back.png" ui-sref="main.inspections.home"> <label>Back</label></span>
+
+            <div class="inspections-content col-md-12">
+                <h4>{{inspection.view.title}}</h4>
+                <div class="body">
+                    <p class="margin-b"><label>Inspector:</label> John Doe</p>
+                    <p class="margin-b"><label>Inspection Item:</label> {{inspection.pageItem.name}}</p>
+                    <p class="margin-b"><label>Response:</label> 
+                        <span ng-repeat="button in inspection.buttons track by $index">
+                            <span ng-if="inspection.pageItem.answer == $index + 1">{{button}}</span>
+                        </span>
+                    </p>
+                    <p class="margin-b"><label>Sighted:</label> {{inspection.pageItem.description}}</p>
+                    <p class="margin-b"><label>Action required:</label> {{inspection.pageItem.required_action}}</p>
+                    <p class="margin-b"><label>Assigned action:</label> Mike</p>
+                    <p class="margin-b"><label>Assigned Due:</label> {{inspection.pageItem.action_due}}</p>
+                    <p><label>Photo:</label></p>
+                    <p class="margin-b">
+                        <img class="img-responsive" ng-if="inspection.pageItem.image_url" src="{{ inspection.pageItem.image_url }}" />
+                        <img class="standard-logo" src="../../img/Helix-Solutions-bw.png" alt="..." ng-if="!inspection.pageItem.image_url">
+                    </p>
+                </div>
+                <div class="body body-bottom">
+                    <form>
+                        <div class="">
+                            <div class="display-flex">
+                                <div class="radio-group" ng-repeat="button in inspection.buttons track by $index">
+                                    <input type="radio" class="form-control" name="response">
+                                    <label class="btn btn-primary">{{button}}</label>
+                                </div>
+                                <div class="radio-group not-applicable" ng-if="inspection.pageItem.not_applicable">
+                                    <input type="radio" class="form-control">
+                                    <label class="btn btn-primary">N/A</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="row">
+                                <span class="margin-b">How did you close out the inspection item?</span>
+                                <textarea class="form-control" name="close_out" rows="5"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="row">
+                                <span class="margin-b">Action required...</span>
+                                <textarea class="form-control" name="action_required" rows="4"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="file-con">
+                                    <div class="upload-photo">
+                                        <div class="fileinput fileinput-new" data-provides="fileinput">
+                                            <div class="fileinput-preview fileinput-exists thumbnail" data-trigger="fileinput">
+                                            </div>
+                                            <div class="upload-btn">
+                                                <span class="btn btn-outline btn-file btn-primary hover-effect fade">
+                                                  <span class="fileinput-new">
+                                                    <label class="lbl-file" for="file"><img src="../../img/client/upload-img.png"></label>
+                                                  </span>
+                                                  <span class="fileinput-exists"> Change </span>
+                                                  <input type="hidden" value="" name="..." autocomplete="off">
+                                                  <input type="file" class="form-control" accept="image/*;capture=camera"  name="file" id="idInspectionPhoto">
+                                                 </span>
+                                                <a href="javascript:;" class="btn btn-danger fileinput-exists " data-dismiss="fileinput"> Remove </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </form>
+                </div>
+                <div class="clearfix"></div>
+                <div>
+                    <span class="complete" ng-click="inspection.done()">SUBMIT</span>
+                </div>
+            </div>
+            <div class="col-md-12 bottom-logo">
+                <img class="img-responsive" src="../../img/client/helix-logo.png" />
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<div class="clearfix"></div>
+
+<script type="text/javascript">
+    (function( $ ) {
+        $(document).ready(function() {
+            $('.lbl-file').on('click', function(){
+                $('.file-con input').click();
+            });
+            $( ".action_due" ).datepicker();
+        });
+    })( jQuery );
+</script>

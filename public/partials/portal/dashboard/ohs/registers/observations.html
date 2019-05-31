@@ -1,0 +1,177 @@
+<div class="col-md-12 no-padding ohs">
+    <div class="left-container">
+        <div class="top-content">
+            <div class="col-md-7 col-sm-6 col-xs-6">
+                <div class="row">
+                    <h4 class="breadcrumbs">OHS &gt; OBSERVATION REGISTER {{ observation.chart.data }}</h4>
+                </div>
+            </div>
+            <div class="col-md-3 pull-right">
+                <div class="row btn-action">
+                    <button type="button" role="btn" class="btn btn-primary pull-right top-page-btn" data-toggle="modal" data-target=".export">
+                        <span class="add-sign"><img src="../../img/export-icon.png" style="width: 15px;margin-top: -6px;"></span> EXPORT
+                    </button>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="col-md-12 body-content registers">
+            <div class="row">
+                <h5 class="fc-white">OBSERVATION REGISTER</h5>
+                <div class="chart">
+                    <div class="col-md-8">
+                        <div class="row">
+                            <h4>OBSERVATIONS COMPLETED</h4>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="row">
+                            <h4>RESULTS</h4>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <hr>
+                    <div class="chart-content">
+                        <div class="col-md-8 padding-half-r">
+                            <canvas id="bar"
+                                    class="chart chart-bar"
+                                    chart-data="observation.charts.bar_graph.data"
+                                    chart-labels="observation.charts.bar_graph.labels"
+                                    chart-series="series"
+                                    chart-colors="observation.charts.bar_graph.colors"
+                                    chart-options="observation.chart.bar_graph.options"
+                            ></canvas>
+                        </div>
+                        <div class="col-md-4 padding-half-l results graph">
+                            <div class="col-md-6 padding-half">
+                                <canvas id="pie" class="chart chart-pie"
+                                        chart-data="observation.charts.circle1.data"
+                                        chart-labels="observation.charts.circle1.labels"
+                                        chart-options="observation.charts.circle1.options"
+                                        chart-colors="observation.charts.circle1.colors"
+                                        chart-dataset-override="observation.charts.circle1.dataset"
+                                ></canvas>
+                            </div>
+                            <div class="col-md-6 padding-half">
+                                <canvas id="pie"
+                                        class="chart chart-pie"
+                                        chart-data="observation.charts.circle2.data"
+                                        chart-labels="observation.charts.circle2.labels"
+                                        chart-options="observation.charts.circle2.options"
+                                        chart-colors="observation.charts.circle2.colors"
+                                        chart-dataset-override="observation.charts.circle2.dataset"></canvas>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+
+                <table class="table table-condensed table-striped content-white">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>DATE</th>
+                        <th>NAME</th>
+                        <th>TYPE</th>
+                        <th>CATEGORY</th>
+                        <th>SUB-CATEGORY</th>
+                        <th width="12%">SEEN</th>
+                        <th>STATUS</th>
+                        <th>ACTIONS</th>
+                        <th>DUE</th>
+                        <th>OPEN</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="border-bottom" ng-repeat="observation in observation.list">
+                        <td width="50">#{{ observation.id }}</td>
+                        <td>{{ observation.created_at | moment:'DD-MM-YYYY' }}</td>
+                        <td class="fc-blue">{{ observation.created_by.name }}</td>
+                        <td><span ng-class="observation.type_content.class">{{ observation.type_content.name }}</span></td>
+                        <td class="fc-blue text-upper">{{ observation.category }}</td>
+                        <td class="fc-blue text-upper" style="width: 129px;">{{ observation.sub_categories | strReplace:'_':' ' }}</td>
+                        <td class="fc-blue">{{ observation.seen }}</td>
+                        <td><span ng-class="observation.status.class">{{ observation.status.name }}</span></td>
+                        <td class="fc-blue">{{ observation.action }}</td>
+                        <td class="fc-blue">{{ observation.due_date }}</td>
+                        <td><button class="btn btn-primary" ui-sref="main.register.observation-entry({id: observation.id})">OPEN</button></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <div class="pagination">
+                    <ul>
+                        <li><a href="javascript:void(0);">&#60;</a></li>
+                        <li><a href="javascript:void(0);" class="active">1</a></li>
+                        <li><a href="javascript:void(0);">&#62;</a></li>
+                    </ul>
+                </div>
+                <div class="clearix"></div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<div class="clearfix"></div>
+
+<!-- Modal -->
+<div class="modal fade export" id="idExport" tabindex="-1" role="dialog" aria-labelledby="">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span style="text-transform:uppercase;color:#fff">EXPORT TO CSV</span>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-danger alert-dismissable" ng-repeat="error in observation.modalErrors">
+                    <a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    {{ error }}
+                </div>
+                <div class="form-group m-bottom-10">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <p class="m-top-10 no-margin-bottom">From</p>
+                        </div>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control from_date" ng-model="observation.filter_from_date">
+                            <span class="calendar-icon"><img src="http://localhost/img/client/calendar-icon.png"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group m-bottom-10">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <p class="m-top-10 no-margin-bottom">To</p>
+                        </div>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control to_date" ng-model="observation.filter_to_date">
+                            <span class="calendar-icon"><img src="http://localhost/img/client/calendar-icon.png"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer text-center no-padding-b">
+                    <a type="button" class="btn btn-primary" ng-click="observation.exportCsv()">
+                        DOWNLOAD
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    (function( $ ) {
+        $( ".from_date" ).datepicker();
+        $( ".to_date" ).datepicker();
+
+        function checkDate()
+        {
+            console.log('xxxx');
+            return false;
+        }
+    })( jQuery );
+</script>

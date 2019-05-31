@@ -1,0 +1,70 @@
+<style>
+    .active {
+        background: #157CC4 !important;
+        color: white !important;
+    }
+</style>
+<div class="col-md-12 no-padding">
+    <div class="left-container">
+        <div class="top-content">
+            <div class="col-md-8 col-sm-6 col-xs-6">
+                <div class="row">
+                    <h4 class="breadcrumbs">OHS &gt; CHEMICAL MANAGEMENT</h4>
+                </div>
+            </div>
+            <div class="col-md-4 pull-right">
+                <div class="row btn-action">
+                    <button type="button" role="btn" class="btn btn-primary pull-right top-page-btn" ui-sref="main.chemical.add">+ ADD NEW</button>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="col-md-12">
+            <div class="row">
+                <h5 class="fc-white">CHEMICAL MANAGEMENT</h5>
+
+                <div class="bottom-content">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th>SUBSTANCE</th>
+                            <th>TYPE</th>
+                            <th>DATE</th>
+                            <th>COMPANY</th>
+                            <th>HAZ CHEM</th>
+                            <th style="text-align: center;">MSDS</th>
+                            <th>OPEN</th>
+                        </tr>
+                        </thead>
+                        <tbody class="content-white">
+                        <tr ng-repeat="chemical in chemical.list">
+                            <td style="padding: 0 2em 0 0; width: 88px;">
+                                <a ui-sref="main.chemical.assessment-list({id:chemical.id})" ng-if="chemical.has_assessment">
+                                    <img class="img-responsive" src="../../img/ohs/chemicals/assessed.png">
+                                </a>
+                            </td>
+                            <td>{{ chemical.substance }}</td>
+                            <td>{{ chemical.type }}</td>
+                            <td class="fc-blue">{{ chemical.issue_date }}</td>
+                            <td class="fc-blue">{{ chemical.company }}</td>
+                            <td class="fc-blue">{{ chemical.hazchem }}</td>
+                            <td class="color-blue" style="text-align: center;"><a href="{{ chemical.msds }}" download><i class="fa fa-download" aria-hidden="true"></i></a></td>
+                            <td class="color-blue"><button class="btn btn-primary" ui-sref="main.chemical.view({id:chemical.id})">OPEN</button></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="pagination" ng-if="hrWorkforce.keywords.length <= 0">
+                        <ul>
+                            <li ng-click="hrWorkforce.prevPage()"><a href="javascript:void(0)">&#60;</a></li>
+                            <li ng-repeat="n in [].constructor(hrWorkforce.pagination.last_page) track by $index"><a href="javascript:void(0)" ng-click="hrWorkforce.goPage($index+1)" ng-class="app.checkCurrentPagination($index+1, hrWorkforce.currentPage) ? 'active' : ''">{{$index + 1}}</a></li>
+                            <li ng-click="hrWorkforce.nextPage()"><a href="javascript:void(0)" >&#62;</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<div class="clearfix"></div>

@@ -1,0 +1,676 @@
+{
+  "assessment_form" :
+  {
+    "page_1" :
+    [
+      {
+        "label" : "How is it used?",
+        "name"  : "use",
+        "value" : ""
+      },
+      {
+        "label" : "Where is it used?",
+        "name"  : "location",
+        "value" : ""
+      },
+      {
+        "label" : "Quantities used?",
+        "name"  : "quantity",
+        "value" : ""
+      },
+      {
+        "label" : "Frequency/Duration Used?",
+        "name"  : "frequency",
+        "value" : ""
+      },
+      {
+        "label" : "Who is it used by?",
+        "name"  : "by",
+        "value" : ""
+      }
+    ],
+    "page_2" :
+    {
+      "nature_of_the_hazard" :
+      [
+        {
+          "label" : "Toxic",
+          "isChecked" : false
+        },
+        {
+          "label" : "Harmful",
+          "isChecked" : false
+        },
+        {
+          "label" : "Corrosive",
+          "isChecked" : false
+        },
+        {
+          "label" : "Sensitiser",
+          "isChecked" : false
+        },
+        {
+          "label" : "Carcinogenic",
+          "isChecked" : false
+        },
+        {
+          "label" : "Mutagenic",
+          "isChecked" : false
+        },
+        {
+          "label" : "Teratogenic",
+          "isChecked" : false
+        },
+        {
+          "label" : "Asphyxiant",
+          "isChecked" : false
+        },
+        {
+          "label" : "Flammable",
+          "isChecked" : false
+        },
+        {
+          "label" : "Explosive",
+          "isChecked" : false
+        },
+        {
+          "label" : "Environmental",
+          "isChecked" : false
+        },
+        {
+          "label" : "Other",
+          "value" : "",
+          "noChecked" : true
+        }
+      ]
+    },
+    "page_3" :
+    {
+      "routes_of_exposure" :
+      [
+        {
+          "label" : "Eyes",
+          "isChecked" : false
+        },
+        {
+          "label" : "Skin",
+          "isChecked" : false
+        },
+        {
+          "label" : "Inhalation",
+          "isChecked" : false
+        },
+        {
+          "label" : "Ingestion",
+          "isChecked" : false
+        },
+        {
+          "label" : "Absortion",
+          "isChecked" : false
+        },
+        {
+          "label" : "Injection",
+          "isChecked" : false
+        }
+      ],
+      "monitoring_required" :
+      [
+        {
+          "label" : "Health Monitoring",
+          "isChecked" : false
+        },
+        {
+          "label" : "Air Monitoring",
+          "isChecked" : false
+        }
+
+      ],
+      "conclusion" :
+      [
+        {
+          "label" : "Risk not significant now and not likely to increase",
+          "isChecked" : false
+        },
+        {
+          "label" : "Risk significant but effectively controlled at the moment",
+          "isChecked" : false
+        },
+        {
+          "label" : "Risk significant and not adequately controlled at the moment",
+          "isChecked" : false
+        },
+        {
+          "label" : "Uncertain about risks; more detailed assessment required",
+          "isChecked" : false
+        }
+      ]
+    },
+    "page_4" :
+    {
+      "adequate_controls" :
+      [
+        {
+          "label" : "Isolation",
+          "isChecked" : false
+        },
+        {
+          "label" : "Local Extraction / Ventilation",
+          "isChecked" : false
+        },
+        {
+          "label" : "General Ventilation",
+          "isChecked" : false
+        },
+        {
+          "label" : "Other engineering controls",
+          "isChecked" : false
+        },
+        {
+          "label" : "Safe work method",
+          "isChecked" : false
+        },
+        {
+          "label" : "Reduce quantity and or concentration",
+          "isChecked" : false
+        },
+        {
+          "label" : "Information (at least MSDS and label)",
+          "isChecked" : false
+        },
+        {
+          "label" : "Ongoing training (hazards, safe use, PPE, health surveillance)",
+          "isChecked" : false
+        },
+        {
+          "label" : "Reduce quantity and or concentration",
+          "isChecked" : false
+        },
+        {
+          "label" : "Personal protective equipment",
+          "isChecked" : false
+        },
+        {
+          "label" : "First aid supplier / equipment",
+          "isChecked" : false
+        },
+        {
+          "label" : "Evacuation or emergency plan and required emergency equipment",
+          "isChecked" : false
+        }
+      ]
+    },
+    "page_5" :
+    {
+      "current_controls" :
+      [
+        {
+          "label" : "Is action required to reduce risk? List changes needed, by when and by whon ",
+          "value" : ""
+        },
+        {
+          "label" : "Is further action required",
+          "isChecked": false
+        }
+      ],
+      "risk_matrix" :
+      [
+        {
+          "label" : "Likelihood of Occuring?",
+          "items" : []
+        },
+        {
+          "label" : "Hazard Risk Assessment (Safety & Enviro)",
+          "items" : []
+        }
+      ],
+      "isRequiredAction": false,
+      "text_value" : ""
+    },
+    "page_6" :
+    {
+      "current_controls" :
+      {
+        "label" : "",
+        "value": ""
+      }
+    },
+    "matrix" :
+    [
+      {
+        "name" : "Almost Certain",
+        "detail" : "Expected to Occur - Once per week",
+        "items" :
+        [
+          {
+            "name" : "Severe",
+            "detail" : "Fatality / Permanent Damage",
+            "value" : "Extreme",
+            "color" : "red",
+            "colorhex": "#ff0000"
+          },
+          {
+            "name" : "Major",
+            "detail" : "Permanent Injury / Long Term Effect and Large Area",
+            "value" : "Extreme",
+            "color" : "red",
+            "colorhex": "#ff0000"
+          },
+          {
+            "name" : "Moderate",
+            "detail" : "Lost Time Injury / Long Term Effect and Small Area",
+            "value" : "High",
+            "color" : "orange",
+            "colorhex": "#ff9900"
+          },
+          {
+            "name" : "Minor",
+            "detail" : "Medical Treatment / Short Term Effect and Large Area",
+            "value" : "High",
+            "color" : "orange",
+            "colorhex": "#ff9900"
+          },
+          {
+            "name" : "Insignificant",
+            "detail" : "First Aid Injury / Short Term Effect and Small Area",
+            "value" : "Moderate",
+            "color" : "yellow",
+            "colorhex": "#F2DD00"
+          }
+        ]
+      },
+      {
+        "name" : "Likely",
+        "detail" : "Common - Once per month",
+        "items" :
+        [
+          {
+            "name" : "Severe",
+            "detail" : "Fatality / Permanent Damage",
+            "value" : "Extreme",
+            "color" : "red",
+            "colorhex": "#ff0000"
+          },
+          {
+            "name" : "Major",
+            "detail" : "Permanent Injury / Long Term Effect and Large Area",
+            "value" : "High",
+            "color" : "orange",
+            "colorhex": "#ff9900"
+          },
+          {
+            "name" : "Moderate",
+            "detail" : "Lost Time Injury / Long Term Effect and Small Area",
+            "value" : "High",
+            "color" : "orange",
+            "colorhex": "#ff9900"
+          },
+          {
+            "name" : "Minor",
+            "detail" : "Medical Treatment / Short Term Effect and Large Area",
+            "value" : "Moderate",
+            "color" : "yellow",
+            "colorhex": "#F2DD00"
+          },
+          {
+            "name" : "Insignificant",
+            "detail" : "First Aid Injury / Short Term Effect and Small Area",
+            "value" : "Moderate",
+            "color" : "yellow",
+            "colorhex": "#F2DD00"
+          }
+        ]
+      },
+      {
+        "name" : "Possible",
+        "detail" : "Sometimes - Once per year",
+        "items" :
+        [
+          {
+            "name" : "Severe",
+            "detail" : "Fatality / Permanent Damage",
+            "value" : "Extreme",
+            "color" : "red",
+            "colorhex": "#ff0000"
+          },
+          {
+            "name" : "Major",
+            "detail" : "Permanent Injury / Long Term Effect and Large Area",
+            "value" : "High",
+            "color" : "orange",
+            "colorhex": "#ff9900"
+          },
+          {
+            "name" : "Moderate",
+            "detail" : "Lost Time Injury / Long Term Effect and Small Area",
+            "value" : "Moderate",
+            "color" : "yellow",
+            "colorhex": "#F2DD00"
+          },
+          {
+            "name" : "Minor",
+            "detail" : "Medical Treatment / Short Term Effect and Large Area",
+            "value" : "Moderate",
+            "color" : "yellow",
+            "colorhex": "#F2DD00"
+          },
+          {
+            "name" : "Insignificant",
+            "detail" : "First Aid Injury / Short Term Effect and Small Area",
+            "value" : "Low",
+            "color" : "green",
+            "colorhex": "#007400"
+          }
+        ]
+      },
+      {
+        "name" : "Unlikely",
+        "detail" : "Rarely - Once in the last 20 years",
+        "items" :
+        [
+          {
+            "name" : "Severe",
+            "detail" : "Fatality / Permanent Damage",
+            "value" : "High",
+            "color" : "orange",
+            "colorhex": "#ff9900"
+          },
+          {
+            "name" : "Major",
+            "detail" : "Permanent Injury / Long Term Effect and Large Area",
+            "value" : "Moderate",
+            "color" : "yellow",
+            "colorhex": "#F2DD00"
+          },
+          {
+            "name" : "Moderate",
+            "detail" : "Lost Time Injury / Long Term Effect and Small Area",
+            "value" : "Moderate",
+            "color" : "yellow",
+            "colorhex": "#F2DD00"
+          },
+          {
+            "name" : "Minor",
+            "detail" : "Medical Treatment / Short Term Effect and Large Area",
+            "value" : "Low",
+            "color" : "yellow",
+            "colorhex": "#F2DD00"
+          },
+          {
+            "name" : "Insignificant",
+            "detail" : "First Aid Injury / Short Term Effect and Small Area",
+            "value" : "Low",
+            "color" : "green",
+            "colorhex": "#007400"
+          }
+        ]
+      },
+      {
+        "name" : "Rare",
+        "detail" : "Highly Unlikely - Once in more than 20 years",
+        "items" :
+        [
+          {
+            "name" : "Severe",
+            "detail" : "Fatality / Permanent Damage",
+            "value" : "High",
+            "color" : "orange",
+            "colorhex": "#ff9900"
+          },
+          {
+            "name" : "Major",
+            "detail" : "Permanent Injury / Long Term Effect and Large Area",
+            "value" : "Moderate",
+            "color" : "yellow",
+            "colorhex": "#F2DD00"
+          },
+          {
+            "name" : "Moderate",
+            "detail" : "Lost Time Injury / Long Term Effect and Small Area",
+            "value" : "Moderate",
+            "color" : "yellow",
+            "colorhex": "#F2DD00"
+          },
+          {
+            "name" : "Minor",
+            "detail" : "Medical Treatment / Short Term Effect and Large Area",
+            "value" : "Low",
+            "color" : "green",
+            "colorhex": "#007400"
+          },
+          {
+            "name" : "Insignificant",
+            "detail" : "First Aid Injury / Short Term Effect and Small Area",
+            "value" : "Low",
+            "color" : "green",
+            "colorhex": "#007400"
+          }
+        ]
+      }
+    ],
+    "display": {
+      "use" : "",
+      "location" : "",
+      "quantity" : "",
+      "frequency" : "",
+      "by" : "",
+      "hazard" : "",
+      "monitor" : "",
+      "conclusion" : "",
+      "route" : "",
+      "adequate_controls" : "",
+      "additional" : "",
+      "risk" : "",
+      "likelihood" : "",
+      "matrix" : "",
+      "actions" : "",
+      "approved": ""
+    },
+    "matrix2" : [
+      {
+        "name" : "Severe",
+        "detail" : "Fatality / Permanent Damage",
+        "items" : [
+          {
+            "name" : "Almost Certain",
+            "detail" : "Expected to Occur - Once per week",
+            "value" : "Extreme",
+            "color" : "red",
+            "colorhex": "#ff0000"
+          },
+          {
+            "name" : "Likely",
+            "detail" : "Common - Once per month",
+            "value" : "Extreme",
+            "color" : "red",
+            "colorhex": "#ff0000"
+          },
+          {
+            "name" : "Possible",
+            "detail" : "Sometimes - Once per year",
+            "value" : "Extreme",
+            "color" : "red",
+            "colorhex": "#ff0000"
+          },
+          {
+            "name" : "Unlikely",
+            "detail" : "Rarely - Once in the last 20 years",
+            "value" : "High",
+            "color" : "orange",
+            "colorhex": "#ff9900"
+          },
+          {
+            "name" : "Rare",
+            "detail" : "Highly Unlikely - Once in more than 20 years",
+            "value" : "High",
+            "color" : "orange",
+            "colorhex": "#ff9900"
+          }
+        ]
+      },
+      {
+        "name" : "Major",
+        "detail" : "Permanent Injury / Long Term Effect and Large Area",
+        "items" : [
+          {
+            "name" : "Almost Certain",
+            "detail" : "Expected to Occur - Once per week",
+            "value" : "Extreme",
+            "color" : "red",
+            "colorhex": "#ff0000"
+          },
+          {
+            "name" : "Likely",
+            "detail" : "Common - Once per month",
+            "value" : "High",
+            "color" : "orange",
+            "colorhex": "#ff9900"
+          },
+          {
+            "name" : "Possible",
+            "detail" : "Sometimes - Once per year",
+            "value" : "High",
+            "color" : "orange",
+            "colorhex": "#ff9900"
+          },
+          {
+            "name" : "Unlikely",
+            "detail" : "Rarely - Once in the last 20 years",
+            "value" : "Moderate",
+            "color" : "yellow",
+            "colorhex": "#F2DD00"
+          },
+          {
+            "name" : "Rare",
+            "detail" : "Highly Unlikely - Once in more than 20 years",
+            "value" : "Moderate",
+            "color" : "yellow",
+            "colorhex": "#F2DD00"
+          }
+        ]
+      },
+      {
+        "name" : "Moderate",
+        "detail" : "Lost Time Injury / Long Term Effect and Small Area",
+        "items" : [
+          {
+            "name" : "Almost Certain",
+            "detail" : "Expected to Occur - Once per week",
+            "value" : "High",
+            "color" : "orange",
+            "colorhex": "#ff9900"
+          },
+          {
+            "name" : "Likely",
+            "detail" : "Common - Once per month",
+            "value" : "High",
+            "color" : "orange",
+            "colorhex": "#ff9900"
+          },
+          {
+            "name" : "Possible",
+            "detail" : "Sometimes - Once per year",
+            "value" : "Moderate",
+            "color" : "yellow",
+            "colorhex": "#F2DD00"
+          },
+          {
+            "name" : "Unlikely",
+            "detail" : "Rarely - Once in the last 20 years",
+            "value" : "Moderate",
+            "color" : "yellow",
+            "colorhex": "#F2DD00"
+          },
+          {
+            "name" : "Rare",
+            "detail" : "Highly Unlikely - Once in more than 20 years",
+            "value" : "Moderate",
+            "color" : "yellow",
+            "colorhex": "#F2DD00"
+          }
+        ]
+      },
+      {
+        "name" : "Minor",
+        "detail" : "Medical Treatment / Short Term Effect and Large Area",
+        "items" : [
+          {
+            "name" : "Almost Certain",
+            "detail" : "Expected to Occur - Once per week",
+            "value" : "High",
+            "color" : "orange",
+            "colorhex": "#ff9900"
+          },
+          {
+            "name" : "Likely",
+            "detail" : "Common - Once per month",
+            "value" : "Moderate",
+            "color" : "yellow",
+            "colorhex": "#F2DD00"
+          },
+          {
+            "name" : "Possible",
+            "detail" : "Sometimes - Once per year",
+            "value" : "Moderate",
+            "color" : "yellow",
+            "colorhex": "#F2DD00"
+          },
+          {
+            "name" : "Unlikely",
+            "detail" : "Rarely - Once in the last 20 years",
+            "value" : "Moderate",
+            "color" : "yellow",
+            "colorhex": "#F2DD00"
+          },
+          {
+            "name" : "Rare",
+            "detail" : "Highly Unlikely - Once in more than 20 years",
+            "value" : "Low",
+            "color" : "green",
+            "colorhex": "#007400"
+          }
+        ]
+      },
+      {
+        "name" : "Insignificant",
+        "detail" : "First Aid Injury / Short Term Effect and Small Area",
+        "items" : [
+          {
+            "name" : "Almost Certain",
+            "detail" : "Expected to Occur - Once per week",
+            "value" : "Moderate",
+            "color" : "yellow",
+            "colorhex": "#F2DD00"
+          },
+          {
+            "name" : "Likely",
+            "detail" : "Common - Once per month",
+            "value" : "Moderate",
+            "color" : "yellow",
+            "colorhex": "#F2DD00"
+          },
+          {
+            "name" : "Possible",
+            "detail" : "Sometimes - Once per year",
+            "value" : "Low",
+            "color" : "green",
+            "colorhex": "#007400"
+          },
+          {
+            "name" : "Unlikely",
+            "detail" : "Rarely - Once in the last 20 years",
+            "value" : "Low",
+            "color" : "green",
+            "colorhex": "#007400"
+          },
+          {
+            "name" : "Rare",
+            "detail" : "Highly Unlikely - Once in more than 20 years",
+            "value" : "Low",
+            "color" : "green",
+            "colorhex": "#007400"
+          }
+        ]
+      }
+    ]
+  }
+}

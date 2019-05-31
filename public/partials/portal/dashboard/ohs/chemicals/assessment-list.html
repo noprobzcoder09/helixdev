@@ -1,0 +1,45 @@
+	<div class="col-md-12 no-padding chemicals">
+		<div class="left-container">
+			<div class="top-content">
+				<div class="col-md-8 col-sm-6 col-xs-6">
+					<div class="row">
+						<h4 class="breadcrumbs">OHS &gt; CHEMICAL MANAGEMENT &gt; CHEMICAL ASSESSMENT &gt; ASSESSMENT LIST</h4>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+			<div class="col-md-12 body-content">
+				<div class="row">
+					<h5 class="fc-white">{{ chemical.view.substance }}</h5>
+	
+					<table class="table">
+						<thead>
+							<tr>
+								<th width="140">ASSESSED BY</th>
+								<th class="t-align-center">RISK (CURRENT/MAX)</th>
+								<th>LIKELIHOOD (CURRENT/MAX)</th>
+								<th class="t-align-center">MATRIX LEVEL (CURRENT/MAX)</th>
+								<th class="t-align-center">ACTION</th>
+								<th class="t-align-center">ASSESSMENT DATE</th>
+								<th class="t-align-center">DETAIL</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="border-bottom" ng-repeat="asm in chemical.view.assessments">
+								<td >{{ asm.employee.full_name }}</td>
+								<td>{{ asm.form.display.risk }}</td>
+								<td>{{ asm.form.display.likelihood }}</td>
+								<td class="t-align-center" style="color: {{ asm.form.selected_matrix.impact.colorhex }}">{{ asm.form.selected_matrix.impact.value }}</td>
+								<td class="t-align-center">{{ asm.form.display.monitor }}</td>
+								<td class="fc-blue t-align-center">{{ asm.created_at }}</td>
+								<td><button ui-sref="main.chemical.assessment-open({id: chemical.view.id, assessment: asm, chemical: chemical.view})" class="btn btn-primary btn-full">OPEN</button></td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="clearix"></div>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+	<div class="clearfix"></div>

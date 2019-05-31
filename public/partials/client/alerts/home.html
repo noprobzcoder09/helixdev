@@ -1,0 +1,177 @@
+<div cg-busy="{promise:induction.promise, backdrop:true, templateUrl:'/partials/loader.html', minDuration: 500}"></div>
+
+<div class="col-md-12">
+    <div class="row">
+        <div class="content-container">
+            <span class="back" ui-sref="main.home"><img class="img-responsive" src="../../img/client/arrow-back.png"> <label>Back</label></span>
+
+            <div class="alerts-content col-md-12">
+
+                <div class="body">
+
+                    <div class="tab-control">
+                        <div class="desktop-tab">
+                            <div class="col-md-6 col-sm-6 col-xs-6 no-padding">
+                                <button tyle="button" class="btn-tab-desktop btn active btn-user" ng-click="active = 1" href="#user" aria-controls="user" role="tab" data-toggle="tab" data-tab="USER ALERTS">User Alerts</button>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6 no-padding">
+                                <button type="button" class="btn-tab-desktop btn btn-company" ng-click="active = 2" href="#company" aria-controls="company" role="tab" data-toggle="tab" data-tab="COMPANY ALERTS">Company Alerts</button>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+
+                        <div class="mobile-tab">
+                            <div class="dropdown" uib-dropdown is-open="status.isopen">
+                                <button id="single-button" type="button" class="btn btn-primary dropdown-toggle dropdown-alerts-toggle" uib-dropdown-toggle ng-disabled="disabled">
+                                    <span class="tab-title">User Alerts</span>
+                                    <span class="indicator"><i class="fa fa-caret-down" aria-hidden="true"></i></span>
+                                </button>
+                                <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                                  <li role="menuitem">
+                                      <a class="btn-tab btn btn-user" data-tab="USER ALERTS" href="javascript:void(0);" ng-click="active = 1">User Alerts</a>
+                                  </li>
+                                  <li role="menuitem">
+                                      <a class="btn-tab btn active btn-company" data-tab="COMPANY ALERTS" href="javascript:void(0);" ng-click="active = 2">Company Alerts</a>
+                                  </li>
+                                </ul>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+
+                    <div class="tab-content">
+                        <uib-tabset class="tab-content" active="active">
+                          <uib-tab index="1">
+                              <div class="alert-con">
+                                  <div class="alert-item" ng-repeat="a in alerts.data.messages" ng-click="alerts.viewMessage(a)" data-toggle="{{ alerts.openModal(a.link) }}" data-target="#resourceModal" data-backdrop="false">
+                                      <div class="col-md-7 col-sm-7 col-xs-12 no-padding">
+                                          <a ng-href="{{ a.link }}" ng-if="a.subject.indexOf('Greenhat') !== -1">
+                                            <p class="message-alert">
+                                                <span ng-style="{'font-weight' : a.read==0 ? '700' : '100'}">{{ a.subject }}</span><br><span>{{ a.message }}</span>
+                                            </p>
+                                          </a>
+                                          <p class="message-alert" ng-if="a.subject.indexOf('Greenhat') === -1">
+                                              <span ng-style="{'font-weight' : a.read==0 ? '700' : '100'}">{{ a.subject }}</span><br><span>{{ a.message | limitTo : 60 }}</span>
+                                          </p>
+                                      </div>
+                                      <div class="col-md-5 col-sm-5 col-xs-12 no-padding">
+                                        <p  ng-style="{'font-weight' : a.read==0 ? '700' : '100'}" class="message-date">{{ a.created_at | moment : 'MM/DD/YYYY' }}</p>
+                                      </div>
+                                      <div class="clearfix"></div>
+                                  </div>
+                                  <div class="alert-item" ng-if="alerts.data.length == 0">
+                                      <p>No Notification.</p>
+                                      <div class="clearfix"></div>
+                                  </div>
+                              </div>
+                          </uib-tab>
+                          <uib-tab index="2">
+                              <div class="alert-con">
+                                  <div class="alert-item">
+                                      <p>No Notification.</p>
+                                      <div class="clearfix"></div>
+                                  </div>
+                              </div>
+                          </uib-tab>
+                        </uib-tabset>
+                    </div>
+
+                    <!-- <div class="message-panel" ng-if="alerts.view">
+                      <div class="col-md-12">
+                        <div class="message-subject">
+                          <p class="col-xs-9 no-padding-l no-padding-r">
+                            <strong>{{ alerts.view.subject }}</strong>
+                          </p>
+                          <p class="col-xs-3 no-padding-l no-padding-r text-right">
+                            {{ alerts.view.created_at | moment : 'MM/DD/YYYY' }}
+                          </p>
+                          <div class="clearfix"></div>
+                        </div>
+                      </div>
+                      <div class="col-xs-12 message-content">
+                        <p class="col-xs-12"><span>{{ alerts.view.message }}</span></p>
+                        <p class="col-xs-12 text-right" style="padding-top:0;">
+                          <span ng-click="alerts.backToMessage()">< back to alerts</span>
+                        </p>
+                        <div class="clearfix"></div>
+                      </div>
+                      <div class="clearfix"></div>
+                    </div> -->
+
+                </div>
+
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="col-md-12 bottom-logo">
+                <img class="img-responsive" src="../../img/client/helix-logo.png" alt="" title=""/>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<div class="clearfix"></div>
+
+<!-- Modal for viewing message -->
+<div class="modal fade resources-modal" id="resourceModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4>{{ alerts.view.subject }}</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<i class="fa fa-times" aria-hidden="true"></i>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="form-group margin-b">
+					<div class="col-md-12 col-sm-12 col-xs-12 no-padding-l no-padding-r">
+						<p><strong>{{ alerts.view.subject }}</strong></p>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+				<div class="form-group margin-b">
+          <div class="col-md-12 col-sm-12 col-xs-12 no-padding-l no-padding-r margin-b" ng-if="alerts.view.short_text.length>0">
+						<p>{{ alerts.view.short_text }}</p>
+					</div>
+					<div class="col-md-12 col-sm-12 col-xs-12 no-padding-l no-padding-r">
+						<p>{{ alerts.view.message }}</p>
+					</div>
+          <div ng-if="alerts.view.file_url.length > 0">
+            <a href="{{alerts.view.file_url}}" target="_blank"><img ng-if="alerts.isImageUrl(alerts.view.file_url)" style="max-width:280px;" src="{{alerts.view.file_url}}"/></a>
+            <a ng-if="!alerts.isImageUrl(alerts.view.file_url)" href="{{alerts.view.file_url}}" target="_blank">Download attachment</a>
+          </div>
+					<div class="clearfix"></div>
+          <!-- <p class="col-xs-12 text-right" style="padding-top:0;">
+            <span ng-click="alerts.backToMessage()">< back to alerts</span>
+          </p>
+          <div class="clearfix"></div> -->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+    (function( $ ) {
+        $(document).ready(function() {
+            $(document).on('click', '.mobile-tab .btn-tab', function(){
+
+                $('.dropdown-alerts-toggle .tab-title').text( $(this).attr('data-tab') );
+            });
+            $(document).on('click', '.mobile-tab .dropdown-menu li', function(){
+                $('.mobile-tab .dropdown-menu li').removeClass('active');
+                $(this).addClass('active');
+            });
+
+            $(document).on('click', '.btn-tab-desktop', function(){
+                var indicator = $(this).attr('aria-controls');
+                $('.btn-tab-desktop').removeClass('active');
+                $(this).addClass('active');
+                $('.dropdown-alerts-toggle .tab-title').text( $(this).attr('data-tab') );
+                $('.dropdown-menu .btn-'+indicator).parent('li').addClass('active');
+            });
+        });
+    })( jQuery );
+</script>

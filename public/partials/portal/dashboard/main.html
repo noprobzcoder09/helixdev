@@ -1,0 +1,76 @@
+<div class="header">
+    <div class="container no-padding">
+        <div class="col-md-2 col-sm-3 col-xs-4">
+            <div class="row">
+                <div ng-controller="ImageCtrl as vm">
+                    <image-cropper
+                        image-url="{{ main.currentUser.company.logo }}"
+                        width="150"
+                        height="60"
+                        fit-on-init="true"
+                        center-on-init="true"
+                        show-controls="false"
+                        api="vm.cropperApi"
+                        crop-callback="vm.updateResultImage"
+                        style="display: none;"
+                    ></image-cropper>
+                    <div class="result">
+                        <img class="frame" ng-src="../../img/client/company-logo.png" ui-sref="main.dashboard" style="height: 55px;">
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-8 pull-right" ng-controller="DropdownCtrl">
+            <div class="row">
+                <div class="settings pull-right">
+                    <div uib-dropdown on-toggle="toggled(open)">
+                        <button class="btn btn-settings" data-toggle="dropdown" id="menu1" type="button" style="padding: 0" uib-dropdown-toggle>
+                            <span><img class="img-responsive" src="{{ main.currentUser.user.avatar }}"></span>
+                        </button>
+                        <div class="ext-settings" role="menu" aria-labelledby="menu1" uib-dropdown-menu>
+                            <ul>
+                                <li class="edit-profile"><a ui-sref="main.profile.edit">Edit Profile</a></li>
+                                <li class="logout"><a href="#/login">Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="user pull-right">
+                    <span>Hi, {{ main.currentUser.user.first_name }}</span>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-2 no-padding-l">
+            <div class="nav-con">
+                <div class="nav-top">
+                    <ul>
+                        <li><a ui-sref-active="current" ui-sref="main.dashboard">DASHBOARD</a></li>
+                        <li><a ui-sref-active="{'current': 'main.sub-contractor'}" ui-sref="main.sub-contractor.list" ui-nested>SUB-CONTRACTORS</a></li>
+                        <li><a ui-sref-active="{'current': 'main.hr'}" ui-sref="main.hr.dashboard">HR</a></li>
+                        <li><a ng-class="{current: checkCondition()}" ui-sref="main.ohs.dashboard" ui-nested>OHS</a></li>
+                    </ul>
+                </div>
+                <div class="nav-bottom">
+                    <ul>
+                        <li><a href="" ui-sref-active="{'current': 'main.reports'}"  ui-sref="main.reports.index">REPORTING</a></li>
+                        <li><a href="" ng-class="{current: app.checkAdminHighlight()}" ui-sref="main.admin.dashboard" ui-nested>ADMIN</a></li>
+                    </ul>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <div class="col-md-10 no-padding">
+            <div class="main-content">
+                <ui-view></ui-view>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>

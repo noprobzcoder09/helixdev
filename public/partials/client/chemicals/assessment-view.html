@@ -1,0 +1,42 @@
+<div class="chemicals col-md-12">
+  <div class="row">
+    <div class="content-container">
+      <span class="back" ui-sref="main.chemicals.view({id: chemical.view.id})"><img class="img-responsive" src="../../img/client/arrow-back.png"> <label>Back</label></span>
+
+      <div class="sub-head">
+        <div class="col-md-12">
+          <p>RISK ASSESSMENTS</p>
+        </div>
+      </div>
+
+      <div class="inspections-content col-md-12">
+        <h4 class="row" style="padding-left:0;padding-right:0;">
+          <div class="text-center col-xs-4">ASSESSED BY</div>
+          <div class="text-center col-xs-4">MATRIX LEVEL</div>
+          <div class="text-center col-xs-4">ACTION</div>
+        </h4>
+        <div class="body">
+          <div class="chemical-col" ng-repeat="assessments in chemical.view.assessments">
+            <div ui-sref="main.chemicals.view-assessments-detail({id: chemical.view.id, form: assessments.form , chemical: chemical.view})">
+              <div class="col-xs-4">{{ assessments.employee.name }}</div>
+              <div class="col-xs-4">{{ assessments.form.selected_matrix.name}}</div>
+              <div class="col-xs-4 text-center">
+                <span ng-if="assessments.form.display.monitor == 'Yes'">
+                  <img class="assessment-action" src="../../img/client/Positive.png" >
+                </span>
+                <span ng-if="assessments.form.display.monitor != 'Yes'">
+                  <img class="assessment-action" src="../../img/client/Negative.png">
+                </span>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="clearfix"></div>

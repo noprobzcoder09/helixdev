@@ -1,0 +1,128 @@
+<div class="col-md-12 no-padding ohs">
+    <div class="left-container">
+        <div class="top-content">
+            <div class="col-md-7 col-sm-6 col-xs-6">
+                <div class="row">
+                    <h4 class="breadcrumbs">OHS > SAFETY VIDEOS > VIEW VIDEO</h4>
+                </div>
+            </div>
+            <div class="col-md-3 pull-right">
+                <div class="row btn-action">
+                    <button type="button" role="btn" class="btn btn-primary pull-right top-page-btn" style="margin-left:15px;" ui-sref="main.safety-videos.edit({id:safety.view.id})"><i class="fa fa-edit" aria-hidden="true"></i> EDIT</button>
+                    <button type="button" role="btn" class="btn btn-primary pull-right top-page-btn" ng-click="safety.remove()"><i class="fa fa-trash-o" aria-hidden="true"></i> DELETE</button>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="col-md-12 body-content">
+            <div class="row">
+                <div class="frm">
+                    <div class="header">
+                      <h5>{{ safety.view.title }}</h5>
+                    </div>
+
+                    <div class="col-md-12 video-details">
+                        <div class="col-md-8 no-padding-r">
+
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="row">
+                                            <label>VIDEO LINK</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9 no-padding-r">
+                                        <input class="form-control" type="text" name="video_link" value="{{ safety.view.link }}">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="row">
+                                            <label>DESCRIPTION</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9 no-padding-r">
+                                        <textarea class="form-control" rows="7">{{ safety.view.description }}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="clearfix"></div>
+                        </div>
+
+                        <div class="col-md-4 video-preview">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div id="link-holder" ng-if="safety.view.isVimeo" ng-bind-html="safety.view.htmlVideo | html">
+                                    </div>
+                                    <div id="video-link" ng-if="!safety.view.isVimeo"><a href="{{safety.view.link}}"></a></div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+
+                    <div class="col-md-12 video-questions" ng-if="safety.view.enable_questions">
+                        <div class="row">
+                            <div class="questions">
+                                <div class="title">
+                                    <h5>Questions</h5>
+                                </div>
+
+                                <div class="question-con">
+                                    <p ng-if="safety.view.questions.length <= 0">-- No questions found --</p>
+                                    <div class="question" ng-repeat="question in safety.view.questions track by $index">
+                                        <p>{{$index + 1}}. {{question.question}}</p>
+                                        <div class="option">
+                                            <div class="radio">
+                                                <ul>
+                                                    <li ng-repeat="option in question.options">
+                                                        <label>
+                                                            <input class="form-check" name="work_force{{question.id}}" value="option.option" type="radio" ng-checked="option.option === question.answer">
+                                                            <span></span>
+                                                            {{option.value}}
+                                                        </label>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<style>
+    div#link-holder {
+        height: 223px;
+    }
+    div#video-link {
+        overflow: hidden;
+    }
+    .embed {
+        border: 1px solid gray;
+        height: 222px;
+        background: black;
+    }
+</style>
+<div class="clearfix"></div>
+<script>
+    $(document).ready(function() {
+        setTimeout(function() {
+            console.log('display video');
+            $('#video-link').embedly({query: {maxwidth: 350}, key: 'internal'});
+        }, 1000);
+    });
+</script>

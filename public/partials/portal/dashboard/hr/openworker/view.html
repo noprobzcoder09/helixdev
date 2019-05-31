@@ -1,0 +1,275 @@
+<div class="onboarding open-worker has-dialog">
+  <div class="col-md-12 no-padding">
+    <div class="left-container">
+      <div class="top-content">
+        <div class="col-md-9 col-sm-6 col-xs-6">
+          <div class="row">
+            <h4 class="breadcrumbs">HR > OPEN WORKER</h4>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="row">
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="col-md-12 body-content">
+        <div class="row">
+          <div class="form">
+            <div class="tab-header">
+              <h4 class="header-title">{{hrOpenworker.view.name}}</h4>
+            </div>
+            <div class="body">
+              <div class="col-md-8">
+                <div class="with-borders">
+                  <div class="col-md-12">
+                    <div class="row">
+                      <div class="col-md-4 no-padding-l">
+                        <p><strong>EMAIL:</strong></p>
+                      </div>
+                      <div class="col-md-8 no-padding-r">
+                        <p>{{hrOpenworker.view.email}}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="row">
+                      <div class="col-md-4 no-padding-l">
+                        <p><strong>MOBILE:</strong></p>
+                      </div>
+                      <div class="col-md-8 no-padding-r">
+                        <p>{{hrOpenworker.view.mobile}}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="row">
+                      <div class="col-md-4 no-padding-l">
+                        <p><strong>DATE OF BIRTH:</strong></p>
+                      </div>
+                      <div class="col-md-8 no-padding-r">
+                        <p>{{hrOpenworker.view.dob}}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="row">
+                      <div class="col-md-4 no-padding-l">
+                        <p><strong>ADDRESS:</strong></p>
+                      </div>
+                      <div class="col-md-8 no-padding-r">
+                        <p>{{hrOpenworker.view.address}}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="row">
+                      <div class="form-group">
+                        <div class="col-md-4 no-padding-l">
+                          <p><strong>STATE:</strong></p>
+                        </div>
+                        <div class="col-md-8 no-padding-r">
+                          <div class="row">
+                            <div class="col-md-6"><p>{{hrOpenworker.view.state.name}}</p></div>
+                            <div class="col-md-3"><p><strong>POSTCODE:</strong></p></div>
+                            <div class="col-md-3"><p>{{hrOpenworker.view.postal_code}}</p></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="row">
+                      <div class="col-md-4 no-padding-l">
+                        <p><strong>NEXT OF KIN NAME:</strong></p>
+                      </div>
+                      <div class="col-md-8 no-padding-r">
+                        <p>{{hrOpenworker.view.kin_name}}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="row">
+                      <div class="col-md-4 no-padding-l">
+                        <p><strong>NEXT OF KIN MOBILE:</strong></p>
+                      </div>
+                      <div class="col-md-8 no-padding-r">
+                        <p>{{hrOpenworker.view.mobile}}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="row">
+                      <div class="col-md-4 no-padding-l">
+                        <p><strong>NEXT OF KIN RELATIONSHIP:</strong></p>
+                      </div>
+                      <div class="col-md-8 no-padding-r">
+                        <p>{{hrOpenworker.view.kin_relationship}}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="row">
+                      <div class="col-md-4 no-padding-l">
+                        <p><strong>MEDICAL CONDITIONS:</strong></p>
+                      </div>
+                      <div class="col-md-8 no-padding-r">
+                        <p>{{hrOpenworker.view.med_conditions}}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="row">
+                      <div class="col-md-4 no-padding-l">
+                        <p><strong>ALERGIES:</strong></p>
+                      </div>
+                      <div class="col-md-8 no-padding-r">
+                        <p>{{hrOpenworker.view.allergies}}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="row">
+                      <div class="col-md-4 no-padding-l">
+                        <p><strong>TIMESHEET TAG ID:</strong></p>
+                      </div>
+                      <div class="col-md-8 no-padding-r">
+                        <p>12345678</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+                <h4 class="sub-header">DOCUMENT / QUALIFICATION</h4>
+                <div class="with-borders paragraph-no-margin">
+                  <div class="col-md-12" ng-if="hrOpenworker.user_docs.length <= 0">
+                    <div class="row">
+                      <div class="col-md-8 no-padding-l">
+                        <p>No documents provided</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12" ng-if="hrOpenworker.user_docs.length > 0" ng-repeat="doc in hrOpenworker.user_docs" ng-if="hrOpenworker.checkDoc(doc.type)">
+                    <div class="row">
+                      <div class="col-md-8 no-padding-l">
+                        <p>{{ doc.type | strReplace:'_':' ' }}</p>
+                      </div>
+                      <div class="col-md-4 no-padding-r">
+                        <a class="btn btn-primary btn-full btn-common colorbox test-cbox" href="images/employee/docs/{{doc.employee_id}}/{{doc.filename}}">OPEN</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+                <h4 class="sub-header">HISTORY</h4>
+                <div class="with-borders">
+
+                  <div class="col-md-12" ng-repeat="log in hrOpenworker.log.pagination.data">
+                    <div class="row">
+                      <div class="col-md-8 no-padding-l">
+                        <p>{{ log.content }}</p>
+                      </div>
+                      <div class="col-md-4 no-padding-r">
+                        <p class="text-right">{{ log.created_at }}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12" ng-if="hrOpenworker.log.pagination.data.length > 0">
+                    <div class="row">
+                      <div class="pagination">
+                        <ul>
+                          <li ng-click="hrOpenworker.log.prev()"><a href="javascript:void(0)">&#60;</a></li>
+                          <li ng-repeat="n in [].constructor(hrOpenworker.log.pagination.last_page) track by $index"><a href="javascript:void(0)" ng-click="hrOpenworker.log.go($index+1)" ng-class="app.checkCurrentPagination($index+1, hrOpenworker.log.pagination.current_page) ? 'active' : ''">{{$index + 1}}</a></li>
+                          <li ng-click="hrOpenworker.log.next()"><a href="javascript:void(0)" >&#62;</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="col-md-12">
+                  <div class="row">
+                    <div class="upload-photo">
+                      <div class="fileinput fileinput-new" data-provides="fileinput">
+                        <div class="fileinput-preview thumbnail img-con" data-trigger="fileinput">
+                          <!-- <a class="" href="{{hrOpenworker.view.avatar}}"> -->
+                          <img src="{{hrOpenworker.view.avatar}}" />
+                          <!-- </a> -->
+                        </div>
+                      </div>
+                    </div>
+                    <div class="btn-action">
+                      <button type="button" class="btn btn-primary" ui-sref="main.hr.workforce-greenhat-program({id:hrOpenworker.view.id})">ENROLL IN PROGRAM/SITE ENROLMENT</button>
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalSetDocs">ADD/EDIT QUALIFICATION OR DOCS</button>
+                      <button type="button" class="btn btn-primary" ui-sref="main.hr.edit-workforce-worker({id:hrOpenworker.view.id})">EDIT PROFILE</button>
+                      <button type="button" class="btn btn-primary" ui-sref="main.hr.workforce-login-details({id:hrOpenworker.view.id})">LOGIN DETAILS</button>
+                      <button type="button" class="btn btn-primary">SEND MESSAGE</button>
+                      <button type="button" class="btn btn-primary" ui-sref="main.hr.workforce-worker-skills({id:hrOpenworker.view.id})">SKILLS</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</div>
+
+<!-- modal add for subcon docs -->
+<div class="modal fade document-modal" id="modalSetDocs" tabindex="-1" role="dialog" aria-labelledby="modalSetDocs">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span style="text-transform:uppercase;color:#fff">ADD EVIDENCE OF DOCUMENT OR QUALIFICATION</span>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <i class="fa fa-times" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="document-con">
+          <div class="col-md-12" ng-repeat="doc in hrOpenworker.employee_required_docs">
+            <div class="col-md-3 no-padding-l">
+              <p style="text-transform:capitalize">{{ doc | strReplace:'_':' ' }}</p>
+            </div>
+            <div class="col-md-9 no-padding-r ta-r text-right">
+              <!-- <span class="btn btnFileUpload" ng-if="!hrOpenworker.checkDoc(doc)">Upload Image/PDF</span>
+              <span class="btn btnFileUpload" ng-if="hrOpenworker.checkDoc(doc)">Update Ticket</span>
+              <input type="file" id="required_doc_{{doc}}"> -->
+              <span class="icon" ng-if="hrOpenworker.checkDoc(doc)" style="">
+                <img class="img-responsive" src="../../img/check-icon2.png">
+              </span>
+
+              <div id="container_required_doc_{{doc}}" class="fileinput" data-provides="fileinput" ng-class="hrOpenworker.checkDoc(doc) ? 'fileinput-exists' : 'fileinput-new'">
+                <span class="fileinput-filename label_required_doc_{{doc}}"></span>
+                <span class="btn btn-primary btn-file btnFileUpload">
+                   <!-- ng-if="!subcon.checkDoc(doc)" -->
+                  <span class="fileinput-new">Upload Image/PDF</span>
+                  <span class="fileinput-exists">Change</span>
+                  <input type="file" id="required_doc_{{doc}}" accept="image/jpeg,image/gif,image/png,application/pdf">
+                </span>
+                <button class="btn btn-primary close fileinput-exists" data-dismiss="fileinput">Remove</button>
+              </div>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <div class="modal-footer text-center no-padding-b">
+          <button class="btn btnUpdateDocuments action" role="button" ng-click="hrOpenworker.uploadDocs()">
+            <i class="fa fa-upload" aria-hidden="true"></i> Set Documents
+          </button>
+          <div  style="margin:10px auto 0;width:400px;"class="alert alert-danger" role="alert" ng-if="hrOpenworker.fileLimit">
+            cannot exceed 10MB limit
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

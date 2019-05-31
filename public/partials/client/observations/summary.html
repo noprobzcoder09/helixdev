@@ -1,0 +1,113 @@
+<div class="col-md-12">
+    <div class="row">
+        <div class="content-container">
+            <span class="back" ui-sref="main.observations.action"><img class="img-responsive" src="../../img/client/arrow-back.png"> <label>BACK</label></span>
+            <!-- <span class="continue" ui-sref="main.home">DONE</span> -->
+
+            <div class="observations-content col-md-12 margin-b">
+                <h4>SUMMARY</h4>
+                <div class="body">
+                    <div class="summary">
+                        <div class="col-md-12 summary-items">
+                          <div class="row margin-b">
+                            <div class="col-sm-5 col-xs-12">
+                                <strong>Describe what you saw:</strong>
+                            </div>
+                            <div class="col-sm-7 col-xs-12">
+                                <p>{{observation.view.seen}}</p>
+                            </div>
+                          </div>
+                          <div  class="row margin-b">
+                            <div class="col-sm-5 col-xs-12">
+                                <strong>Initial Photo: </strong>
+                            </div>
+                            <div class="col-sm-7 col-xs-12">
+                                <img class="img-responsive" src="{{observation.view.images.pre}}">
+                            </div>
+                          </div>
+                          <div class="clearfix"></div>
+                        </div>
+
+                        <div class="col-md-12 summary-items">
+                          <div class="row margin-b">
+                            <div class="col-sm-12">
+                                <strong>Category:</strong> <span style="text-transform:capitalize;">{{ observation.view.category }}</span>
+                            </div>
+                          </div>
+                          <div class="row margin-b">
+                            <div class="col-sm-5">
+                                <strong>What did you do:</strong>
+                            </div>
+                            <div class="col-sm-7">
+                                <p>{{observation.view.action_performed}}</p>
+                            </div>
+                          </div>
+                          <div class="row margin-b">
+                            <div class="col-sm-5">
+                                <strong>Further action are required:</strong>
+                            </div>
+                            <div class="col-sm-5">
+                                <p>{{observation.view.further_action}}</p>
+                            </div>
+                          </div>
+                          <div class="row margin-b">
+                            <div class="col-sm-5">
+                                <strong>Post Action Photo:</strong>
+                            </div>
+                            <div class="col-sm-7">
+                                <img class="img-responsive" src="{{observation.view.images.post}}">
+                            </div>
+                            <div class="clearfix"></div>
+                          </div>
+                        </div>
+
+                        <div class="col-md-12 summary-items">
+                            <div class="row margin-b">
+                              <div class="col-sm-5">
+                                  <strong>Location:</strong> <span>{{ observation.view.description }}</span>
+                              </div>
+                              <div class="clearfix"></div>
+                            </div>
+
+                            <div class="row margin-b">
+                              <div class="col-sm-5">
+                                  <strong>GPS Details:</strong>
+                              </div>
+                              <div class="col-sm-7">
+                                <div id="map" style="height: 200px"></div>
+                                </br>
+                                <p>({{ observation.view.location }})</br><span class="classObservationAddress">{{ observation.view.address}}</span></p>
+                              </div>
+                              <div class="clearfix"></div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+
+                <div class="row margin-b">
+                    <div class="col-md-12 margin-b">
+                        <span class='complete' ui-sref="main.home">SEND</span>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="col-md-12 bottom-logo">
+                <img class="img-responsive" src="../../img/client/helix-logo.png"/>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+
+<script type="text/javascript">
+    (function( $ ) {
+        $(document).ready(function() {
+        });
+    })( jQuery );
+</script>

@@ -1,0 +1,83 @@
+<div class="row">
+    <div class="main-content">
+        <div class="col-md-9">
+            <div class="left-container">
+                <div class="top-content">
+                    <div class="col-md-7 col-sm-6 col-xs-6">
+                        <div class="row">
+                            <h3>Client List</h3>
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-sm-6 col-xs-6">
+                        <div class="row">
+                            <div class="search">
+                                <input class="form-control" name="search" placeholder="Search">
+                                <span><i class="fa fa-search" aria-hidden="true"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="col-md-12">
+                    <div class="row">
+                        <div cg-busy="{promise:myPromise, message:'Loading...'}">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>CREATION DATE</th>
+                                    <th>COMPANY</th>
+                                    <th>MODULES</th>
+                                    <th>EDIT</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                <tr ng-repeat="company in company.companies">
+                                    <td width="80">{{ company.id_display }}</td>
+                                    <td width="200">{{ company.created_at }}</td>
+                                    <td width="370" class="company">{{ company.name }}</td>
+                                    <td>{{ company.no_of_modules }}</td>
+                                    <td>
+                                        <button class="open" ui-sref="main.companies-edit({ id: company.id })">EDIT</button>
+                                    </td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="right-container">
+                <div class="action-button">
+                    <button class="add" ui-sref="main.companies.add"><i class="fa fa-plus" aria-hidden="true"></i> ADD NEW CLIENT</button>
+                </div>
+                <div class="sidebar-usage">
+                    <h3>Usage Statistics</h3>
+                    <div class="usage">
+
+                        <div class="col-md-6 col-sm-6 col-xs-6" ng-repeat="stat in stats">
+                            <div class="row">
+                                <div class="usage-con">
+                                    <p><img ng-src="{{stat.image_url}}"></p>
+                                    <p>{{ stat.name }}<span>{{ stat.count }}</span></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                </td>
+            </div>
+
+            <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>

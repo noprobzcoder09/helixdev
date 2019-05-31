@@ -1,0 +1,23 @@
+<div class="row">
+    <div class="content-container">
+        <span class="continue" ui-sref="{{data.sref}}">Done</span>
+        <div class="summary-container col-md-12">
+            <div class="summary-content">
+                <div class="summary-con">
+                    <div class="top-content">
+                        <img class="img-responsive" src="{{ data.current_user.company.logo }}">
+                        <h4>CERTIFICATE</h4>
+                        <p>OF COMPLETION OF A {{ data.title }}</p>
+                    </div>
+                    <div class="middle-content">
+                        <p>This Certificate is awarded to</p>
+                        <h4>{{ data.current_user.user.full_name }}</h4>
+                        <p>For completing the "{{ data.video.title }}" on {{data.video_complete.updated_at_date}} .</p>
+                    </div>
+                    <a href="{{ data.pdf_url }}" target="_blank">Download Your Certificate</a>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>

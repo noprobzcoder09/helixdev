@@ -1,0 +1,51 @@
+<div class="col-md-12 chemicals">
+    <div class="row">
+        <div class="content-container">
+            <span class="back" ui-sref="main.home"><img class="img-responsive" src="../../img/client/arrow-back.png"> <label>BACK</label></span>
+            <span class="continue" ui-sref="main.chemicals.assessment">CONDUCT</span>
+
+            <div class="inspections-content col-md-12">
+                <h4>CHEMICAL MANAGEMENT</h4>
+                <div class="body">
+                    <div class="col-md-12">
+                      <div class="">
+                        <p>Select Location/Crew</p>
+                        <div class="col-md-9 col-sm-9 col-xm-12 no-padding-r no-padding-l">
+                            <selectize
+                                    options='chemical.groups'
+                                    config="chemical.config"
+                                    ng-model="selectedGroupId"
+                                    ng-disabled='disable'
+                                    required='true'
+                            ></selectize>
+                        </div>
+                        <div class="col-md-3 col-sm-9 no-padding-r no-padding-l">
+                          <button class="btn btn-primary" ng-if="!chemical.selectedGroupId" ui-sref="main.chemicals.library">VIEW SDS LIBRARY</button>
+                          <button class="btn btn-primary margin-bottom" ng-if="chemical.selectedGroupId" ng-click="chemical.addGroup()">ADD CREW/LOCATION</button>
+                        </div>
+                        <div class="clearfix"></div>
+                      </div>
+                      <div class="clearfix"></div>
+                    </div>
+
+                    <div class="chem-management-group row margin-t col-md-12">
+                      <ul class="list-group" ng-if="chemical.list.length > 0">
+                        <li class="list-group-item no-padding-r no-padding-l" ng-repeat="item in chemical.list">
+                          <div class="col-xs-8" style="margin-top:8px;">
+                            {{ item.substance }}
+                          </div>
+                          <div class="col-xs-4 text-right">
+                            <a href="javascript:void(0);" class="btn btn-primary" ui-sref="main.chemicals.view({id:item.id})">OPEN</a>
+                          </div>
+                          <div class="clearfix"></div>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>

@@ -1,0 +1,65 @@
+<div cg-busy="{promise:induction.promise, backdrop:true, templateUrl:'/partials/loader.html', minDuration: 500}"></div>
+<div class="col-md-12">
+    <div class="row">
+        <div class="content-container">
+            <span class="back" ui-sref="main.home"><img class="img-responsive" src="../../img/client/arrow-back.png"> <label>Back</label></span>
+
+            <div class="sub-head">
+                <div class="col-md-12">
+                    <p>Available Inductions</p>
+                </div>
+            </div>
+
+            <div class="inductions-container col-md-12">
+
+                <div class="accordion-container" style="margin-top: 2em;">
+
+                    <uib-accordion close-others="true">
+
+                        <div uib-accordion-group class="panel-default" ng-repeat="category in induction.categories track by $index">
+                            <uib-accordion-heading>
+                                {{category.name}}
+                                <span class="indicator indicator-d"></span>
+                                <span class="indicator indicator-m"><i class="fa fa-caret-down" aria-hidden="true"></i></span>
+                            </uib-accordion-heading>
+                            <div class="panel-body">
+                                <a href="javascript:void(0)" ng-repeat="item in category.items" ui-sref="main.inductions.view({id:item.induction.id})">{{item.induction.title}}</a>
+                            </div>
+                        </div>
+
+                    </uib-accordion>
+
+                </div>
+
+                <div class="completed-inductions" cg-busy="{promise:induction.promise, backdrop:true, templateUrl:'/partials/loader.html', minDuration: 1000}">
+                    <h4>Completed Inductions</h4>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tr ng-repeat="induction in induction.completedInductions" ng-if="induction.isPassed==1">
+                                <td width="75%">{{induction.title}}</td>
+                                <td width="25%">Completed:<br/>{{induction.completed_at | moment : 'DD-MM-YYYY'}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+
+<script type="text/javascript">
+    (function( $ ) {
+        $(document).ready(function() {
+            function toggleIcon(e) {
+                $(e.target).prev('.panel-heading').toggleClass('panel-open');
+                console.log(e.target);
+            }
+            $(document).on('hidden.bs.collapse', '.panel-default', toggleIcon);
+            $(document).on('shown.bs.collapse', '.panel-default', toggleIcon);
+        });
+    })( jQuery );
+</script>

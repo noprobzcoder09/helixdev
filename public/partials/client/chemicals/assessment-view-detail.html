@@ -1,0 +1,125 @@
+<div class="chemicals col-md-12">
+  <div class="row">
+    <div class="content-container">
+      <span class="back"><img class="img-responsive" src="../../img/client/arrow-back.png"> <label>Back</label></span>
+
+      <div class="sub-head">
+        <div class="col-md-12">
+          <p>RISK ASSESSMENTS</p>
+        </div>
+      </div>
+
+      <div class="inspections-content col-md-12">
+        <h4 class="row">SUBSTANCE: {{chemical.view.substance}}</h4>
+        <div class="body">
+          <div class="chemical-col">
+            <div class="col-xs-12"><strong>PHOTO</strong></div>
+            <div class="col-xs-12 text-center"><img style="width:100%;" src="{{chemical.view.image_url}}" alt=""></div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="chemical-col">
+            <div class="col-sm-3 col-xs-4"><strong>MSDS</strong></div>
+            <div class="col-sm-9 col-xs-6">
+              <a href="{{chemical.view.msds}}" target="_blank"><i class="fa fa-download" aria-hidden="true" style="margin-top:4px;"></i></a>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="chemical-col">
+            <div class="col-sm-3 col-xs-4"><strong>Use</strong></div>
+            <div class="col-sm-9 col-xs-6">{{chemical.view.form.display.use}}</div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="chemical-col">
+            <div class="col-sm-3 col-xs-4"><strong>Location</strong></div>
+            <div class="col-sm-9 col-xs-6">{{chemical.view.form.display.location}}</div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="chemical-col">
+            <div class="col-sm-3 col-xs-4"><strong>Quantity</strong></div>
+            <div class="col-sm-9 col-xs-6">{{chemical.view.form.display.quantity}}</div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="chemical-col">
+            <div class="col-sm-3 col-xs-4"><strong>Used By</strong></div>
+            <div class="col-sm-9 col-xs-6">{{chemical.view.form.display.by}}</div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="chemical-col">
+            <div class="col-sm-3 col-xs-4"><strong>Hazard</strong></div>
+            <div class="col-sm-9 col-xs-6">{{chemical.view.form.display.hazard}}</div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="chemical-col">
+            <div class="col-sm-3 col-xs-4"><strong>Monitoring</strong></div>
+            <div class="col-sm-9 col-xs-6">{{chemical.view.form.display.monitor}}</div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="chemical-col">
+            <div class="col-sm-3 col-xs-4"><strong>Conclusion</strong></div>
+            <div class="col-sm-9 col-xs-6">{{chemical.view.form.display.conclusion}}</div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="chemical-col">
+            <div class="col-sm-3 col-xs-4"><strong>Route</strong></div>
+            <div class="col-sm-9 col-xs-6">{{chemical.view.form.display.route}}</div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="chemical-col">
+            <div class="col-sm-3 col-xs-4"><strong>Adequate Controls</strong></div>
+            <div class="col-sm-9 col-xs-6">{{chemical.view.form.display.adequate_controls}}</div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="chemical-col">
+            <div class="col-sm-3 col-xs-4"><strong>Additional</strong></div>
+            <div class="col-sm-9 col-xs-6">{{chemical.view.form.display.additional}}</div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="chemical-col">
+            <div class="col-sm-3 col-xs-4"><strong>Risk</strong></div>
+            <div class="col-sm-9 col-xs-6">{{chemical.view.form.display.risk}}</div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="chemical-col">
+            <div class="col-sm-3 col-xs-4"><strong>Likelihood</strong></div>
+            <div class="col-sm-9 col-xs-6">{{chemical.view.form.display.likelihood}}</div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="chemical-col">
+            <div class="col-sm-3 col-xs-4"><strong>Matrix</strong></div>
+            <div class="col-sm-9 col-xs-6">{{chemical.view.form.display.matrix}}</div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="chemical-col">
+            <div class="col-sm-3 col-xs-4"><strong>Actions</strong></div>
+            <div class="col-sm-9 col-xs-6">{{chemical.view.form.display.actions}}</div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="chemical-col">
+            <div class="col-sm-3 col-xs-4"><strong>Assessed By</strong></div>
+            <div class="col-sm-9 col-xs-6"></div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="chemical-col">
+            <div class="col-sm-3 col-xs-4"><strong>Approved</strong></div>
+            <div class="col-sm-9 col-xs-6">{{chemical.view.form.display.approved}}</div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="chemical-col">
+            <div class="col-sm-3 col-xs-4"><strong>Date</strong></div>
+            <div class="col-sm-9 col-xs-6">{{chemical.view.updated_at}}</div>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+
+        <div class="row">
+          <div class="col-xs-12">
+            <button class="btn btn-primary btn-full margin-t" ui-sref="main.chemicals.view-assessments({id: chemical.view.id, chemical: chemical.view2})">RETURN TO RISK ASSESSMENT LIST</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="clearfix"></div>

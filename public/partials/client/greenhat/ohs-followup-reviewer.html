@@ -1,0 +1,172 @@
+<div class="onboarding">
+  <div class="col-md-12 no-padding">
+    <div class="left-container">
+      <div class="top-content">
+        <div class="col-md-9 col-sm-6 col-xs-6">
+          <!-- <div class="row">
+            <h4 class="breadcrumbs">HR > {{grProgram.view.first_name}} {{grProgram.view.last_name}} > Greenhat Program</h4>
+          </div> -->
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="row">
+            <button class="btn btn-primary btn-save pull-right top-page-btn" type='button' role='btn' ng-click="greenhat.submitFeedback()">
+                <i class="fa fa-floppy-o" aria-hidden="true"></i> SAVE
+            </button>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+
+      <div class="col-md-12 body-content">
+        <div class="row">
+          <div class="frmghpenrollment">
+            <div class="tab-header">
+              <h4>greenhat program - ohs manager</h4>
+            </div>
+            
+
+
+            <div class="body" ng-show="greenhat.feedback.exist"><!-- true -->
+              <div class="alert alert-danger"> 
+                <p>You can submit feedback only at once!</p>
+              </div>
+            </div>
+
+            <div class="body" ng-show="!greenhat.feedback.exist"><!-- false -->
+
+              The following test reviews information covered in a company health and safety orientation. It is recommended that you develop
+              a written test that is specific to your health and safety program. Workers that successfully complete the health and safety review
+              wil graduate out of the greem hands sticker.
+              
+              <div class="form-wrapper cleafix">
+                  <div class="form-group clearfix">
+                    <p style="float:left; font-weight: bold;">Has the worker reviewed and signed on the SWMS?</p>
+                    <div class="switch" style="float:right;">
+                      <input type="checkbox" name="checkbox1" value="" class="ios-toggle" id="checkbox1" ng-model="greenhat.feedback.swms">
+                        <label for="checkbox1" class="slider round"></label>
+                    </div>
+                  </div>
+                  <div class="form-group clearfix">
+                    <p style="float:left; font-weight: bold;">Does the worker required additional training?</p>
+                    <div class="switch" style="float:right;">
+                      <input type="checkbox" name="checkbox2" value="" class="ios-toggle" id="checkbox2" ng-model="greenhat.feedback.training">
+                        <label for="checkbox2" class="slider round"></label>
+                    </div>
+                  </div>
+                  <div class="form-group clearfix">
+                    <p style="float:left; font-weight: bold;">Has the worker been familliarised with the ERP?</p>
+                    <div class="switch" style="float:right;">
+                      <input type="checkbox" name="checkbox3" value="" class="ios-toggle" id="checkbox3" ng-model="greenhat.feedback.erp">
+                        <label for="checkbox3" class="slider round"></label>
+                    </div>
+                  </div>
+                  <div class="form-group clearfix">
+                    <p style="float:left; font-weight: bold;">Has the worker been familliarised with the project safety rules?</p>
+                    <div class="switch" style="float:right;">
+                      <input type="checkbox" name="checkbox4" value="" class="ios-toggle" id="checkbox4" ng-model="greenhat.feedback.safe_rules">
+                        <label for="checkbox4" class="slider round"></label>
+                    </div>
+                  </div>
+                  <div class="form-group clearfix">
+                    <p style="float:left; font-weight: bold;">Does the worker know how to report hazard or incident?</p>
+                    <div class="switch" style="float:right;">
+                      <input type="checkbox" name="checkbox5" value="" class="ios-toggle" id="checkbox5" ng-model="greenhat.feedback.hazard">
+                        <label for="checkbox5" class="slider round"></label>
+                    </div>
+                  </div>
+                  <div class="form-group clearfix">
+                    <p style="float:left; font-weight: bold;">Has the worker reported a hazard or incident?</p>
+                    <div class="switch" style="float:right;">
+                      <input type="checkbox" name="checkbox6" value="" class="ios-toggle" id="checkbox6" ng-model="greenhat.feedback.reported_hazard">
+                        <label for="checkbox6" class="slider round"></label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label>Are there any areas of improvement for this worker?</label>
+                    <div class="clearfix"></div>
+                    <textarea name="name" style="width: 100%; padding:6px; resize: none;" rows="4" ng-model="greenhat.feedback.improvement"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label>General Comment</label>
+                    <div class="clearfix"></div>
+                    <textarea name="name" style="width: 100%; padding:6px; resize: none;" rows="4" ng-model="feedback.gen_comment"></textarea>
+                  </div>
+                  <div class="form-group clearfix">
+                    <p style="float:left; font-weight: bold;">As the OHS Manager, has {{ feedback.fullname }} met their Greenhat Program requirements?</p>
+                    <div class="switch" style="float:right;">
+                      <input type="checkbox" name="checkbox7" value="" class="ios-toggle" id="checkbox7" ng-model="greenhat.feedback.met_req">
+                        <label for="checkbox7" class="slider round"></label>
+                    </div>
+                  </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</div>
+<style media="screen">
+  .form-wrapper{
+    padding: 40px 0 0 0;
+  }
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 35px;
+    height: 20px;
+  }
+
+  .switch input {display:none;}
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: -5px;
+    top: -3px;
+    background-color: #157CC4;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+
+  .slider.round:before {
+    border-radius: 50%;
+  }
+</style>

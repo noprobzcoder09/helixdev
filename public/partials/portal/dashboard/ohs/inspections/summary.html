@@ -1,0 +1,45 @@
+	<div class="col-md-12 no-padding ohs">
+		<div class="left-container">
+			<div class="top-content">
+				<div class="col-md-7 col-sm-6 col-xs-6">
+					<div class="row">
+						<h4 class="breadcrumbs">OHS > INSPECTIONS > BUILD SUMMARY</h4>
+					</div>
+				</div>
+				<div class="col-md-4 pull-right">
+					<div class="row btn-action">
+						<button type="button" role="btn" class="btn btn-primary btn-finalise-inspection pull-right top-page-btn" ui-sref="main.inspections.list">RETURN TO INSPECTIONS LIST</button>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+
+			<h5 class="fc-white no-margin-top">BUILD NEW INSPECTION</h5>
+			<div class="col-md-12 body-content inspections">
+				<div class="row">
+					<table>
+						<thead>
+							<tr>
+								<th colspan="">{{inspectionsSummary.list.title}}</td>
+								<th>CATEGORY</td>
+								<th colspan="3" class="t-align-center">OPTION</td>
+							</tr>
+						</thead>
+						<tbody class="content-white">
+							<tr class="border-bottom" ng-repeat="item in inspectionsSummary.items">
+								<td>{{item.name}}</td>
+								<td>{{inspectionsSummary.itemCategories[item.inspection_item_category_id - 1].name}}</td>
+								<td width="15%" class="yes t-align-center">{{inspectionsSummary.inspection_options_btn[item.options][0]}}</td>
+								<td width="15%" class="no t-align-center">{{inspectionsSummary.inspection_options_btn[item.options][1]}}</td>
+								<td width="15%" class="na t-align-center"><span ng-if="item.not_applicable">N / A</span></td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="clearix"></div>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+
+	<div class="clearfix"></div>

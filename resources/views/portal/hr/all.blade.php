@@ -1,0 +1,134 @@
+@extends('layout.portal')
+
+@section('title', 'Client')
+
+@section('content')
+
+	<div class="col-md-12 no-padding ohs">
+		<div class="left-container">
+			<div class="top-content">
+				<div class="col-md-7 col-sm-6 col-xs-6">
+					<div class="row">
+						<h4>HR</h4>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+			<div class="col-md-12 body-content">
+				<div class="row">
+
+					<div class="grid">
+						<div class="grid-item">
+							<a ui-sref="main.hr.onboard">
+								<div class="img-con">
+									<img class="img-responsive" src="localhost/img/hr/onboarding.png" alt="On-boarding" title="On-boarding">
+								</div>
+								<div class="title">
+									<p>On-boarding</p>
+								</div>
+							</a>
+						</div>
+
+						<div class="grid-item">
+							<a href="javascript:void(0);">
+								<div class="img-con">
+									<img class="img-responsive" src="{{ url('img/hr/induction-management.png') }}" alt="Induction Management" title="Induction Management">
+								</div>
+								<div class="title">
+									<p>Induction Management</p>
+								</div>
+							</a>
+						</div>
+
+						<div class="grid-item">
+							<a href="javascript:void(0);">
+								<div class="img-con">
+									<img class="img-responsive" src="{{ url('img/hr/user-management.png') }}" alt="User Management" title="User Management">
+								</div>
+								<div class="title">
+									<p>User Management</p>
+								</div>
+							</a>
+						</div>
+
+						<div class="grid-item">
+							<a href="javascript:void(0);">
+								<div class="img-con">
+									<img class="img-responsive" src="{{ url('img/hr/workforce-management.png') }}" alt="Workforce Management" title="Workforce Management">
+								</div>
+								<div class="title">
+									<p>Workforce Management</p>
+								</div>
+							</a>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+	<script type="text/javascript">
+	(function( $ ) {
+	    var $container = $('.grid'),
+	        colWidth = function () {
+	            var w = $container.width(),
+	                columnNum = 1,
+	                columnWidth = 0;
+
+	            if (w > 1200) {
+	                columnNum  = 6;
+	            } else if (w > 900) {
+	                columnNum  = 4;
+	            } else if (w > 600) {
+	                columnNum  = 4;
+	            } else if (w > 300) {
+	                columnNum  = 4;
+	            } else if (w < 300) {
+	                columnNum  = 2;
+	                columnWidth = 0;
+	            }
+
+	            columnWidth = Math.floor(w/columnNum);
+	            $container.find('.grid-item').each(function() {
+	                var $item = $(this),
+	                    multiplier_w = $item.attr('class').match(/item-w(\d)/),
+	                    multiplier_h = $item.attr('class').match(/item-h(\d)/),
+	                    width        = multiplier_w ? columnWidth * multiplier_w[1]-4 : columnWidth-20,
+	                    height       = multiplier_h ? columnWidth * multiplier_h[1] * 0.5-4 : columnWidth * 1-24;;
+	                if( columnNum == 1 ){
+	                    width = columnWidth;
+	                }
+
+	                $item.css({
+	                    width: width,
+	                    height: height
+	                });
+	            });
+	            return columnWidth;
+
+	        },
+	        isotope = function () {
+
+	            var $grid = $container.isotope({
+	                itemSelector: '.grid-item',
+	                layoutMode: 'fitRows',
+	                fitRows: {
+	                    columnWidth: colWidth(),
+	                    gutter: 15
+	                  }
+	            });
+	            $grid.imagesLoaded().progress( function() {
+	              $grid.isotope('layout');
+	            });
+	        };
+	    isotope();
+
+	    $(window).on('debouncedresize', isotope);
+	})( jQuery );
+	</script>
+
+@endsection

@@ -1,0 +1,113 @@
+<div class="col-md-12 no-padding ohs">
+    <div class="left-container">
+        <div class="top-content">
+            <div class="col-md-7 col-sm-6 col-xs-6">
+                <div class="row">
+                    <h4 class="breadcrumbs">ADMIN > PROJECTS</h4>
+                </div>
+            </div>
+            <div class="col-md-3 pull-right">
+                <div class="row btn-action">
+                    <!-- <button type="button" role="btn" class="btn btn-primary pull-right top-page-btn" href="javascript:void(0)" data-dialog="addContactDialog"><span class="add-sign">+</span> ADD CONTACT</button> -->
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary pull-right top-page-btn" data-toggle="modal" data-target=".add-project">
+                      <span class="add-sign">+</span> ADD PROJECT
+                    </button>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="col-md-12 bottom-content registers">
+            <div class="row">
+                 <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th width="30%">PROJECT NAME</th>
+                        <th>DATE CREATED</th>
+                        <th>NO. OF EMPLOYEES</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody class="content-white">
+                      <tr class="border-bottom" ng-repeat="item in project.list">
+                          <td>{{ item.name }}</td>
+                          <td class="color-blue">{{ item.created_at | moment : 'YYYY-MM-DD' }}</td>
+                          <td class="color-blue">{{ 233 }}</td>
+                          <td>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".edit-project" ng-click="project.edit(item)">OPEN</button>
+                          </td>
+                      </tr>
+                    </tbody>
+                </table>
+
+                <div class="clearix"></div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<div class="clearfix"></div>
+
+<!-- Modal -->
+<div class="modal fade add-project" id="addProject" tabindex="-1" role="dialog" aria-labelledby="addProjectLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span style="text-transform:uppercase;color:#fff">ADD PROJECT</span>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group m-bottom-10">
+          <div class="row">
+            <div class="col-md-2">
+              <p class="m-top-10 no-margin-bottom">Project</p>
+            </div>
+            <div class="col-md-10">
+              <input CLASS="form-control" ng-model="project.new.name">
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+        <div class="modal-footer text-center no-padding-b">
+          <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close" ng-click="project.add()">
+              ADD PROJECT
+          </button>
+        </div>
+			</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal2 for editing crew -->
+<div class="modal fade edit-project" id="editProject" tabindex="-2" role="dialog" aria-labelledby="editProjectLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span style="text-transform:uppercase;color:#fff">EDIT PROJECT</span>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group m-bottom-10">
+          <div class="col-md-3">
+            <p class="m-top-10 no-margin-bottom">PROJECT NAME</p>
+          </div>
+          <div class="col-md-9">
+            <input ng-model="project.view.name" class="form-control">
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <div class="modal-footer text-center no-padding-b">
+          <!-- <button ng-click="admin.update()" class="btn btn-primary" data-miss="modal">UPDATE CREW</button> -->
+          <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close" ng-click="project.update()">
+              UPDATE PROJECT
+          </button>
+        </div>
+			</div>
+    </div>
+  </div>
+</div>

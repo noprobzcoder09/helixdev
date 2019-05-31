@@ -1,0 +1,119 @@
+<div class="induction">
+    <div class="col-md-9 no-padding">
+        <div class="left-container">
+            <div class="top-content">
+                <div class="col-md-7 col-sm-6 col-xs-6">
+                    <div class="row">
+                        <h4 class="breadcrumbs">HR > Induction List</h4>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="col-md-12 body-content">
+                <div class="row">
+                    <div class="col-md-12 induction-con" ng-repeat="category in hrInduction.categoryList">
+                        <div class="row">
+                            <div class="heading">
+                                <h4>{{category.name}}
+                                    <button clas="btn btn-primary btn-edit" style="vertical-align:middle;" data-toggle="modal" data-target="#modalEditCategory" ng-click="hrInduction.edit(category)">
+                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                    </button>
+                                </h4>
+                            </div>
+                            <div class="content">
+                                <table class="table">
+                                    <tr ng-repeat="item in category.items" ng-if="item.induction">
+                                        <td width="90%">{{item.induction.title}}</td>
+                                        <td><button class="btn btn-primary" role="button" type="button" ui-sref="main.hr.induction-edit({id:item.induction.id})">EDIT</button></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="row">
+            <div class="right-container btn-action">
+                <div class="btn-con">
+                    <button type="button" class="btn btn-info pull-right top-page-btn" data-toggle="modal" data-target="#myModal">ADD CATEGORY</button>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="sidebar-usage">
+                    <div class="btn-action">
+                        <button type="button" class="btn btn-primary" ui-sref="main.hr.induction">INDUCTION MANAGEMENT</button>
+                        <button type="button" class="btn btn-primary">EXPORT INDUCTION REGISTER</button>
+                        <button type="button" class="btn btn-primary btn-common active" ui-sref="main.hr.induction-list">EDIT CURRENT INDUCTIONS</button>
+                        <button type="button" class="btn btn-primary" ui-sref="main.hr.induction-add">ADD NEW INDUCTIONS</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+</div>
+
+<!-- Modal2 for edit contact popup -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span style="text-transform:uppercase;color:#fff">ADD CATEGORY</span>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <p class="m-top-10">Category Name</p>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control" ng-model="hrInduction.newCategory"/>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="modal-footer text-center no-padding-b">
+                    <button class="btn btn-primary" data-dismiss="modal" ng-click="hrInduction.createCategory(hrInduction.newCategory)">Done</button>
+                    <button class="btn btn-primary" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal2 for edit contact popup -->
+<div class="modal fade" id="modalEditCategory" tabindex="-1" role="dialog" aria-labelledby="modalEditCategory">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span style="text-transform:uppercase;color:#fff">EDIT CATEGORY</span>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <p class="m-top-10">Category Name</p>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control" ng-model="hrInduction.editCategory.name"/>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="modal-footer text-center no-padding-b">
+                    <button class="btn btn-primary" data-dismiss="modal" ng-click="hrInduction.updateCategory()">UPDATE</button>
+                    <button class="btn btn-primary" data-dismiss="modal" ng-click="hrInduction.remove(hrInduction.editCategory)">DELETE</button>
+                    <button class="btn btn-primary" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,70 @@
+<div cg-busy="{promise:inspections.promise, backdrop:true, templateUrl:'/partials/loader.html', minDuration: 500}"></div>
+
+<div class="col-md-12">
+    <div class="row">
+        <div class="content-container container">
+            <span class="back" ui-sref="main.home"><img class="img-responsive" src="../../img/client/arrow-back.png"> <label>Back</label></span>
+
+            <div class="sub-head">
+                <div class="">
+                    <p>Inspections</p>
+                </div>
+            </div>
+
+            <div class="inspections-content">
+                <div class="inspections" ng-repeat="category in inspections.categories" ng-if="category.inspections.length">
+                    <h4>{{category.name}}</h4>
+                    <a href="javscript:void(0)" ng-repeat="item in category.inspections" ui-sref="main.inspections.setup({id: item.id})">{{item.title}}</a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="sub-head margin-t">
+                <div class="">
+                    <p class="inspections">Outstanding Inspection Tasks</p>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="inspections-content">
+                <div class="">
+                    <div class="">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Types</th>
+                                    <th>Date</th>
+                                    <th>Sighted</th>
+                                    <th>Assigned</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="inspection in inspections.outstanding_inspections">
+                                    <td data-text="Type">{{inspection.inspection.title}}</td>
+                                    <td data-text="Date">{{inspection.action_due}}</td>
+                                    <td data-text="Sighted">{{inspection.required_action}}</td>
+                                    <td data-text="Assigned">{{inspection.employee.first_name}} {{inspection.employee.last_name}}</td>
+                                    <td>
+                                        <button class="btn-action btn" ui-sref="main.inspections.action({id: inspection.inspection.id, itemId: inspection.id})">Action</button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+
+<div class="col-md-12 bottom-logo">
+    <img class="img-responsive" src="../../img/client/helix-logo.png" alt="{{ env('APP_NAME" title="{{ env('APP_NAME"/>
+</div>

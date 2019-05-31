@@ -1,0 +1,43 @@
+<!-- MAIN CONTENT -->
+<!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
+<div class="header">
+    <div class="container">
+        <div class="col-md-2 col-sm-3 col-xs-4">
+            <img ui-sref="main.companies.list" class="img-responsive" src="../../img/Helix-Solutions.png" alt="{{ env('APP_NAME') }}" title="{{ env('APP_NAME') }}" style="cursor: pointer" width="100%"/>
+        </div>
+        <div class="col-md-8 col-sm-8 col-xs-8 pull-right">
+            <div class="row" ng-controller="DropdownCtrl">
+                <div class="settings pull-right">
+                    <div uib-dropdown on-toggle="toggled(open)">
+                        <button class="btn btn-settings" data-toggle="dropdown" id="menu-ext" type="button" uib-dropdown-toggle><i class="fa fa-cog" aria-hidden="true"></i></button>
+                        <div class="ext-settings" role="menu" aria-labelledby="menu-ext" uib-dropdown-menu>
+                            <ul>
+                                <li class="users"><a href="javascript:void(0);">Users</a></li>
+                                <li class="edit-profile"><a href="javascript:void(0);">Edit Profile</a></li>
+                                <li class="logout"><a ui-sref="login">Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="user pull-right">
+                    <span>Hi, {{main.currentUser.first_name}}</span>
+                    <span><img class="img-responsive" src="{{main.currentUser.avatar}}"></span>
+                </div>
+                <div class="clearfix"></div>
+
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<div class="loader" style="position: relative;height: 5px;">
+    <div class="la-anim-13 @{{ (loader) ? 'la-animate' : '' }}"></div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="main-content">
+            <ui-view></ui-view>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>

@@ -1,0 +1,84 @@
+<div cg-busy="{promise:induction.promise, backdrop:true, templateUrl:'/partials/loader.html', minDuration: 500}"></div>
+<div class="col-md-12">
+	<div class="row">
+		<div class="content-container">
+			<span class="back" ui-sref="main.home"><img class="img-responsive" src="../../img/client/arrow-back.png"> <label>Back</label></span>
+			<div class="sub-head">
+				<div class="col-md-12">
+					<p>Document Library</p>
+				</div>
+			</div>
+			<div class="inductions-container col-md-12">
+				<div class="accordion-container">
+					<div class="panel-group" id="resources" role="tablist" aria-multiselectable="true">
+						<uib-accordion close-others="true">
+							<div uib-accordion-group class="panel-default" ng-repeat="category in resource.categories">
+								<uib-accordion-heading>
+									{{ category.name }}
+									<!-- <span class="accordion-icon"></span> -->
+									<span class="indicator indicator-d"></span>
+									<span class="indicator indicator-m"><i class="fa fa-caret-down" aria-hidden="true"></i></span>
+								</uib-accordion-heading>
+								<div class="panel-body">
+									<a ng-if="category.name == 'Useful Links'" ng-repeat="item in category.resources" href="{{ item.body }}" target="_blank">{{ item.name }}</a>
+
+									<a ng-if="category.name != 'Useful Links'" href="javascript:void(0)" ng-repeat="item in category.resources" data-toggle="modal" data-target="#resourceModal" data-backdrop="false" ng-click="resource.initView(item, category)">{{ item.name }}</a>
+								</div>
+							</div>
+						</uib-accordion>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="clearfix"></div>
+
+<div class="modal fade resources-modal" id="resourceModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4>{{ resource.category.name }}</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<i class="fa fa-times" aria-hidden="true"></i>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="form-group margin-b">
+					<div class="col-md-12 col-sm-12 col-xs-12 no-padding-r">
+						<p class="title">{{ resource.view.name }}</p>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+				<div class="form-group margin-b">
+					<div class="col-md-12 col-sm-12 col-xs-12 no-padding-r">
+						<div class="body-content">{{ resource.view.body }}</div>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+				<div>
+					<div class="form-group margin-b">
+						<div class="form-group margin-b">
+							<div class="col-md-12 col-sm-12 col-xs-12 no-padding" ng-if="resource.view.file_url.length > 0">
+								<div class="col-md-12 col-sm-12 col-xs-12 no-padding" ng-if="!resource.mFile.check.isPdfUrl(resource.view.file_url)">
+									<div class="attachment-con">
+										<img class="img-responsive" src="{{ resource.view.file_url }}" width="100%">
+									</div>
+									<a class="btn btn-primary btn-full btn-open" href="{{ resource.view.file_url }}" target="_blank">OPEN</a>
+									<div class="clearfix"></div>
+								</div>
+								<div class="col-md-12 col-sm-12 col-xs-12 no-padding" ng-if="resource.mFile.check.isPdfUrl(resource.view.file_url)">
+									<a class="btn btn-primary btn-half btn-open" href="{{ resource.view.file_url }}" target="_blank">OPEN PDF</a>
+									<div class="clearfix"></div>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

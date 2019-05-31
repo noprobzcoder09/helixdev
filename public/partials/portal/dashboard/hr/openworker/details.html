@@ -1,0 +1,91 @@
+<div class="onboarding open-worker has-dialog">
+  <div class="col-md-12 no-padding">
+    <div class="left-container">
+      <div class="top-content">
+        <div class="col-md-9 col-sm-6 col-xs-6">
+          <div class="row">
+            <h4 class="breadcrumbs">HR > LOGIN DETAILS</h4>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="row">
+
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+
+      <div class="col-md-12 body-content">
+        <div class="row">
+          <div class="form">
+            <div class="tab-header">
+              <h4 class="header-title">{{hrOpenworker.view.name}}</h4>
+            </div>
+            <div class="body">
+
+            </div>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</div>
+<div id="documentsDialog" class="dialog">
+  <div class="dialog__overlay"></div>
+  <div class="dialog__content">
+    <div class="morph-shape">
+      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 560 280" preserveAspectRatio="none">
+        <rect x="3" y="3" fill="none" width="556" height="276"/>
+      </svg>
+    </div>
+    <div class="dialog-inner">
+      <button class="action close-diaglog" data-dialog-close><i class="fa fa-times" aria-hidden="true"></i></button>
+
+      <div class="header">
+        <h2><strong>{{ subcon.view.name }}</strong></h2>
+      </div>
+      <div class="body">
+        <p>Evidence of Documentation</p>
+
+        <div class="document-con">
+          <div class="col-md-12" ng-repeat="doc in hrOpenworker.employee_required_docs">
+            <div class="col-md-6 no-padding-l">
+              <p>{{ doc | strReplace:'_':' ' }}</p>
+            </div>
+            <div class="col-md-6 no-padding-r ta-r">
+              <span class="icon" ng-if="hrOpenworker.checkDoc(doc)"><img class="img-responsive" src="../../img/check-icon.png"></span>
+              <span class="btn btnFileUpload" ng-if="!hrOpenworker.checkDoc(doc)">Upload Image/PDF</span>
+              <span class="btn btnFileUpload" ng-if="hrOpenworker.checkDoc(doc)">Update Ticket</span>
+              <input type="file" id="required_doc_{{doc}}">
+            </div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+
+        <button class="btn btnUpdateDocuments" role="button" ng-click="hrOpenworker.uploadDocs()" ata-dialog-close aria-hidden="true"><span><img class="img-responsive" src="../../img/arrow-refresh.png"></span> Set Documents</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $( function() {
+    $('.date-picker').datepicker();
+    $(".chosen-select").chosen();
+    $("#input-id").fileinput();
+
+    var dlgtrigger = document.querySelector( '[data-dialog]' ),
+            somedialog = document.getElementById( dlgtrigger.getAttribute( 'data-dialog' ) ),
+            dlg = new DialogFx( somedialog );
+
+    dlgtrigger.addEventListener( 'click', dlg.toggle.bind(dlg) );
+
+    $('.chosen-select').chosen({
+      no_results_text: "Oops, nothing found!",
+      width          : "100%",
+      disable_search : true
+    });
+  } );
+ </script>

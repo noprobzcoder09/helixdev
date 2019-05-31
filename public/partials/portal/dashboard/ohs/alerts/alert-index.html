@@ -1,0 +1,138 @@
+<div class="col-md-12 no-padding ohs">
+		<div class="left-container">
+			<div class="top-content">
+				<div class="col-md-7 col-sm-6 col-xs-6">
+					<div class="row">
+						<h4 class="breadcrumbs">OHS &gt; OHS/SAFETY &gt; ALERTS</h4>
+					</div>
+				</div>
+				<div class="col-md-5 pull-right">
+					<div class="row btn-action">
+						<button type="button" role="btn" class="btn btn-primary pull-right top-page-btn" ui-sref="main.alert.history" data-dialog="createDialog"><span class="add-sign"><img src="../../img/message-icon.png" style="width: 18px;"></span> SEE ALERTS HISTORY</button>
+						<button type="button" role="btn" class="btn btn-primary pull-right top-page-btn with-margin-right" ui-sref="main.messaging.groupRecipient" data-dialog="createDialog"><span class="add-sign"><img src="../../img/recipients.png" style="width: 18px;"></span> GROUP RECIPIENTS</button>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+			<div class="col-md-12 body-content alert">
+				<div class="row">
+					<h5 class="fc-white">GROUP ALERTS</h5>
+
+					<h4>SEND TO</h4>
+					<div class="message-body">
+						<div class="checkbox-group">
+
+							<div class="check" ng-repeat="employeeRole in employeeRoleLists">
+								<input type="checkbox" ng-model="employeeRole.checked" value="{{ employeeRole.value }}" class="form-control"  />
+								<label></label>
+								<p>{{employeeRole.desc}}</p>
+							</div>
+
+						</div>
+
+						<div class="col-md-12 m-top-10">
+							<div class="row">
+								<div class="col-md-12 no-padding auto-complete-input">
+									<!-- <input type="text" class="form-control input-recipient" name="individual_recipient" ng-model="individualRecipient" ng-change="messaging.searchEmployee();"> -->
+									<multiple-autocomplete ng-model="individualRecipient" object-property="name" suggestions-arr="employeeLists" class="multiSelect"></multiple-autocomplete>
+								</div>
+							</div>
+						</div>
+
+						<div class="clearfix"></div>
+					</div>
+
+					<h4 class="no-border-radius">DELIVERY METHOD</h4>
+					<div class="message-body">
+						<div class="checkbox-group">
+							<div class="check" ng-repeat="deliveryMethod in deliveryMethodLists">
+								<input type="checkbox" ng-model="deliveryMethod.checked" value="{{ deliveryMethod.value }}" class="form-control" />
+								<label></label>
+								<p>{{deliveryMethod.desc}}</p>
+							</div>
+						</div>
+
+						<div class="col-md-12 m-top-10">
+							<div class="row">
+								<div class="col-md-1 padding-half-r">
+									<p>SUBJECT</p>
+								</div>
+								<div class="col-md-11 padding-half-l">
+									<input type="text" class="form-control" ng-model="subject" >
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-12 m-top-10">
+							<div class="row">
+								<div class="col-md-1 padding-half-r">
+									<p>SHORT TEXT</p>
+								</div>
+								<div class="col-md-11 padding-half-l">
+									<input type="text" class="form-control" name="short_text" ng-model="shortText">
+								</div>
+							</div>
+						</div>
+
+
+						<div class="col-md-12">
+							<div class="row">
+								<div class="col-md-1 padding-half-r">
+									<p>BODY</p>
+								</div>
+								<div class="col-md-11 padding-half-l">
+									<textarea rows="7" name="body" class="form-control" ng-model="body" style="resize: none;"></textarea>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-12">
+							<div class="row">
+								<div class="col-md-1 padding-half-r"></div>
+								<div class="col-md-11 padding-half-l">
+									<div class="col-md-6">
+										<div class="row">
+											<div class="fileinput fileinput-new" data-provides="fileinput">
+												<span class="btn btnFileUpload ng-scope" >
+													<span class="fileinput-new">BROWSE</span>
+													<span class="fileinput-exists changeFile">Change</span>
+													<input id="file_attachment"
+															accept="image/jpeg,image/gif,image/png,application/pdf"
+															ng-model-instant
+															type="file"
+
+													/>
+													<span class="fileinput-filename"></span>
+												</span>
+												<span class="fileinput-txt">FILE TO UPLOAD</span>
+												<!--p><span class="fileinput-txt">No File Selected</span></p-->
+											</div>
+
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="row">
+											<button class="btn btn-primary pull-right" ng-click="alert.preview()">Preview Message</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="clearfix"></div>
+					</div>
+
+					<div class="clearix"></div>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+<script type="text/javascript">
+(function( $ ) {
+	$(document).ready(function() {
+		$('.multiSelect input').attr('placeholder', 'ADD INDIVIDUAL RECIPIENT');
+	});
+})( jQuery );
+</script>

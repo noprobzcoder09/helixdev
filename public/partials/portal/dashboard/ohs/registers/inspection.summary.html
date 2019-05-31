@@ -1,0 +1,91 @@
+<div class="col-md-12 no-padding ohs">
+    <div class="left-container">
+        <div class="top-content">
+            <div class="col-md-7 col-sm-6 col-xs-6">
+                <div class="row">
+                    <h4 class="breadcrumbs">OHS &gt; INSPECTIONS REGISTER</h4>
+                </div>
+            </div>
+            <div class="col-md-3 pull-right">
+                <div class="row btn-action">
+                    <button type="button" role="btn" class="btn btn-primary pull-right top-page-btn btn-75" href="javascript:void(0)" data-dialog="createDialog"><span class="add-sign"><img src="../../img/export-icon.png" style="width: 15px;margin-top: -6px;"></span> EXPORT</button>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="col-md-12 body-content registers inspections">
+            <div class="row">
+                <h5 class="fc-white">SITE INSPECTION SUMMARY</h5>
+                <h4>{{ inspection.view.title }} SUMMARY</h4>
+                <table class="table">
+                    <tr>
+                        <td width="15%"><label>INSPECTOR</label></td>
+                        <td>{{ inspection.view.inspector_name }}</td>
+                    </tr>
+                    <tr>
+                        <td width="15%"><label>SITE/LOCATION</label></td>
+                        <td>{{ inspection.view.site_location }}</td>
+                    </tr>
+                    <tr>
+                        <td width="15%"><label>ADDRESS</label></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td width="15%"><label>COORDINATES</label></td>
+                        <td>{{ inspection.view.google_address }}</td>
+                    </tr>
+                    <tr>
+                        <td width="15%"><label>SUPERVISOR</label></td>
+                        <td>{{ inspection.view.supervisor }}</td>
+                    </tr>
+                    <tr>
+                        <td width="15%"><label>CREW</label></td>
+                        <td></td>
+                    </tr>
+                </table>
+                <div class="clearix"></div>
+            </div>
+        </div>
+
+        <div class="col-md-12 bottom-content">
+            <div class="row">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th width="15%">INSPECTION ITEM</th>
+                            <th>SIGHTING</th>
+                            <th width="5%" style="text-align: center;">RESULT</th>
+                            <th width="15%" style="text-align: center;">ASSIGNED</th>
+                            <th width="25%" style="text-align: center;">PHOTO</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in inspection.view.items track by $index" ui-sref="main.register.inspection-entry({id: inspection.view.id, itemId: item.id})">
+                            <td>{{ $index + 1 }}. {{ item.name }}</td>
+                            <td>{{ item.description }}</td>
+                            <td class="color-blue" style="text-align: center;">
+                                <span ng-if="item.answer == 1" class="fc-green"><i class="fa fa-check" aria-hidden="true"></i></span>
+                                <span ng-if="item.answer == 2" class="fc-red"><i class="fa fa-times" aria-hidden="true"></i></span>
+                                <span ng-if="item.answer == 3" class="fc-yellow"><i class="fa fa-minus" aria-hidden="true"></i></span>
+                            </td>
+                            <td class="color-blue" style="text-align: center;">{{ item.assigned_to_name }}</td>
+                            <td class="color-blue" style="text-align: center;"><img src="{{ item.image_url }}" style="max-width:100%;height:200px;"/></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="pagination" ng-if="hrInduction.keywords.length <= 0">
+                    <ul>
+                        <li ng-click="hrInduction.prevPage()"><a href="javascript:void(0)">&#60;</a></li>
+                        <li ng-repeat="n in [].constructor(hrInduction.pagination.last_page) track by $index"><a href="javascript:void(0)" ng-click="hrInduction.goPage($index+1)" ng-class="app.checkCurrentPagination($index+1, hrInduction.currentPage) ? 'active' : ''">{{$index + 1}}</a></li>
+                        <li ng-click="hrInduction.nextPage()"><a href="javascript:void(0)" >&#62;</a></li>
+                    </ul>
+                </div>
+
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<div class="clearfix"></div>

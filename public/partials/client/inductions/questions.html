@@ -1,0 +1,61 @@
+<div cg-busy="{promise:induction.promise, templateUrl:'/partials/loader.html', minDuration: 700}"></div>
+<div class="col-md-12" ng-if="!induction.isDone">
+    <div class="row">
+        <div class="content-container">
+            <span class="back" ui-sref="main.inductions.view({id:induction.view.id})"><img class="img-responsive" src="../../img/client/arrow-back.png"> <label>Back</label></span>
+
+            <div class="question-container col-md-12">
+                <h3 class="heading">Questions</h3>
+                <div class="question-con" ng-repeat="question in induction.questions track by $index">
+                    <p class="question">{{$index + 1}}.) {{question.question}}</p>
+                    <div class="choices">
+                        <label ng-repeat="option in question.options">
+                            <input type="radio" ng-model="question.userAnswer" ng-value="option.name">
+                            <span></span>
+                            {{question.options.indexOf(option) + 1}}.) {{option.value}}
+                        </label>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="col-md-12">
+                <span class="complete" ng-click="induction.complete()">Complete</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="col-md-12" ng-if="induction.isDone && induction.isPassed">
+    <certificate data="induction.data_certificate"></certificate>
+</div>
+
+<div class="col-md-12" ng-if="induction.isDone && !induction.isPassed">
+    <div class="row">
+        <div class="content-container">
+            <span class="continue" ui-sref="main.inductions.list">Done</span>
+            <div class="summary-container col-md-12">
+                <div class="summary-content">
+                   <div class="summary-con">
+                        <div class="top-content">
+                            <img class="img-responsive" src="../../img/client/company-logo.png">
+                        </div>
+                        <div class="middle-content">
+                            <p class="failed">Sorry, you failed to provide all the right answers</p>
+                        </div>
+                        <a href="javascript:void(0)" ui-sref="main.inductions.list">Go to Safety Inductions</a>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="clearfix"></div>
+
+<script type="text/javascript">
+    (function( $ ) {
+    })( jQuery );
+</script>

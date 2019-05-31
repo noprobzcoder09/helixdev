@@ -1,0 +1,109 @@
+<div class="col-md-12 no-padding ohs">
+    <div class="left-container">
+        <div class="top-content">
+            <div class="col-md-7 col-sm-6 col-xs-6">
+                <div class="row">
+                    <h4 class="breadcrumbs">OHS &gt; OHS/SAFETY &gt; CORRECTIVE ACTIONS REGISTER</h4>
+                </div>
+            </div>
+            <div class="col-md-3 pull-right">
+                <div class="row btn-action">
+                    <a type="button" role="btn" class="btn btn-primary pull-right top-page-btn" target="_blank"
+                            href="google.com"
+                            data-dialog="createDialog">
+                        <span class="add-sign"><img src="../../img/export-icon.png" style="width: 15px;margin-top: -6px;"></span> EXPORT
+                    </a>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="col-md-12 body-content registers inspections">
+            <div class="row">
+                <h5 class="fc-white">CORRECTIVE ACTIONS REGISTER</h5>
+
+                <div class="chart">
+                    <div class="col-md-8">
+                        <div class="row">
+                            <h4>PARTICIPATION</h4>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="row">
+                            <h4>RESULTS</h4>
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <hr>
+
+                    <div class="chart-content">
+                        <div class="col-md-8 padding-half-r">
+                            <canvas id="bar"
+                                    class="chart chart-bar"
+                                    chart-data="corrective.charts.bar_graph.data"
+                                    chart-labels="corrective.charts.bar_graph.labels"
+                                    chart-series="series"
+                                    chart-colors="corrective.charts.bar_graph.colors"
+                                    chart-options="corrective.chart.bar_graph.options"
+                            ></canvas>
+                        </div>
+                        <div class="col-md-4 padding-half-l results graph">
+                            <div class="col-md-6 padding-half">
+                                <canvas id="pie"
+                                        class="chart chart-pie"
+                                        chart-data="corrective.charts.circle1.data"
+                                        chart-labels="corrective.charts.circle1.labels"
+                                        chart-options="corrective.charts.circle1.options"
+                                        chart-colors="corrective.charts.circle1.colors"
+                                        chart-dataset-override="corrective.charts.circle1.dataset">
+                                </canvas>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+
+                <table class="table table-striped content-white">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>DATE</th>
+                        <th>NAME</th>
+                        <th>RESULT</th>
+                        <th>TYPE</th>
+                        <th>SEEN</th>
+                        <th>STATUS</th>
+                        <th>DUE</th>
+                        <th>OPEN</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="border-bottom" ng-repeat="item in corrective.list">
+                        <td width="50">#{{ item.id }}</td>
+                        <td>{{ item.date.text }}</td>
+                        <td>{{ item.name.text }}</td>
+                        <td ng-bind-html="item.result.html | unsafe"></td>
+                        <td ng-bind-html="item.type.html | unsafe"></td>
+                        <td>{{ item.seen.text }}</td>
+                        <td ng-bind-html="item.status.html | unsafe"></td>
+                        <td ng-bind-html="item.due.html | unsafe">{{ item.due.text }}</td>
+                        <td><button class="btn btn-primary" ng-click="corrective.open(item)">OPEN</button></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <div class="pagination">
+                    <ul>
+                        <li ng-click="corrective.prevPage()"><a href="javascript:void(0)">&#60;</a></li>
+                        <li ng-repeat="n in [].constructor(corrective.pagination.last_page) track by $index"><a href="javascript:void(0)" ng-click="corrective.goPage($index+1)" ng-class="app.checkCurrentPagination($index+1, corrective.currentPage) ? 'active' : ''">{{$index + 1}}</a></li>
+                        <li ng-click="corrective.nextPage()"><a href="javascript:void(0)" >&#62;</a></li>
+                    </ul>
+                </div>
+
+                <div class="clearix"></div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<div class="clearfix"></div>

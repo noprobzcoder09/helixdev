@@ -1,0 +1,152 @@
+<div class="col-md-12 no-padding ohs">
+    <div class="left-container">
+        <div class="top-content">
+            <div class="col-md-7 col-sm-6 col-xs-6">
+                <div class="row">
+                    <h4 class="breadcrumbs">OHS > SAFETY VIDEOS > ADD VIDEO</h4>
+                </div>
+            </div>
+            <div class="col-md-3 pull-right">
+                <!-- <div class="row btn-action">
+                    <button type="button" role="btn" class="btn btn-primary pull-right top-page-btn" ng-click="safety.add()"><i class="fa fa-floppy-o" aria-hidden="true"></i> SAVE VIDEO</button>
+                </div> -->
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="col-md-12 body-content">
+            <div class="row">
+                <div class="frm">
+                    <div class="header">
+                        <h5>NEW VIDEO</h5>
+                    </div>
+
+                    <form class="frmInput frmAddVideo">
+
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="row">
+                                        <label>VIDEO TITLE</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-9 no-padding-r">
+                                    <input class="form-control" type="text" name="video_title" ng-model="safety.new.title">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="row">
+                                        <label>VIDEO LINK</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-9 no-padding-r">
+                                    <input class="form-control" type="text" name="video_link" ng-model="safety.new.link">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="row">
+                                        <label>DESCRIPTION</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-9 no-padding-r">
+                                    <textarea class="form-control" ng-model="safety.new.description"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="row">
+                                        <label>&nbsp;</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-9 no-padding-r check">
+                                    <input type="checkbox" name="add_questions" class="form-control" ng-model="safety.isAddNewQuestion">
+                                    <label></label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12" ng-if="safety.isAddNewQuestion">
+                            <div class="row">
+                                <div ng-repeat="question in safety.questions track by $index" id="question{{$index}}">
+                                    <div class="col-md-3">
+                                        <div class="row"></div>
+                                    </div>
+                                    <div class="col-md-9 no-padding-r questions">
+                                        <div class="question">
+                                            <button type="button" class="btn btn-primary pull-right" ng-click="safety.removeQuestion(question.sid)">REMOVE QUESTION</button>
+                                            <div class="col-md-12 no-padding">
+                                                <label>Question 1</label>
+                                                <input class="form-control" name="question" type="text" ng-model="question.question" required>
+                                                <div class="option" required>
+                                                    <div class="col-md-5ths padding-half-r  ">
+                                                        <label>Option 1</label>
+                                                        <input class="form-control" name="option[1]" ng-model="question.option1" ng-blur="safety.checkQuestionOptions(question.sid)" type="text">
+                                                    </div>
+                                                    <div class="col-md-5ths  padding-half ">
+                                                        <label>Option 2</label>
+                                                        <input class="form-control" name="option[2]" ng-model="question.option2" ng-blur="safety.checkQuestionOptions(question.sid)"  type="text" >
+                                                    </div>
+                                                    <div class="col-md-5ths  padding-half ">
+                                                        <label>Option 3</label>
+                                                        <input class="form-control" name="option[3]" ng-model="question.option3" ng-blur="safety.checkQuestionOptions(question.sid)" type="text">
+                                                    </div>
+                                                    <div class="col-md-5ths  padding-half ">
+                                                        <label>Option 4</label>
+                                                        <input class="form-control" name="option[4]" ng-model="question.option4" ng-blur="safety.checkOptions2(question.sid)" type="text">
+                                                    </div>
+                                                    <div class="col-md-5ths   padding-half-l">
+                                                        <label>Option 5</label>
+                                                        <input class="form-control" name="option[5]" ng-model="question.option5" ng-blur="safety.checkQuestionOptions(question.sid)" type="text">
+                                                    </div>
+                                                </div>
+                                                <div class="answer">
+                                                    <div class="col-md-3 no-padding">
+                                                        <label>Answer</label>
+                                                        <select data-placeholder="&nbsp;" ng-model="question.answer" class="select-no-chosen">
+                                                            <option value=""></option>
+                                                            <option value="{{option.option}}" ng-repeat="option in question.options">{{option.option}}</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="row"></div>
+                                </div>
+                                <div class="col-md-9 no-padding-r questions">
+                                    <div class="btn-action">
+                                        <button type="button" class="btn btn-primary" ng-click="safety.addQuestionItem()"><i class="fa fa-plus" aria-hidden="true"></i> ADD QUESTION</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="row btn-action m-top-10">
+                          <div class="col-md-12">
+                            <button type="button" role="btn" class="btn btn-primary pull-left top-page-btn m-top-10" ng-click="safety.add()"><i class="fa fa-floppy-o" aria-hidden="true"></i> SAVE VIDEO</button>
+                          </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+    </div>
+</div>
+
+<div class="clearfix"></div>

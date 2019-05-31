@@ -1,0 +1,176 @@
+<div class="col-md-12 no-padding ohs">
+    <div class="left-container">
+        <div class="top-content">
+            <div class="col-md-7 col-sm-6 col-xs-6">
+                <div class="row">
+                    <h4 class="breadcrumbs">ADMIN > RESOURCES</h4>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="col-md-12 body-content inspections">
+            <div class="loader">
+                <md-progress-circular md-mode="indeterminate" class="md-accent"></md-progress-circular>
+            </div>
+            <div class="row">
+                <div class="inspections-content">
+                    <div class="inspections-data m-bottom" ng-repeat="category in resource.categories">
+                        <!-- <h4>{{ category.name }} </h4> -->
+                        <table class="table table-striped">
+                            <thead class="thead-border">
+                              <tr>
+                                <td width="80%">{{ category.name }}</td>
+                                <td>
+                                  <button type="button" class="btn btn-white btn-full" data-toggle="modal" data-target="#resourceAdd" ng-click="resource.initAdd(category)">ADD</button>
+                                </td>
+                              </tr>
+                            </thead>
+
+                            <tbody class="content-white">
+                              <tr class="border-bottom" ng-repeat="item in category.resources">
+                                  <td>{{ item.name }}</td>
+                                  <td>
+                                      <button type="button" role="btn" class="btn btn-primary btn-view pull-left btn-full" data-toggle="modal" data-target="#resourceEdit" ng-click="resource.initEdit(item, category)">VIEW</button>
+                                  </td>
+                              </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="clearix"></div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<div class="clearfix"></div>
+
+<!-- Modal for adding a resource -->
+<div class="modal fade admin" id="resourceAdd" tabindex="-1" role="dialog" aria-labelledby="addResourceLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span style="text-transform:uppercase;color:#fff">ADD A COMPANY RESOURCE > {{ resource.selectedCategory.name }}</span>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group m-bottom-10">
+                    <div class="row">
+                        <div class="col-md-1">
+                            <p class="m-top-10 no-margin-bottom">TITLE</p>
+                        </div>
+                        <div class="col-md-11">
+                            <input ng-model="resource.new.name" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group m-bottom-10">
+                    <div class="row">
+                        <div class="col-md-1">
+                            <p class="m-top-10 no-margin-bottom" ng-if="resource.selectedCategory.id!=2">BODY</p>
+                            <p class="m-top-10 no-margin-bottom" ng-if="resource.selectedCategory.id==2">URL</p>
+                        </div>
+                        <div class="col-md-11">
+                            <textarea class="form-control" ng-model="resource.new.body" rows="8"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group m-bottom-10" ng-show="resource.selectedCategory.canAttachFile">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!-- <label>ATTACH</label><input type="file" id="resource_image">browse -->
+                            <div class="fileinput fileinput-new" data-provides="fileinput">
+                                <span class="fileinput-txt">ATTACH</span>
+                                <span class="btn btnFileUpload" ng-if="!subcon.checkDoc(doc)">
+                                    <span class="fileinput-new">BROWSE</span>
+                                    <input id="resource_image" accept="application/pdf" type="file">
+                                    <span class="fileinput-filename"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer text-center no-padding-b">
+                    <button type="button" class="btn btn-primary btn-half" data-dismiss="modal" aria-label="Close" ng-click="resource.add()">
+                        DONE
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal2 for editing resource -->
+<div class="modal fade admin" id="resourceEdit" tabindex="-1" role="dialog" aria-labelledby="editResourceLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span style="text-transform:uppercase;color:#fff">{{ resource.view.name }}</span>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group m-bottom-10">
+                    <div class="row">
+                        <div class="col-md-1">
+                            <p class="m-top-10 no-margin-bottom">TITLE</p>
+                        </div>
+                        <div class="col-md-11">
+                            <input ng-model="resource.view.name" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group m-bottom-10">
+                    <div class="row">
+                        <div class="col-md-1">
+                          <p class="m-top-10 no-margin-bottom" ng-if="resource.selectedCategory.id!=2">BODY</p>
+                          <p class="m-top-10 no-margin-bottom" ng-if="resource.selectedCategory.id==2">URL</p>
+                        </div>
+                        <div class="col-md-11">
+                            <textarea class="form-control" ng-model="resource.view.body" rows="8"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group m-bottom-10" ng-show="resource.selectedCategory.canAttachFile">
+                    <div class="col-md-9">
+                        <!-- <div class="col-md-12"> -->
+                            <!-- <label>ATTACH</label><input type="file" id="resource_update_image">browse -->
+                          <div class="fileinput fileinput-new" data-provides="fileinput">
+                            <span class="fileinput-txt">ATTACH</span>
+                            <span class="btn btnFileUpload">
+                                <span class="fileinput-new" ng-if="resource.view.file_url.length <= 0">BROWSE</span>
+                                <span class="fileinput-new" ng-if="resource.view.file_url.length > 0">CHANGE</span>
+                                <input id="resource_update_image" accept="application/pdf" type="file">
+                                <span class="fileinput-filename"></span>
+                            </span>
+                          </div>
+                        <!-- </div> -->
+                    </div>
+                    <div class="col-md-3" ng-if="resource.view.file_url.length > 0">
+                        <!-- <div class="col-md-12"> -->
+                            <!-- <img src="{{resource.view.file_url}}"/> -->
+                            <!-- <div class="col-md-3 padding-half-r"> -->
+                            <div class="attachment-con" ng-if="!resource.mFile.check.isPdfUrl(resource.view.file_url)">
+                                <a class="remove" href="javascript:void(0);"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                <img class="img-responsive" src="{{ resource.view.file_url }}" width="100%">
+                            </div>
+                            <!-- </div> -->
+                            <div class="" ng-if="resource.mFile.check.isPdfUrl(resource.view.file_url)">
+                                <a class="btn btn-primary btn-full btn-open" href="{{ resource.view.file_url }}" target="_blank">OPEN PDF</a>
+                            </div>
+                        <!-- </div> -->
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="modal-footer text-center no-padding-b">
+                  <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close" ng-click="resource.update()">UPDATE</button>
+                  <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close" ng-click="resource.remove(resource.view)">DELETE</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

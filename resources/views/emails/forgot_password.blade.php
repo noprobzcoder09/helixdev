@@ -1,0 +1,1 @@
+You reset your password {{$password}}

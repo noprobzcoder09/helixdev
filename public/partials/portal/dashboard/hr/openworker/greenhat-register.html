@@ -1,0 +1,169 @@
+<div class="onboarding">
+  <div class="col-md-12 no-padding">
+    <div class="left-container">
+      <div class="top-content">
+        <div class="col-md-9 col-sm-6 col-xs-6">
+          <div class="row">
+            <h4 class="breadcrumbs">HR > Greenhat Program</h4>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="row">
+            <button class="btn btn-primary btn-save pull-right top-page-btn" type='button' role='btn'>
+                <i class="fa fa-floppy-o" aria-hidden="true"></i> Export
+            </button>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+
+      <div class="col-md-12 body-content">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="chart-wrapper">
+              <div class="register">
+                  <div class="stats-con">
+                      <div class="stats">
+                          <h3>OPEN GREENHAT WORKER</h3>
+                          <canvas id="bar" style="backgroundColor: #fff" class="chart chart-bar" chart-data="bar_data" chart-labels="bar_labels" chart-series="series" chart-colors="bar_colors" chart-options="bar_options"></canvas>
+                      </div>
+                  </div>
+              </div>
+              <div class="register-pie">
+                <div class="stats-con">
+                    <div class="stats">
+                        <canvas id="pie" style="backgroundColor: #fff" class="chart chart-pie"  chart-data="pie_data" chart-labels="pie_labels"></canvas>
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                  <ul class="pie-status">
+                    <li><span>OPEN: 2</span></li>
+                    <li><span>CLOSED: 129</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12 frmghpenrollment">
+            <div class="body">
+            <table style="100%">
+              <thead>
+                <tr>
+                  <td>id</td>
+                  <td>date started</td>
+                  <td>green hat worker</td>
+                  <td>supervisor</td>
+                  <td>hr</td>
+                  <td>const mgr</td>
+                  <td>plant mgr</td>
+                  <td>ohs mgr</td>
+                  <td>enviro mgr</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="list in emp_full_list">
+                  <td>#000{{list.id}}</td>
+                  <td>{{list.created_at | date: 'dd-MM-yyyy' }}</td>
+                  <td>{{list.employee_info.full_name}}</td>
+                  <td>{{ list.supervisor_id ? 'Yes' : 'No' }}</td>
+                  <td>{{ list.hr_followup_id ? 'Yes' : 'No' }}</td>
+                  <td>{{ list.const_mgmt_id ? 'Yes' : 'No' }}</td>
+                  <td>{{ list.plant_dept_id ? 'Yes' : 'No' }}</td>
+                  <td>{{ list.ohs_evaluator_id ? 'Yes' : 'No' }}</td>
+                  <td>{{ list.env_evaluator_id ? 'Yes' : 'No' }}</td>
+                </tr>
+              </tbody>
+            </table>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</div>
+<style media="screen">
+  .main-container .container .main-content .left-container .body-content .body{
+    padding: 0
+  }
+  .main-container .container .main-content .left-container .body-content .body table thead{
+    color: #fff;
+    background: #157CC4;
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: 400;
+    padding: 15px 10px;
+    border: none;
+    border-radius: 4px 4px 0 0;
+    text-transform: uppercase;
+    margin: 0;
+  }
+  .main-container .container .main-content .left-container .body-content .body table thead tr td{
+    text-transform: uppercase;
+    padding: 1em;
+    text-align: left;
+    vertical-align: middle;
+  }
+  .main-container .container .main-content .left-container .body-content .body table tbody tr{
+    border-bottom: 1px solid #ccc;
+  }
+  .main-container .container .main-content .left-container .body-content .body table tbody tr td{
+    text-align: left;
+    padding: 2em 1em;
+  }
+  .frmghpenrollment{
+    margin-top: 30px;
+  }
+  .chart-wrapper{
+    background: #fff;
+    width: 100%;
+    position: relative;
+    display: block;
+    clear: both;
+    float: left;
+  }
+  .register{
+    width: 660px;
+    position: relative;
+    display: block;
+    float: left;
+  }
+  .register-pie{
+    width: 39%;
+    border: 1px solid #ccc;
+    position: relative;
+    display: block;
+    float: left;
+    margin: 0 auto;
+    top: 48px;
+    left: 20px;
+    padding: 50px 0;
+  }
+  .register-pie .stats-con{
+    width: 200px;
+    padding: 0 0 0 40px;
+    float: left;
+  }
+  .stats h3{
+    color: #157CC4;
+    background: #fff;
+    margin: 0;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 15px;
+    font-size: 17px;
+    border-bottom: 1px solid #ccc;
+  }
+  .register-pie ul.pie-status{
+    list-style: none;
+    padding: 0;
+    margin-top: 70px;
+    margin-left: 20px;
+  }
+  .register-pie ul.pie-status li span{
+    color: #157CC4;
+    font-size: 16px;
+  }
+</style>
